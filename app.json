@@ -1,0 +1,56 @@
+{
+    "id": "com.athom.homeyscript",
+    "sdk": 2,
+    "name": {
+        "en": "HomeyScript"
+    },
+    "description": {
+        "en": "Script your home"
+    },
+    "permissions": [
+	    "homey:manager:api"
+    ],
+    "category": "tools",
+    "version": "1.0.1",
+    "compatibility": ">=1.5.0",
+    "author": {
+        "name": "Athom B.V.",
+        "email": "info@athom.com"
+    },
+    "images": {
+		"large": "/assets/images/large.png",
+		"small": "/assets/images/small.png"
+    },
+    "flow": {
+	    "conditions": [
+		    {
+			    "id": "run",
+			    "title": {
+				    "en": "Run a script",
+				    "nl": "Voer een script uit"
+			    },
+			    "args": [
+				    {
+					    "name": "script",
+					    "type": "autocomplete"
+				    }
+			    ]
+		    }
+	    ],
+	    "actions": [
+		    {
+			    "id": "run",
+			    "title": {
+				    "en": "Run a script",
+				    "nl": "Voer een script uit"
+			    },
+			    "args": [
+				    {
+					    "name": "script",
+					    "type": "autocomplete"
+				    }
+			    ]
+		    }
+	    ]
+    }
+}
