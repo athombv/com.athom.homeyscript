@@ -127,6 +127,7 @@ Api.prototype.setHomey = function( homeyId ) {
 		homey.authenticate()
 		
 			.then(function(homey){
+				if( this.homey ) this.homey.destroy();
 				this.homey = homey;				
 				return this.homey.apps.subscribe();
 			}.bind(this))
@@ -143,6 +144,7 @@ Api.prototype.setHomey = function( homeyId ) {
 				return this.homey.apps.getApp({ id: 'com.athom.homeyscript' })
 			}.bind(this))
 			.then(function(app){
+				if( this.app ) this.app.removeAllListeners();
 				this.app = app;
 			}.bind(this))
 			.catch(function(err){
