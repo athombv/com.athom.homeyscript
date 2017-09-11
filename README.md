@@ -25,7 +25,7 @@ In HomeyScript, you can access a few global objects:
 ## API
 It is possible to trigger a script remotely using the Homey Web API.
 ```
-let HomeyScript = await Homey.apps.getApp('com.athom.homeyscript');
+let HomeyScript = await Homey.apps.getApp({id:'com.athom.homeyscript'});
 HomeyScript.ApiPost('script/<ScriptID>/run', [arg1, arg2]);
 
 ```
