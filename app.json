@@ -35,6 +35,27 @@
                         "type": "autocomplete"
                     }
                 ]
+            },
+            {
+                "id": "runWithArg",
+                "title": {
+                    "en": "Run a script with an argument",
+                    "nl": "Voer een script uit met een argument"
+                },
+                "args": [
+                    {
+                        "name": "script",
+                        "type": "autocomplete"
+                    },
+                    {
+                        "name": "argument",
+                        "type": "text",
+                        "placeholder": {
+                            "en": "Argument",
+                            "nl": "Argument"
+                        }
+                    }
+                ]
             }
         ],
         "actions": [
@@ -48,6 +69,27 @@
                     {
                         "name": "script",
                         "type": "autocomplete"
+                    }
+                ]
+            },
+            {
+                "id": "runWithArg",
+                "title": {
+                    "en": "Run a script with an argument",
+                    "nl": "Voer een script uit met een argument"
+                },
+                "args": [
+                    {
+                        "name": "script",
+                        "type": "autocomplete"
+                    },
+                    {
+                        "name": "argument",
+                        "type": "text",
+                        "placeholder": {
+                            "en": "Argument",
+                            "nl": "Argument"
+                        }
                     }
                 ]
             }

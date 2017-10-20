@@ -144,6 +144,7 @@ Api.prototype.setHomey = function( homeyId ) {
 				return this.homey.apps.getApp({ id: 'com.athom.homeyscript' })
 			}.bind(this))
 			.then(function(app){
+    			if(!app.running) throw new Error('The HomeyScript app is not running. Please enable it.');
 				if( this.app ) this.app.removeAllListeners();
 				this.app = app;
 			}.bind(this))
@@ -153,7 +154,7 @@ Api.prototype.setHomey = function( homeyId ) {
 				if( err && err.message === 'not_found' || err.message === 'invalid_app' )
 					return alert('HomeyScript app has not been installed on this Homey. Please install it from https://apps.athom.com/app/com.athom.homeyscript');
 					
-				return alert( err );	
+				return alert( err && err.message ? err.message : err );	
 			}.bind(this))
 			.then(function(){
 				this._appListeners.forEach(function(appListener){
