@@ -51,8 +51,13 @@ Api.prototype._auth = function( callback ){
 	var token = window.localStorage.getItem('token');
 	var url = new URL( window.location.href );
 	var code = url.searchParams.get('code');
+	var error = url.searchParams.get('error_description');
 	
 	if( code ) {
+    	if(error) {
+        	window.history.pushState({}, '', '/');
+        	return alert(error);
+        }
 	    this._api.authenticateWithAuthorizationCode( code )
 			.then(function(){
 				return this._api.getAuthenticatedUser();
