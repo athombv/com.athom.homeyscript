@@ -8,49 +8,91 @@
         "en": "Script your home"
     },
     "permissions": [
-	    "homey:manager:api"
+        "homey:manager:api"
     ],
     "category": "tools",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "compatibility": ">=1.5.0",
     "author": {
         "name": "Athom B.V.",
         "email": "info@athom.com"
     },
     "images": {
-		"large": "/assets/images/large.png",
-		"small": "/assets/images/small.png"
+        "large": "/assets/images/large.png",
+        "small": "/assets/images/small.png"
     },
     "flow": {
-	    "conditions": [
-		    {
-			    "id": "run",
-			    "title": {
-				    "en": "Run a script",
-				    "nl": "Voer een script uit"
-			    },
-			    "args": [
-				    {
-					    "name": "script",
-					    "type": "autocomplete"
-				    }
-			    ]
-		    }
-	    ],
-	    "actions": [
-		    {
-			    "id": "run",
-			    "title": {
-				    "en": "Run a script",
-				    "nl": "Voer een script uit"
-			    },
-			    "args": [
-				    {
-					    "name": "script",
-					    "type": "autocomplete"
-				    }
-			    ]
-		    }
-	    ]
+        "conditions": [
+            {
+                "id": "run",
+                "title": {
+                    "en": "Run a script",
+                    "nl": "Voer een script uit"
+                },
+                "args": [
+                    {
+                        "name": "script",
+                        "type": "autocomplete"
+                    }
+                ]
+            },
+            {
+                "id": "runWithArg",
+                "title": {
+                    "en": "Run a script with an argument",
+                    "nl": "Voer een script uit met een argument"
+                },
+                "args": [
+                    {
+                        "name": "script",
+                        "type": "autocomplete"
+                    },
+                    {
+                        "name": "argument",
+                        "type": "text",
+                        "placeholder": {
+                            "en": "Argument",
+                            "nl": "Argument"
+                        }
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "id": "run",
+                "title": {
+                    "en": "Run a script",
+                    "nl": "Voer een script uit"
+                },
+                "args": [
+                    {
+                        "name": "script",
+                        "type": "autocomplete"
+                    }
+                ]
+            },
+            {
+                "id": "runWithArg",
+                "title": {
+                    "en": "Run a script with an argument",
+                    "nl": "Voer een script uit met een argument"
+                },
+                "args": [
+                    {
+                        "name": "script",
+                        "type": "autocomplete"
+                    },
+                    {
+                        "name": "argument",
+                        "type": "text",
+                        "placeholder": {
+                            "en": "Argument",
+                            "nl": "Argument"
+                        }
+                    }
+                ]
+            }
+        ]
     }
 }

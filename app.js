@@ -34,11 +34,27 @@ class HomeyScriptApp extends Homey.App {
 			})
 			.getArgument('script')
 			.registerAutocompleteListener( this._onFlowAutocomplete.bind(this) )
+			
+		new Homey.FlowCardCondition('runWithArg')
+			.register()
+			.registerRunListener( args => {
+				return this.runScript( args.script.id, [args.argument] );
+			})
+			.getArgument('script')
+			.registerAutocompleteListener( this._onFlowAutocomplete.bind(this) )
 		
 		new Homey.FlowCardAction('run')
 			.register()
 			.registerRunListener( args => {
 				return this.runScript( args.script.id );
+			})
+			.getArgument('script')
+			.registerAutocompleteListener( this._onFlowAutocomplete.bind(this) )
+			
+		new Homey.FlowCardAction('runWithArg')
+			.register()
+			.registerRunListener( args => {
+				return this.runScript( args.script.id, [args.argument] );
 			})
 			.getArgument('script')
 			.registerAutocompleteListener( this._onFlowAutocomplete.bind(this) )
@@ -59,11 +75,11 @@ class HomeyScriptApp extends Homey.App {
 		return Promise.resolve( resultArr );
 	}
 		
-    getScripts() {
+	getScripts() {
 		return Object.keys(this._scripts);
 	}
 	
-    getScript( scriptId ) {
+	getScript( scriptId ) {
 		const result = this._scripts[ scriptId ];
 		if(!result) throw new Error('invalid_script');
 		return result;
@@ -74,21 +90,21 @@ class HomeyScriptApp extends Homey.App {
 		// if new boot, copy examples
 		let exists = await fse.pathExists( this._scriptsPath ); 
 		if( exists === false ) {	
-    		
-            let examples = await fse.readdir( this._examplesPath );
-            
-            // remove path
-    		examples = examples.map( file => {
-                return path.basename( file );
-            });
-    			
+			
+			let examples = await fse.readdir( this._examplesPath );
+			
+			// remove path
+			examples = examples.map( file => {
+				return path.basename( file );
+			});
+				
 			// copy files
-    		for(let i = 0; i < examples.length; i++) {
-        		const script = examples[i];
-        		console.log('copying example script', script);
-                const contents = await fse.readFile( path.join(this._examplesPath, script) );
-                await fse.outputFile( path.join(this._scriptsPath, script), contents );
-    		}
+			for(let i = 0; i < examples.length; i++) {
+				const script = examples[i];
+				console.log('copying example script', script);
+				const contents = await fse.readFile( path.join(this._examplesPath, script) );
+				await fse.outputFile( path.join(this._scriptsPath, script), contents );
+			}
 		}
 		
 		// find scripts
@@ -133,8 +149,8 @@ class HomeyScriptApp extends Homey.App {
 	
 	}
 	
-    async runScript( scriptId, args ) {
-        if(!Array.isArray(args)) args = [];
+	async runScript( scriptId, args ) {
+		if(!Array.isArray(args)) args = [];
 		return await this.getScript(scriptId).run(args);
 	}
 	
@@ -156,7 +172,7 @@ class HomeyScriptApp extends Homey.App {
 	}
 	
 	addLogEntry(script, text) {
-    	Homey.ManagerApi.realtime('log', {script, text});
+		Homey.ManagerApi.realtime('log', {script, text});
 	}
 	
 	_getScriptPath( scriptId ) {
