@@ -8,7 +8,7 @@
         "en": "Script your home"
     },
     "permissions": [
-	    "homey:manager:api"
+        "homey:manager:api"
     ],
     "category": "tools",
     "version": "1.0.1",
@@ -18,39 +18,39 @@
         "email": "info@athom.com"
     },
     "images": {
-		"large": "/assets/images/large.png",
-		"small": "/assets/images/small.png"
+        "large": "/assets/images/large.png",
+        "small": "/assets/images/small.png"
     },
     "flow": {
-	    "conditions": [
-		    {
-			    "id": "run",
-			    "title": {
-				    "en": "Run a script",
-				    "nl": "Voer een script uit"
-			    },
-			    "args": [
-				    {
-					    "name": "script",
-					    "type": "autocomplete"
-				    }
-			    ]
-		    }
-	    ],
-	    "actions": [
-		    {
-			    "id": "run",
-			    "title": {
-				    "en": "Run a script",
-				    "nl": "Voer een script uit"
-			    },
-			    "args": [
-				    {
-					    "name": "script",
-					    "type": "autocomplete"
-				    }
-			    ]
-		    }
-	    ]
+        "conditions": [
+            {
+                "id": "run",
+                "title": {
+                    "en": "Run a script",
+                    "nl": "Voer een script uit"
+                },
+                "args": [
+                    {
+                        "name": "script",
+                        "type": "autocomplete"
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "id": "run",
+                "title": {
+                    "en": "Run a script",
+                    "nl": "Voer een script uit"
+                },
+                "args": [
+                    {
+                        "name": "script",
+                        "type": "autocomplete"
+                    }
+                ]
+            }
+        ]
     }
 }
