@@ -11,7 +11,7 @@
     "version": "node -e \"fs.writeFileSync('./app.json', JSON.stringify( Object.assign(require('./app.json'), {version: process.env.npm_package_version}), null, 4 ))\"; git add app.json"
   },
   "dependencies": {
-    "athom-api": "^2.0.34",
+    "athom-api": "^2.0.94",
     "fs-extra": "^4.0.1",
     "lodash": "^4.17.4",
     "node-fetch": "^1.7.2",
