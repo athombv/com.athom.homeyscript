@@ -32,7 +32,13 @@ HomeyScript.apiPost('script/<ScriptID>/run', [arg1, arg2]);
 ```
 
 ## Changelog
-Version: 1.0.3
+*Version 1.0.4*
+
+Fix a bug that caused an exception to be thrown when accessing app api's
+
+Web API update to version 2.0.95
+
+*Version: 1.0.3*
 
 It is now possible to use flow tags in HomeyScript, added an example of this createDayTag.js.
 
