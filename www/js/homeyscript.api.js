@@ -31,18 +31,11 @@ Api.prototype.init = function( callback ) {
 	this._auth(function(err){
 		if( err ) return callback( err );
 		
-		this._api.getHomeys({})
-			.then(function(homeys){
-				homeys.forEach(function(homey){
-					this.homeys[ homey._id ] = homey;
-				}.bind(this));
-			}.bind(this))
-			.then(function(){
-				callback();
-			})
-			.catch(function(err){
-				callback(err);
-			}.bind(this))
+		var homeys = this.user.getHomeys({});
+		homeys.forEach(function(homey){
+			this.homeys[ homey._id ] = homey;
+		}.bind(this));
+		callback();
 	}.bind(this));
 }
 
@@ -79,7 +72,7 @@ Api.prototype._auth = function( callback ){
 				window.history.pushState({}, '', '/');
 		    })
 	} else if( token ) {
-		this._api.setAuthState( JSON.parse(token) )
+		this._api.setToken( JSON.parse(token) )
 			.then(function(){
 				return this._api.getAuthenticatedUser();
 			}.bind(this))
@@ -130,11 +123,9 @@ Api.prototype.setHomey = function( homeyId ) {
 	var homey = this.homeys[ homeyId ];
 	if( homey ) {
 		homey.authenticate()
-		
 			.then(function(homey){
 				if( this.homey ) this.homey.destroy();
-				this.homey = homey;				
-				return this.homey.apps.subscribe();
+				this.homey = homey;
 			}.bind(this))
 			.catch(function(err){
 				this.homey = null;
@@ -145,11 +136,13 @@ Api.prototype.setHomey = function( homeyId ) {
 				}.bind(this));
 			}.bind(this))
 			
-			.then(function(){				
+			.then(function(){			
 				return this.homey.apps.getApp({ id: 'com.athom.homeyscript' })
 			}.bind(this))
 			.then(function(app){
-    			if(!app.running) throw new Error('The HomeyScript app is not running. Please enable it.');
+    			if(!app.running && app.state !== 'running')
+    				throw new Error('The HomeyScript app is not running. Please enable it.');
+    				
 				if( this.app ) this.app.removeAllListeners();
 				this.app = app;
 			}.bind(this))

@@ -30,8 +30,8 @@ Topbar.prototype.init = function( api ){
 		var optionEl = document.createElement('option');
 			optionEl.value = homey._id;
 			optionEl.textContent = homey.name;
-			
-		if( homey.state !== 'online' || homey.role !== 'owner' )
+		
+		if( homey.state !== 'online' )
 			optionEl.disabled = 'disabled';
 			
 		this._selectorEl.appendChild( optionEl );		
