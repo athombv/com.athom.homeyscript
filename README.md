@@ -15,6 +15,7 @@ In HomeyScript, you can access a few global objects:
 * `Homey` - A HomeyAPI instance. [https://developer.athom.com/](https://developer.athom.com/docs/api)
 * `_` - Lodash. [https://lodash.com/](https://lodash.com/docs/4.17.4)
 * `fetch` - The Fetch API. [https://developer.mozilla.org/](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+* `setTagValue(id, opts, value)` - Create, edit, remove a flow tag. Use undefined to remove the tag. [https://developer.athom.com/](https://developer.athom.com/docs/apps/FlowToken.html)
 * `console` - V8 Logging API's.
 * `log(...args)` - A shortcut function to append to the output log.
 * `say(text)` - A shortcut function to make Homey speak.
@@ -29,6 +30,19 @@ let HomeyScript = await Homey.apps.getApp({id:'com.athom.homeyscript'});
 HomeyScript.apiPost('script/<ScriptID>/run', [arg1, arg2]);
 
 ```
+
+## Changelog
+*Version 1.0.4*
+
+Fix a bug that caused an exception to be thrown when accessing app api's
+
+Web API update to version 2.0.95
+
+*Version: 1.0.3*
+
+It is now possible to use flow tags in HomeyScript, added an example of this createDayTag.js.
+
+Web API update to version 2.0.94
 
 
 _Note: This app is the result of one of Athom's Hacky Fridays, so official support is not available._
