@@ -6,8 +6,7 @@ function Topbar( api, editor ) {
 	this._api.registerUserListener(this._onApiUser.bind(this));
 	
 	this._el = document.querySelector('.hs-header');
-	this._selectorEl = this._el.querySelector('.selector select')
-	this._selectorEl.addEventListener('change', this._onSelectorChange.bind(this));
+	this._selectedHomeyEl = this._el.querySelector('.selectedHomey');
 	
 	this._buttonSaveEl = this._el.querySelector('.button.save');
 	this._buttonSaveEl.addEventListener('click', this._onButtonSave.bind(this));
@@ -20,23 +19,9 @@ function Topbar( api, editor ) {
 	this._userAvatarEl = this._userEl.querySelector('.avatar');
 }
 
-Topbar.prototype.init = function( api ){
-	
-	this._selectorEl.removeAttribute('disabled');
-		
-	for( var homeyId in this._api.homeys ) {
-		var homey = this._api.homeys[ homeyId ];
-		
-		var optionEl = document.createElement('option');
-			optionEl.value = homey._id;
-			optionEl.textContent = homey.name;
-			
-		if( homey.state !== 'online' || homey.role !== 'owner' )
-			optionEl.disabled = 'disabled';
-			
-		this._selectorEl.appendChild( optionEl );		
-	};
-	
+Topbar.prototype.init = function( ){
+	if(!this._api.homeyObj) return;
+	this._selectedHomeyEl.textContent = this._api.homeyObj.name;
 }
 
 Topbar.prototype._onApiUser = function( user ) {
@@ -44,10 +29,6 @@ Topbar.prototype._onApiUser = function( user ) {
 	this._userAvatarEl.src = user.avatar.small;
 }
 
-Topbar.prototype._onSelectorChange = function( e ) {
-	var homeyId = e.target.value;
-	this._api.setHomey( homeyId );
-}
 
 Topbar.prototype._onButtonSave = function( e ) {
 	this._editor.save();

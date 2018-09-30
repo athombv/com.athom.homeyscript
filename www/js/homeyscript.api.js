@@ -1,8 +1,7 @@
 function Api() {
 	
-	this.homeys = {};
-	this.user = null;
 	this.homey = null;
+	this.user = null;
 	this.app = null;
 	this._userListeners = [];
 	this._homeyListeners = [];
@@ -30,13 +29,8 @@ Api.prototype.init = function( callback ) {
 	    
 	this._auth(function(err){
 		if( err ) return callback( err );
-		
-		this._api.getHomeys({})
-			.then(function(homeys){
-				homeys.forEach(function(homey){
-					this.homeys[ homey._id ] = homey;
-				}.bind(this));
-			}.bind(this))
+
+		this.setHomey(this.user.homeys[0])
 			.then(function(){
 				callback();
 			})
@@ -79,7 +73,7 @@ Api.prototype._auth = function( callback ){
 				window.history.pushState({}, '', '/');
 		    })
 	} else if( token ) {
-		this._api.setAuthState( JSON.parse(token) )
+		this._api.setToken( JSON.parse(token) )
 			.then(function(){
 				return this._api.getAuthenticatedUser();
 			}.bind(this))
@@ -121,50 +115,48 @@ Api.prototype.registerAppListener = function( callback ) {
 	this._appListeners.push( callback );
 }
 
-Api.prototype.setHomey = function( homeyId ) {
-	if( this.homey && this.homey._id === homeyId ) return;
-	
+Api.prototype.setHomey = function( homey ) {
 	if( this.homey )
 		this.homey.destroy();
+
+	if(!homey) return alert('You have no Homeys');
+
+	this.homeyObj = homey;
+
+	return homey.authenticate()
 	
-	var homey = this.homeys[ homeyId ];
-	if( homey ) {
-		homey.authenticate()
+		.then(function(homey){
+			if( this.homey ) this.homey.destroy();
+			this.homey = homey;
+		}.bind(this))
+		.catch(function(err){
+			this.homey = null;
+		}.bind(this))
+		.then(function(){
+			this._homeyListeners.forEach(function(homeyListener){
+				homeyListener.call( homeyListener, this.homey );
+			}.bind(this));
+		}.bind(this))
 		
-			.then(function(homey){
-				if( this.homey ) this.homey.destroy();
-				this.homey = homey;				
-				return this.homey.apps.subscribe();
-			}.bind(this))
-			.catch(function(err){
-				this.homey = null;
-			}.bind(this))
-			.then(function(){
-				this._homeyListeners.forEach(function(homeyListener){
-					homeyListener.call( homeyListener, this.homey );
-				}.bind(this));
-			}.bind(this))
+		.then(function(){				
+			return this.homey.apps.getApp({ id: 'com.athom.homeyscript' })
+		}.bind(this))
+		.then(function(app){
+			if(!app.running) throw new Error('The HomeyScript app is not running. Please enable it.');
+			if( this.app ) this.app.removeAllListeners();
+			this.app = app;
+		}.bind(this))
+		.catch(function(err){
+			this.app = null;
 			
-			.then(function(){				
-				return this.homey.apps.getApp({ id: 'com.athom.homeyscript' })
-			}.bind(this))
-			.then(function(app){
-    			if(!app.running) throw new Error('The HomeyScript app is not running. Please enable it.');
-				if( this.app ) this.app.removeAllListeners();
-				this.app = app;
-			}.bind(this))
-			.catch(function(err){
-				this.app = null;
+			if( err && err.message === 'not_found' || err.message === 'invalid_app' )
+				return alert('HomeyScript app has not been installed on this Homey. Please install it from https://apps.athom.com/app/com.athom.homeyscript');
 				
-				if( err && err.message === 'not_found' || err.message === 'invalid_app' )
-					return alert('HomeyScript app has not been installed on this Homey. Please install it from https://apps.athom.com/app/com.athom.homeyscript');
-					
-				return alert( err && err.message ? err.message : err );	
-			}.bind(this))
-			.then(function(){
-				this._appListeners.forEach(function(appListener){
-					appListener.call( appListener, this.app );
-				}.bind(this));
-			}.bind(this))
-	}
+			return alert( err && err.message ? err.message : err );	
+		}.bind(this))
+		.then(function(){
+			this._appListeners.forEach(function(appListener){
+				appListener.call( appListener, this.app );
+			}.bind(this));
+		}.bind(this))
 }
