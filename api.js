@@ -52,8 +52,20 @@ module.exports = [
 		method: 'POST',
 		path: '/script/:id/run',
 		owner: true,
-		fn: args => {
-			return Homey.app.runScript(args.params.id, args.body);
+		fn: async args => {
+			let result = {
+				success: true,
+				returns: undefined,
+			}
+			
+			try {
+				result.returns = await Homey.app.runScript(args.params.id, args.body);				
+			} catch( err ) {
+				result.success = false;
+				result.returns = err;
+			}
+			
+			return result;
 		}
 	},
 	

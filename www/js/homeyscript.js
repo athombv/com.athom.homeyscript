@@ -19,7 +19,7 @@ window.addEventListener('load', function(){
 		sidebar = new Sidebar( api, editor );
 		
 		api.init(function(err){
-			if( err ) return alert( err );
+			if( err ) return alert( err && err.message ? err.message : err );
 			
 			topbar.init();
 			editor.init();

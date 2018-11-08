@@ -74,7 +74,7 @@ Editor.prototype.open = function( scriptId ) {
 	if( this._editors[ scriptId ] )
 		return this._showEditor( scriptId );
 
-	this._api.app.apiGet('script/' + scriptId)
+	this._app.apiGet('script/' + scriptId)
 		.then(function(script){
 			this._initEditor( scriptId, script.code );
 		}.bind(this))
@@ -111,7 +111,7 @@ Editor.prototype.save = function() {
 
 	var code = this._editors[ this._activeScriptId ].monaco.getValue();
 
-	return this._api.app.apiPut('script/' + this._activeScriptId, {
+	return this._app.apiPut('script/' + this._activeScriptId, {
 		code: code
 	})
 		.catch(function(err){
@@ -129,18 +129,22 @@ Editor.prototype.run = function() {
 
 	var scriptId = this._activeScriptId;
 
-	this._api.app.apiPost('script/' + scriptId + '/run', {})
-		/*
+	this._app.apiPost('script/' + scriptId + '/run', {})
 		.then(function(result){
-			this.log( scriptId, '');
-			this.log( scriptId, '----------------');
-			this.log( scriptId, 'Script returned:');
-			this.log( scriptId, JSON.stringify(result) );
+			
+			if( result.success) {
+				//this.log( scriptId, 'Script returned:');
+				//this.log( scriptId, JSON.stringify(result.returns) );				
+			} else {
+				this.log( scriptId, '');
+				this.log( scriptId, '----------------');
+				this.log( scriptId, 'Script Error:' );
+				this.log( scriptId, result.returns ? result.returns.message : result.returns );
+			}
 		}.bind(this))
-		*/
 		.catch(function(err){
 			console.error(err);
-			alert(err);
+			alert(err.message || err.toString());
 		})
 }
 

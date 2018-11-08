@@ -12,7 +12,7 @@
     ],
     "category": "tools",
     "version": "1.0.4",
-    "compatibility": ">=2.0.0",
+    "compatibility": ">=1.5.12",
     "author": {
         "name": "Athom B.V.",
         "email": "info@athom.com"
