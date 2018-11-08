@@ -1,7 +1,8 @@
 function Api() {
 	
-	this.homey = null;
+	this.homeys = {};
 	this.user = null;
+	this.homey = null;
 	this.app = null;
 	this._userListeners = [];
 	this._homeyListeners = [];
@@ -10,87 +11,67 @@ function Api() {
 	this._api = new window.AthomAPI.AthomCloudAPI({
 	    clientId: '59a0024918d14b410df56237',
 	    clientSecret: '5c3501126f0bca9f8f76f6291ed5b09f0fdba97f',
-		redirectUrl: window.location.protocol + '//' + window.location.host
+		redirectUrl: window.location.protocol + '//' + window.location.host,
 	});
-		
-	this._api
-	    .on('token', function( token ) {	        
-	        window.localStorage.setItem('token', JSON.stringify(token));
-	    }.bind(this))
-	    .on('logout', function(){
-	        window.localStorage.removeItem('token');	
-	        this._setUser( null );        
-	    }.bind(this));
 	
 }
 
-Api.prototype.init = function( callback ) {
-	callback = callback || function(){}
-	    
-	this._auth(function(err){
-		if( err ) return callback( err );
-
-		this.setHomey(this.user.homeys[0])
-			.then(function(){
-				callback();
-			})
+Api.prototype.init = function( callback ){
+	var getHomeyScriptAPI = function() {
+		return this._api.getAuthenticatedUser()
+			.then(function(user){				
+				this._userListeners.forEach(function(userListener){
+					userListener.call( userListener, user );
+				}.bind(this));
+				
+				return user.getFirstHomey();
+			}.bind(this))
+			.then(function(homey){
+				
+				this._homeyListeners.forEach(function(homeyListeners){
+					homeyListeners.call( homeyListeners, homey );
+				}.bind(this));
+				
+				return homey.authenticate();
+			}.bind(this))
+			.then(function(homeyApi){			
+				return homeyApi.apps.getApp({ id: 'com.athom.homeyscript' })
+			}.bind(this))
+			.then(function(app){
+    			if(!app.running && app.state !== 'running')
+    				throw new Error('The HomeyScript app is not running. Please enable it.');
+    				
+				this._appListeners.forEach(function(appListener){
+					appListener.call( appListener, app );
+				}.bind(this));
+			}.bind(this))
 			.catch(function(err){
+				if( err && err.code === 404 )
+					err = new Error('The HomeyScript app has not been installed on this Homey.\nPlease install it from the Homey Apps Store.');
+					
 				callback(err);
 			}.bind(this))
+	}.bind(this);
+	
+	this._api.isLoggedIn().then(function(isLoggedIn){
+		if(isLoggedIn) {
+			getHomeyScriptAPI()
+				.then(callback)
+				.catch(callback)
+		} else {
+			if(this._api.hasAuthorizationCode()) {
+				this._api.authenticateWithAuthorizationCode()
+					.then(getHomeyScriptAPI)		
+					.then(callback)
+					.catch(callback)
+			    	.then(function(){
+						window.history.pushState({}, '', '/');
+				    })
+			} else {
+				this.login();		
+			}	
+		}
 	}.bind(this));
-}
-
-Api.prototype._auth = function( callback ){
-	
-	var token = window.localStorage.getItem('token');
-	var url = new URL( window.location.href );
-	var code = url.searchParams.get('code');
-	var error = url.searchParams.get('error_description');
-	
-	if( code ) {
-    	if(error) {
-        	window.history.pushState({}, '', '/');
-        	return alert(error);
-        }
-	    this._api.authenticateWithAuthorizationCode( code )
-			.then(function(){
-				return this._api.getAuthenticatedUser();
-			}.bind(this))
-			.then(function(user){
-				this.user = user;
-				
-				this._userListeners.forEach(function(userListener){
-					userListener.call( userListener, this.user );
-				}.bind(this));
-			}.bind(this))
-		    .then(function(){			    
-				callback();
-		    })
-		    .catch(function( err ){
-				callback( err );
-			})
-	    	.then(function(){
-				window.history.pushState({}, '', '/');
-		    })
-	} else if( token ) {
-		this._api.setToken( JSON.parse(token) )
-			.then(function(){
-				return this._api.getAuthenticatedUser();
-			}.bind(this))
-			.then(function(user){
-				this.user = user;
-				
-				this._userListeners.forEach(function(userListener){
-					userListener.call( userListener, this.user );
-				}.bind(this));
-			}.bind(this))
-			.then(function(){
-				callback();
-			})
-	} else {
-		this.login();
-	}
-	
 }
 
 Api.prototype.login = function(){
@@ -98,8 +79,7 @@ Api.prototype.login = function(){
 }
 
 Api.prototype.logout = function(){
-	window.localStorage.removeItem('token');
-	this.user = null;
+	this._api.logout();
 	window.location.reload();
 }
 
@@ -113,50 +93,4 @@ Api.prototype.registerHomeyListener = function( callback ) {
 
 Api.prototype.registerAppListener = function( callback ) {
 	this._appListeners.push( callback );
-}
-
-Api.prototype.setHomey = function( homey ) {
-	if( this.homey )
-		this.homey.destroy();
-
-	if(!homey) return alert('You have no Homeys');
-
-	this.homeyObj = homey;
-
-	return homey.authenticate()
-	
-		.then(function(homey){
-			if( this.homey ) this.homey.destroy();
-			this.homey = homey;
-		}.bind(this))
-		.catch(function(err){
-			this.homey = null;
-		}.bind(this))
-		.then(function(){
-			this._homeyListeners.forEach(function(homeyListener){
-				homeyListener.call( homeyListener, this.homey );
-			}.bind(this));
-		}.bind(this))
-		
-		.then(function(){				
-			return this.homey.apps.getApp({ id: 'com.athom.homeyscript' })
-		}.bind(this))
-		.then(function(app){
-			if(!app.running) throw new Error('The HomeyScript app is not running. Please enable it.');
-			if( this.app ) this.app.removeAllListeners();
-			this.app = app;
-		}.bind(this))
-		.catch(function(err){
-			this.app = null;
-			
-			if( err && err.message === 'not_found' || err.message === 'invalid_app' )
-				return alert('HomeyScript app has not been installed on this Homey. Please install it from https://apps.athom.com/app/com.athom.homeyscript');
-				
-			return alert( err && err.message ? err.message : err );	
-		}.bind(this))
-		.then(function(){
-			this._appListeners.forEach(function(appListener){
-				appListener.call( appListener, this.app );
-			}.bind(this));
-		}.bind(this))
 }
