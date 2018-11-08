@@ -11,7 +11,7 @@
         "homey:manager:api"
     ],
     "category": "tools",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "compatibility": ">=1.5.12",
     "author": {
         "name": "Athom B.V.",

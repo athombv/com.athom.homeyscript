@@ -32,6 +32,13 @@ HomeyScript.apiPost('script/<ScriptID>/run', [arg1, arg2]);
 ```
 
 ## Changelog
+
+*Version 1.0.5*
+
+Minor back-end changes.
+
+Web API update to version 2.0.138
+
 *Version 1.0.4*
 
 Fix a bug that caused an exception to be thrown when accessing app api's
