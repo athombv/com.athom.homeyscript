@@ -99,6 +99,7 @@ body {
 		
 		cursor: pointer;
 	}
+		.hs-header .homey,
 		.hs-header .user .name {
 			color: white;
 			font-size: 0.9em;
@@ -110,6 +111,9 @@ body {
 			overflow: hidden;
 			margin: 0 1em;
 		}
+	.hs-header .homey {
+		opacity: 0.75;
+	}
 
 .hs-wrap {
 	display: flex;
