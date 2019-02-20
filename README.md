@@ -33,6 +33,16 @@ HomeyScript.apiPost('script/<ScriptID>/run', [arg1, arg2]);
 
 ## Changelog
 
+*Version 1.1.1*
+
+Web API update to version 2.1.161
+
+*Version 1.1.0*
+
+Web API update to version 2.1.137
+
+Homey v2.0.0 compatibility
+
 *Version 1.0.5*
 
 Minor back-end changes.
