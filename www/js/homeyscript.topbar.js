@@ -13,20 +13,19 @@ function Topbar( api, editor ) {
 	this._buttonRunEl = this._el.querySelector('.button.run');
 	this._buttonRunEl.addEventListener('click', this._onButtonRun.bind(this));
 	
-	this._homeyEl = this._el.querySelector('.homey');
-	
 	this._userEl = this._el.querySelector('.user');
 	this._userEl.addEventListener('click', this._onUserClick.bind(this));
 	this._userNameEl = this._userEl.querySelector('.name');
 	this._userAvatarEl = this._userEl.querySelector('.avatar');
+	this._userHomeyEl = this._userEl.querySelector('.homey');
 }
 
 Topbar.prototype.init = function( api ){
 }
 
 Topbar.prototype._onApiHomey = function( homey ) {
-	this._homeyEl.textContent = homey.name;
-	this._homeyEl.title = 'v' + homey.softwareVersion;
+	this._userHomeyEl.textContent = homey.name;
+	this._userHomeyEl.title = 'v' + homey.softwareVersion;
 }
 
 Topbar.prototype._onApiUser = function( user ) {
