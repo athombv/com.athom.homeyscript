@@ -128,7 +128,7 @@ Sidebar.prototype.deleteScript = function( scriptId ) {
 
 Sidebar.prototype.createScript = function() {
 
-	var scriptId = prompt("Please enter your script name.");
+	var scriptId = prompt("Please enter your script name.", 'myNewScript');
 	if( scriptId === null | scriptId.length < 1 ) return;
 	if( this._scripts.indexOf(scriptId) > -1 ) return alert("That name already exists. Please choose a unique name.");
 

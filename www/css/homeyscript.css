@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700');
+
 /* Generic */
 * {
 	margin: 0;
 	padding: 0;
 	user-select: none;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html,
@@ -17,7 +22,7 @@ body {
 	background-size: cover;
 	
 	font-family: Roboto, Helvetica;
-	font-weight: 300;
+	font-weight: 400;
 	color: white;
 }
 
@@ -44,6 +49,8 @@ body {
 	flex-grow: 0;
 	flex-shrink: 0;
 	
+	height: 60px;
+	
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -52,14 +59,23 @@ body {
 		flex-grow: 0;
 		flex-shrink: 0;
 		
-		display: inline-block;
-		font-size: 24px;
-		font-weight: 100;
-		width: 230px;
-		padding: 10px 20px;
-		box-sizing: border-box;
-		white-space: nowrap;
+		padding: 0 12px;
+		display: flex;
+		align-items: center;
+		width: 206px;
 	}
+	  .hs-header .title .image {
+      width: 32px;
+      height: 32px;
+      background: url(https://etc.athom.com/logo/transparent/64.png);
+      background-size: contain;
+      margin-right: 12px;
+	  }
+	  .hs-header .title .text {
+      font-weight: 100;
+      font-size: 24px;
+      color: #fff;
+	  }
 	.hs-header .controls {
 		flex-grow: 1;
 		
@@ -70,11 +86,11 @@ body {
 	}
 		.hs-header .controls .button {
 			border-radius: 3px;
-			padding: 0.4em 0.75em;
+			padding: 0.55em 0.8em;
 			margin-right: 1em;
 			font-size: 0.9em;
-			border-bottom: 1px solid rgba(255,255,255,0.1);
 			box-sizing: border-box;
+			box-shadow: 0 1px 0 1px rgba(0,0,0,0.1);
 			
 			transition: all 0.1s;
 		}
@@ -99,18 +115,29 @@ body {
 		
 		cursor: pointer;
 	}
-		.hs-header .homey,
-		.hs-header .user .name {
-			color: white;
-			font-size: 0.9em;
-		}
-		.hs-header .user .avatar {
-			width: 32px;
-			height: 32px;
-			border-radius: 100%;
-			overflow: hidden;
-			margin: 0 1em;
-		}
+	  .hs-header .user .text {
+  	  display: flex;
+  	  flex-direction: column;
+  	  text-align: right;
+	  }
+    	.hs-header .user .name {
+      	font-size: 16px;
+      	font-weight: 400;
+      	color: white;
+    	}
+    	.hs-header .user .homey {
+      	font-size: 13px;
+      	font-weight: 400;
+      	color: white;
+      	opacity: 0.8;
+    	}
+  	.hs-header .user .avatar {
+  		width: 42px;
+  		height: 42px;
+  		border-radius: 100%;
+  		overflow: hidden;
+  		margin: 0 12px;
+  	}
 	.hs-header .homey {
 		opacity: 0.75;
 	}
@@ -158,7 +185,7 @@ body {
 			
 			padding: 4px 20px;
 			font-size: 14px;
-			font-weight: 300;
+			font-weight: 400;
 			user-select: none;
 			border: 1px solid transparent;
 			margin-right: 1px;
@@ -198,7 +225,7 @@ body {
 				color: #9F9FA0;
 				padding: 0.6em 0.8em;
 				font-size: 0.85em;
-				font-weight: 300;
+				font-weight: 400;
 				
 				transition: all 0.1s;
 			}
@@ -217,6 +244,7 @@ body {
 		bottom: 0;		
 		height: 40px;
 		border-top: 1px solid rgba(255,255,255,0.1);
+		background: rgba(255,255,255,0.07);
 		
 		visibility: hidden;
 	}

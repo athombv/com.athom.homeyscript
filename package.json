@@ -1,6 +1,6 @@
 {
   "name": "com.athom.homeyscript",
-  "version": "1.0.4",
+  "version": "1.1.1",
   "description": "",
   "repository": {
     "type": "git",
@@ -11,9 +11,9 @@
     "version": "node -e \"fs.writeFileSync('./app.json', JSON.stringify( Object.assign(require('./app.json'), {version: process.env.npm_package_version}), null, 4 ))\"; git add app.json"
   },
   "dependencies": {
-    "athom-api": "^2.0.138",
+    "athom-api": "^2.1.161",
     "fs-extra": "^4.0.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.11",
     "node-fetch": "^1.7.2",
     "uuid": "^3.1.0"
   },
