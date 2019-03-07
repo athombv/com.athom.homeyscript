@@ -111,7 +111,7 @@ body {
 	.hs-header .user {
 		display: flex;
 		align-items: center;
-		margin-left: 2em;
+		margin-left: 12px;
 		
 		cursor: pointer;
 	}
