@@ -171,6 +171,7 @@ Editor.prototype.log = function( scriptId, logText ) {
 	var editor = this._editors[ scriptId ];
 	if( editor ) {
 		editor.consoleInner.textContent += logText + '\n';
+		editor.consoleInner.scrollTop  =  editor.consoleInner.scrollHeight;
 	}
 
 }
