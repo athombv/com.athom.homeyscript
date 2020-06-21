@@ -1,0 +1,22 @@
+name: Deploy Website To GitHub Pages
+
+on:
+  push:
+    branches: [ production ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2   
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+      
+    - name: Deploy To GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        personal_token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
+        publish_dir: ./www
+        cname: homeyscript.homey.app
