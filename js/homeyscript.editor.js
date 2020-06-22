@@ -170,8 +170,15 @@ Editor.prototype.log = function( scriptId, logText ) {
 
 	var editor = this._editors[ scriptId ];
 	if( editor ) {
+		const wasAtBottom = !editor.consoleInner.scrollTop ||
+		      editor.consoleInner.scrollTop >=
+		      editor.consoleInner.scrollHeight - editor.consoleInner.offsetHeight - 10;
+		
 		editor.consoleInner.textContent += logText + '\n';
-		editor.consoleInner.scrollTop  =  editor.consoleInner.scrollHeight;
+		
+		if (wasAtBottom) {
+			editor.consoleInner.scrollTop  =  editor.consoleInner.scrollHeight;
+		}
 	}
 
 }
