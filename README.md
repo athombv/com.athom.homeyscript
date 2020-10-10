@@ -64,6 +64,12 @@ Delete a Flow Token by providing `null` as value.
 
 Resolves after `milliseconds` milliseconds.
 
+```javascript
+await tag('My Tag', 1337); // Create
+await tag('My Tag', 1338); // Update
+await tag('My Tag', null); // Delete
+```
+
 #### `wait(Number milliseconds)` -> `Promise`
 
 Resolves after `milliseconds` milliseconds.
@@ -89,12 +95,6 @@ Shortcut to [node-fetch](https://github.com/node-fetch/node-fetch).
 #### `_`
 
 Shortcut to [lodash](https://github.com/lodash/lodash).
-
-```javascript
-await tag('My Tag', 1337); // Create
-await tag('My Tag', 1338); // Update
-await tag('My Tag', null); // Delete
-```
 
 #### `global.get(String key)` -> `Mixed`
 

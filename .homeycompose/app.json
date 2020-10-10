@@ -20,6 +20,8 @@
     "small": "/assets/images/small.png"
   },
   "homepage": "https://homeyscript.homey.app",
+  "support": "https://github.com/athombv/com.athom.homeyscript#disclaimer",
+  "source": "https://github.com/athombv/com.athom.homeyscript",
   "api": {
     "getScripts": {
       "method": "get",
