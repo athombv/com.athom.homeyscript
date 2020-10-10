@@ -1,72 +1,47 @@
 'use strict';
 
-const Homey = require('homey');
+module.exports = {
+  async getScripts({ homey, ...args }) {
+    const scripts = await homey.app.getScripts({ ...args });
+    return Object.keys(scripts);
+  },
 
-module.exports = [
+  async getScript({ homey, params }) {
+    const { id } = params;
+    return homey.app.getScript({ id });
+  },
 
-	{
-		method: 'GET',
-		path: '/script',
-		owner: true,
-		fn: (args, callback) => {
-    		try {
-			    callback(null, Homey.app.getScripts());
-			} catch(err) {
-    			callback(err);
-			}
-		}
-	},
+  async runScript({ homey, params, body = [] }) {
+    const { id } = params;
+    const args = body;
 
-	{
-		method: 'GET',
-		path: '/script/:id',
-		owner: true,
-		fn: (args, callback) => {
-    		try {
-			    callback( null, Homey.app.getScript(args.params.id));
-			} catch(err) {
-    			callback(err);
-			}
-		}
-	},
+    try {
+      return {
+        success: true,
+        returns: await homey.app.runScript({ id, args }),
+      };
+    } catch (err) {
+      return {
+        success: false,
+        returns: {
+          message: err.message,
+          stack: err.stack,
+        },
+      }
+    }
+  },
 
-	{
-		method: 'PUT',
-		path: '/script/:id',
-		owner: true,
-		fn: args => {
-			return Homey.app.updateScript(args.params.id, args.body);
-		}
-	},
+  async updateScript({ homey, params, body }) {
+    const { id } = params;
+    const { code } = body;
+    return homey.app.updateScript({ id, code });
+  },
 
-	{
-		method: 'DELETE',
-		path: '/script/:id',
-		owner: true,
-		fn: (args, callback) => {
-			return Homey.app.deleteScript(args.params.id);
-		}
-	},
-	
-	{
-		method: 'POST',
-		path: '/script/:id/run',
-		owner: true,
-		fn: async args => {
-			let result = {
-				success: true,
-				returns: undefined,
-			}
-			
-			try {
-				result.returns = await Homey.app.runScript(args.params.id, args.body);				
-			} catch( err ) {
-				result.success = false;
-				result.returns = err;
-			}
-			
-			return result;
-		}
-	},
-	
-]
+  async deleteScript({ homey, params }) {
+    const { id } = params;
+    return homey.app.deleteScript({ id });
+  },
+
+
+
+}
