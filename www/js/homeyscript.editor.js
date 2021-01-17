@@ -128,8 +128,9 @@ Editor.prototype.run = function () {
 	}
 
 	var scriptId = this._activeScriptId;
+	var code = this._editors[this._activeScriptId].monaco.getValue();
 
-	this._app.apiPost('script/' + scriptId + '/run', {})
+	this._app.apiPost('script/' + scriptId + '/run', { code })
 		.then(function (result) {
 
 			if (result.success) {

@@ -13,12 +13,19 @@ module.exports = {
 
   async runScript({ homey, params, body = [] }) {
     const { id } = params;
-    const args = body;
+    const {
+      code,
+      args
+    } = body;
 
     try {
       return {
         success: true,
-        returns: await homey.app.runScript({ id, args }),
+        returns: await homey.app.runScript({
+          id,
+          code,
+          args,
+        }),
       };
     } catch (err) {
       return {
@@ -41,7 +48,5 @@ module.exports = {
     const { id } = params;
     return homey.app.deleteScript({ id });
   },
-
-
 
 }

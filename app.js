@@ -195,7 +195,12 @@ module.exports = class HomeyScriptApp extends Homey.App {
     };
   }
 
-  async runScript({ id, args = [], realtime = true }) {
+  async runScript({
+    id,
+    code,
+    args = [],
+    realtime = true,
+  }) {
     let promise;
 
     // Get the Script
@@ -265,7 +270,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
     });
 
     // Create the Sandbox
-    const sandbox = new vm.Script(`__setPromise(Promise.resolve().then(async () => {\n${script.code}\n}));`, {
+    const sandbox = new vm.Script(`__setPromise(Promise.resolve().then(async () => {\n${code || script.code}\n}));`, {
       filename: `${id}.js`,
       lineOffset: -1,
       columnOffset: 0,

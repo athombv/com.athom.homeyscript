@@ -6,7 +6,7 @@
  */
 
 // Create the request
-const res = await fetch('https://status.athom.com/api/service');
+const res = await fetch('https://apps-api.athom.com/api/v1/app/com.athom.homeyscript');
 if (!res.ok) {
   throw new Error(res.statusText);
 }
@@ -14,12 +14,11 @@ if (!res.ok) {
 // Get the body JSON
 const body = await res.json();
 
-// Sort the services
-body.message.sort((a, b) => {
-  return a.order - b.order;
-});
+log(`${body.liveBuild.name.en} (${body.id}) v${body.liveVersion}`);
 
-// Log the services
-body.message.forEach(service => {
-  log(`${service.name}: ${service.status}`);
-});
+// Print rating
+const stars = Array(Math.round(body.rating))
+  .fill('⭐️')
+  .join('');
+
+console.log(`Rating: ${stars}`);
