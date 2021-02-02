@@ -1,7 +1,7 @@
 {
   "id": "com.athom.homeyscript",
   "sdk": 3,
-  "version": "3.1.0",
+  "version": "3.1.1",
   "compatibility": ">=5.0.0",
   "name": "HomeyScript",
   "brandColor": "#2B1F32",
