@@ -18,6 +18,9 @@ module.exports = class HomeyScriptApp extends Homey.App {
     // Init Scripts
     this.scripts = this.homey.settings.get('scripts');
 
+    this.localURL = await this.homey.api.getLocalUrl();
+    this.sessionToken = await this.homey.api.getOwnerApiToken();
+
     if (!this.scripts) {
       this.log('No scripts found.');
 
@@ -68,9 +71,6 @@ module.exports = class HomeyScriptApp extends Homey.App {
       this.scripts = scripts;
       this.homey.settings.set('scripts', this.scripts);
     }
-
-    // Init Homey API
-    this.api = await HomeyAPI.forCurrentHomey(this.homey);
 
     // Register Flow Cards
     this.homey.flow.getConditionCard('run')
@@ -126,6 +126,23 @@ module.exports = class HomeyScriptApp extends Homey.App {
         value: this.tokens[id].value,
       });
     })).catch(this.error);
+  }
+
+  async getHomeyAPI() {
+    const api = new HomeyAPI({
+        localUrl: this.localURL,
+        baseUrl: this.localURL,
+        token: this.sessionToken,
+        apiVersion: 2,
+        online: true
+      },
+      () => {
+        // called by HomeyAPI on 401 requests
+        api.setToken(this.sessionToken);
+      }
+    );
+
+    return api;
   }
 
   async onFlowGetScriptAutocomplete(query) {
@@ -201,10 +218,11 @@ module.exports = class HomeyScriptApp extends Homey.App {
     args = [],
     realtime = true,
   }) {
-    let promise;
 
     // Get the Script
     const script = await this.getScript({ id });
+
+    const homeyAPI = await this.getHomeyAPI();
 
     // Create a Logger
     const log = (...props) => {
@@ -228,13 +246,12 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
       // System
       __filename__: `${id}.js`,
-      __setPromise: p => promise = p,
       __script_id__: id,
       __last_executed__: script.lastExecuted,
       __ms_since_last_executed__: Date.now() - script.lastExecuted.getTime(),
 
       // Homey API
-      Homey: this.api,
+      Homey: homeyAPI,
 
       // Logging
       log: log,
@@ -245,7 +262,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
       },
 
       // Shortcuts
-      say: async (text) => await this.api.speechOutput.say({ text }),
+      say: async (text) => await homeyAPI.speechOutput.say({ text }),
       tag: async (id, value) => await this.setToken({ id, value }),
       wait: async (delay) => new Promise(resolve => setTimeout(resolve, delay)),
 
@@ -270,33 +287,35 @@ module.exports = class HomeyScriptApp extends Homey.App {
     });
 
     // Create the Sandbox
-    const sandbox = new vm.Script(`__setPromise(Promise.resolve().then(async () => {\n${code || script.code}\n}));`, {
+    const sandbox = new vm.Script(`Promise.resolve().then(async () => {\n${code || script.code}\n});`, {
       filename: `${id}.js`,
       lineOffset: -1,
       columnOffset: 0,
     });
 
-    sandbox.runInNewContext(context, {
+    const runPromise = sandbox.runInNewContext(context, {
       displayErrors: true,
       timeout: this.constructor.RUN_TIMEOUT,
+      microtaskMode: "afterEvaluate" // from Node 14 should properly timeout async script
     });
 
     script.lastExecuted = new Date();
     this.homey.settings.set('scripts', this.scripts);
 
     try {
-      const result = await promise;
+      const result = await runPromise;
       log('\n----------------\nScript Success:\n');
       log(JSON.stringify(result, false, 2));
       return result;
     } catch (err) {
       log('\n----------------\nScript Error:\n');
       log(err.stack);
-
       // Create a new Error because an Error from the sandbox behaves differently
       const error = new Error(err.message);
       error.stack = error.stack;
       throw error;
+    } finally {
+      homeyAPI && homeyAPI.destroy();
     }
   }
 
