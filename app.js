@@ -128,21 +128,21 @@ module.exports = class HomeyScriptApp extends Homey.App {
     })).catch(this.error);
   }
 
-  async refreshSessionToken() {
-    this.sessionToken = await this.homey.api.getOwnerApiToken();
-    return this.sessionToken;
-  }
-
   async getHomeyAPI() {
-    return new HomeyAPI({
-      localUrl: this.localURL,
-      baseUrl: this.localURL,
-      token: this.sessionToken,
-      apiVersion: 2,
-      online: true
-    },
-      this.refreshSessionToken.bind(this)
+    const api = new HomeyAPI({
+        localUrl: this.localURL,
+        baseUrl: this.localURL,
+        token: this.sessionToken,
+        apiVersion: 2,
+        online: true
+      },
+      () => {
+        // called by HomeyAPI on 401 requests
+        api.setToken(this.sessionToken);
+      }
     );
+
+    return api;
   }
 
   async onFlowGetScriptAutocomplete(query) {
