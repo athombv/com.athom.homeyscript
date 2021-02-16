@@ -18,6 +18,7 @@
     "name": "Athom B.V."
   },
   "images": {
+    "xlarge": "/assets/images/xlarge.png",
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
   },
