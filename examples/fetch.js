@@ -2,7 +2,8 @@
  * This script demonstrates how to get some
  * information from the internet using fetch().
  * 
- * In this example, we list the status of Athom's Cloud services.
+ * In this example, we get the HomeyScript app from the Homey App Store API,
+ * and show the app's rating using emoji.
  */
 
 // Create the request
@@ -21,4 +22,4 @@ const stars = Array(Math.round(body.rating))
   .fill('⭐️')
   .join('');
 
-console.log(`Rating: ${stars}`);
+log(`Rating: ${stars}`);

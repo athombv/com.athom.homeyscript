@@ -4,4 +4,4 @@
  */
 
 const user = await Homey.users.getUserMe();
-console.log(`Hello, ${user.name}!`);
+log(`Hello, ${user.name}!`);

@@ -3,7 +3,7 @@
  */
 
 const value = global.get('myHomeyScriptVariable');
-console.log('Value:', value);
+log('Value:', value);
 
 const keys = global.keys();
-console.log('Variables:', keys);
+log('Variables:', keys);
