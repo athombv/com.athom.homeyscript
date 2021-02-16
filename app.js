@@ -304,12 +304,12 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     try {
       const result = await runPromise;
-      log('\n----------------\nScript Success:\n');
-      log(JSON.stringify(result, false, 2));
+      log('\n———————————————————\n✅ Script Success\n');
+      log('↩️ Returned:', JSON.stringify(result, false, 2));
       return result;
     } catch (err) {
-      log('\n----------------\nScript Error:\n');
-      log(err.stack);
+      log('\n———————————————————\n❌ Script Error\n');
+      log('⚠️', err.stack);
       // Create a new Error because an Error from the sandbox behaves differently
       const error = new Error(err.message);
       error.stack = error.stack;
