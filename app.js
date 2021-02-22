@@ -4,6 +4,8 @@ const fs = require('fs').promises;
 const vm = require('vm');
 const util = require('util');
 const path = require('path');
+const http = require('http');
+const https = require('https');
 
 const Homey = require('homey');
 const { HomeyAPI } = require('athom-api');
@@ -243,6 +245,9 @@ module.exports = class HomeyScriptApp extends Homey.App {
       // 3rd party modules
       _,
       fetch,
+      http,
+      https,
+      URLSearchParams,
 
       // System
       __filename__: `${id}.js`,
