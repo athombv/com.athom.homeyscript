@@ -291,23 +291,24 @@ module.exports = class HomeyScriptApp extends Homey.App {
       },
     });
 
-    // Create the Sandbox
-    const sandbox = new vm.Script(`Promise.resolve().then(async () => {\n${code || script.code}\n});`, {
-      filename: `${id}.js`,
-      lineOffset: -1,
-      columnOffset: 0,
-    });
-
-    const runPromise = sandbox.runInNewContext(context, {
-      displayErrors: true,
-      timeout: this.constructor.RUN_TIMEOUT,
-      microtaskMode: "afterEvaluate" // from Node 14 should properly timeout async script
-    });
-
-    script.lastExecuted = new Date();
-    this.homey.settings.set('scripts', this.scripts);
-
     try {
+      // Create the Sandbox
+      const sandbox = new vm.Script(`Promise.resolve().then(async () => {\n${code || script.code}\n});`, {
+        filename: `${id}.js`,
+        lineOffset: -1,
+        columnOffset: 0
+      });
+
+      const runPromise = sandbox.runInNewContext(context, {
+        displayErrors: true,
+        timeout: this.constructor.RUN_TIMEOUT,
+        microtaskMode: 'afterEvaluate' // from Node 14 should properly timeout async script
+      });
+
+      script.lastExecuted = new Date();
+      this.homey.settings.set('scripts', this.scripts);
+
+
       const result = await runPromise;
       log('\n———————————————————\n✅ Script Success\n');
       log('↩️ Returned:', JSON.stringify(result, false, 2));
