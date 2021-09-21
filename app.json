@@ -26,6 +26,9 @@
   "homepage": "https://homeyscript.homey.app",
   "support": "https://github.com/athombv/com.athom.homeyscript#disclaimer",
   "source": "https://github.com/athombv/com.athom.homeyscript",
+  "platforms": [
+    "local"
+  ],
   "api": {
     "getScripts": {
       "method": "get",
