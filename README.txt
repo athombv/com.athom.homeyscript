@@ -1,4 +1,4 @@
-Unleash the scripting power with HomeyScript. Automate everything you every dreamed of, even when Flows are not enough for you!
+Unleash the scripting power with HomeyScript. Automate everything you ever dreamed of, even when Flows are not enough for you!
 
 HomeyScript is a JavaScript-based scripting language that interacts with the Homey Web API and various Homey Apps SDK functions.
 
