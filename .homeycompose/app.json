@@ -1,7 +1,7 @@
 {
   "id": "com.athom.homeyscript",
   "sdk": 3,
-  "version": "3.2.4",
+  "version": "3.2.5",
   "compatibility": ">=5.0.0",
   "name": {
     "en": "HomeyScript"
@@ -25,7 +25,9 @@
   "homepage": "https://homeyscript.homey.app",
   "support": "https://github.com/athombv/com.athom.homeyscript#disclaimer",
   "source": "https://github.com/athombv/com.athom.homeyscript",
-  "platforms": ["local"],
+  "platforms": [
+    "local"
+  ],
   "api": {
     "getScripts": {
       "method": "get",
