@@ -16,5 +16,8 @@
   },
   "3.2.3": {
     "en": "Provide option to override fetch agent. Better syntax error display."
+  },
+  "3.2.4": {
+    "en": "fix typo, add Flow argument title's"
   }
 }
