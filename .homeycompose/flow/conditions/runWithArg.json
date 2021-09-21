@@ -10,11 +10,19 @@
   "args": [
     {
       "name": "script",
-      "type": "autocomplete"
+      "type": "autocomplete",
+      "title": {
+        "en": "Script",
+        "nl": "Script"
+      }
     },
     {
       "name": "argument",
       "type": "text",
+      "title": {
+        "en": "Argument",
+        "nl": "Argument"
+      },
       "placeholder": {
         "en": "Argument",
         "nl": "Argument"
