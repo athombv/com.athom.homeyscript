@@ -12,4 +12,4 @@ Among many things, you can:
 — Let Homey say dynamic text.
 — And much, much more...
 
-After installation, visit https://homeyscript.homey.app on your Mac or PC to start scripting.
+After installation, visit https://my.homey.app/script on your Mac or PC to start scripting.
