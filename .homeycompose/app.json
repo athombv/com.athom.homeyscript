@@ -41,6 +41,10 @@
       "method": "post",
       "path": "/script/:id/run"
     },
+    "createScript": {
+      "method": "post",
+      "path": "/script"
+    },
     "updateScript": {
       "method": "put",
       "path": "/script/:id"

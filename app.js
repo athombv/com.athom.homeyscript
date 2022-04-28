@@ -12,6 +12,8 @@ const { HomeyAPI } = require('athom-api');
 const fetch = require('node-fetch');
 const _ = require('lodash');
 
+const { uuid } = require('./lib/uuid')
+
 module.exports = class HomeyScriptApp extends Homey.App {
 
   static RUN_TIMEOUT = 1000 * 30; // 30s
@@ -19,6 +21,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
   async onInit() {
     // Init Scripts
     this.scripts = this.homey.settings.get('scripts');
+    this.migrations = this.homey.settings.get('migrations') || [];
 
     this.localURL = await this.homey.api.getLocalUrl();
     this.sessionToken = await this.homey.api.getOwnerApiToken();
@@ -73,6 +76,28 @@ module.exports = class HomeyScriptApp extends Homey.App {
       this.scripts = scripts;
       this.homey.settings.set('scripts', this.scripts);
     }
+
+    if (this.scripts && this.migrations[0] == null) {
+      this.log(`Running migration 0`);
+
+      const nextScripts = {};
+      const scriptEntries = Object.entries(this.scripts);
+
+      for (const [scriptId, script] of scriptEntries) {
+        nextScripts[scriptId] = {
+          ...script,
+          id: scriptId,
+          name: scriptId
+        }
+      }
+
+      this.scripts = nextScripts
+      this.homey.settings.set('scripts', this.scripts);
+
+      this.migrations[0] = { done: true };
+      this.homey.settings.set('migrations', this.migrations);
+    }
+
 
     // Register Flow Cards
     this.homey.flow.getConditionCard('run')
@@ -329,12 +354,35 @@ module.exports = class HomeyScriptApp extends Homey.App {
     this.scripts[id] = this.scripts[id] || {};
     this.scripts[id].code = code;
     this.homey.settings.set('scripts', this.scripts);
-
   }
 
   async deleteScript({ id }) {
     delete this.scripts[id];
     this.homey.settings.set('scripts', this.scripts);
+  }
+
+  async createScriptV2({ script }) {
+    const newScript = {
+      id: uuid(),
+      name: script.name,
+      code: script.code,
+      lastExecuted: null
+    }
+    this.scripts[newScript.id] = newScript
+    this.homey.settings.set('scripts', this.scripts);
+    return newScript;
+  }
+
+  async updateScriptV2({ id, script }) {
+
+    this.scripts[id] = {
+      ...this.scripts[id],
+      ...script,
+      id: id
+    }
+
+    this.homey.settings.set('scripts', this.scripts);
+    return this.scripts[id];
   }
 
 }

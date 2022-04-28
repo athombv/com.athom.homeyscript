@@ -1,8 +1,22 @@
 'use strict';
 
 module.exports = {
-  async getScripts({ homey, ...args }) {
-    const scripts = await homey.app.getScripts({ ...args });
+  async getScripts({ homey, query }) {
+    const scripts = await homey.app.getScripts();
+
+    if (query.version === '2') {
+      const response = {};
+
+      for (const script of Object.values(scripts)) {
+        response[script.id] = {
+          ...script,
+          code: undefined
+        }
+      }
+
+      return response;
+    }
+
     return Object.keys(scripts);
   },
 
@@ -11,7 +25,7 @@ module.exports = {
     return homey.app.getScript({ id });
   },
 
-  async runScript({ homey, params, body = [] }) {
+  async runScript({ homey, params, body = {} }) {
     const { id } = params;
     const {
       code,
@@ -38,8 +52,17 @@ module.exports = {
     }
   },
 
-  async updateScript({ homey, params, body }) {
+  async createScript({ homey, params, body }) {
+    return homey.app.createScriptV2({ script: body });
+  },
+
+  async updateScript({ homey, params, query, body }) {
     const { id } = params;
+
+    if (query.version === '2') {
+      return homey.app.updateScriptV2({ id, script: body });
+    }
+
     const { code } = body;
     return homey.app.updateScript({ id, code });
   },
