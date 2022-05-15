@@ -368,13 +368,14 @@ module.exports = class HomeyScriptApp extends Homey.App {
       code: script.code,
       lastExecuted: null
     }
+
     this.scripts[newScript.id] = newScript
     this.homey.settings.set('scripts', this.scripts);
+
     return newScript;
   }
 
   async updateScriptV2({ id, script }) {
-
     this.scripts[id] = {
       ...this.scripts[id],
       ...script,
@@ -382,6 +383,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
     }
 
     this.homey.settings.set('scripts', this.scripts);
+
     return this.scripts[id];
   }
 
