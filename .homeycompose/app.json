@@ -22,7 +22,7 @@
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
   },
-  "homepage": "https://homeyscript.homey.app",
+  "homepage": "https://my.homey.app/scripts",
   "support": "https://github.com/athombv/com.athom.homeyscript#disclaimer",
   "source": "https://github.com/athombv/com.athom.homeyscript",
   "platforms": [

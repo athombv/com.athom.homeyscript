@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/athombv/com.athom.homeyscript#readme",
   "dependencies": {
-    "athom-api": "^3.2.18",
-    "lodash": "^4.17.20",
-    "node-fetch": "^2.6.1"
+    "athom-api": "^3.7.3",
+    "lodash": "^4.17.21",
+    "node-fetch": "^2.6.7"
   }
 }
