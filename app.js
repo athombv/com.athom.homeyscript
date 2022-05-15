@@ -253,12 +253,12 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     // Create a Logger
     const log = (...props) => {
-      this.log(`[${id}]`, ...props);
+      this.log(`[${script.name}]`, ...props);
 
       if (realtime) {
         this.homey.api.realtime('log', {
           text: util.format(...props),
-          script: id,
+          script: script.id,
         });
       }
     };
@@ -275,8 +275,8 @@ module.exports = class HomeyScriptApp extends Homey.App {
       URLSearchParams,
 
       // System
-      __filename__: `${id}.js`,
-      __script_id__: id,
+      __filename__: `${script.name}.js`,
+      __script_id__: script.id,
       __last_executed__: script.lastExecuted,
       __ms_since_last_executed__: Date.now() - script.lastExecuted.getTime(),
 
@@ -319,7 +319,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
     try {
       // Create the Sandbox
       const sandbox = new vm.Script(`Promise.resolve().then(async () => {\n${code || script.code}\n});`, {
-        filename: `${id}.js`,
+        filename: `${script.name}.js`,
         lineOffset: -1,
         columnOffset: 0
       });
