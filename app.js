@@ -351,11 +351,11 @@ module.exports = class HomeyScriptApp extends Homey.App {
     }
   }
 
-  async createScript({ script }) {
+  async createScript({ name, code }) {
     const newScript = {
       id: uuid(),
-      name: script.name,
-      code: script.code,
+      name: name,
+      code: code,
       lastExecuted: null
     }
 
@@ -365,11 +365,17 @@ module.exports = class HomeyScriptApp extends Homey.App {
     return newScript;
   }
 
-  async updateScript({ id, script }) {
+  async updateScript({ id, name, code }) {
     this.scripts[id] = {
       ...this.scripts[id],
-      ...script,
-      id: id
+    };
+
+    if (name != null) {
+      this.scripts[id].name = name;
+    }
+
+    if (code != null) {
+      this.scripts[id].code = code;
     }
 
     this.homey.settings.set('scripts', this.scripts);

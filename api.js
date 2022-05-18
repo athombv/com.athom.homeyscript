@@ -22,10 +22,7 @@ module.exports = {
 
   async runScript({ homey, params, body = {} }) {
     const { id } = params;
-    const {
-      code,
-      args
-    } = body;
+    const { code, args } = body;
 
     try {
       const script = await homey.app.getScript({ id });
@@ -49,13 +46,17 @@ module.exports = {
     }
   },
 
-  async createScript({ homey, params, body }) {
-    return homey.app.createScript({ script: body });
+  async createScript({ homey, params, body = {} }) {
+    const { name, code } = body;
+
+    return homey.app.createScript({ name, code });
   },
 
-  async updateScript({ homey, params, query, body }) {
+  async updateScript({ homey, params, query, body = {} }) {
     const { id } = params;
-    return homey.app.updateScript({ id, script: body });
+    const { name, code } = body;
+
+    return homey.app.updateScript({ id, name, code });
   },
 
   async deleteScript({ homey, params }) {
