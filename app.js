@@ -102,9 +102,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
     // Register Flow Cards
     this.homey.flow.getConditionCard('run')
       .registerRunListener(async ({ script }) => {
-        const { id } = script;
+        const scriptSource = await this.getScript({ id: script.id });
+
         return this.runScript({
-          id,
+          script: scriptSource,
           realtime: false,
         });
       })
@@ -112,9 +113,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     this.homey.flow.getConditionCard('runWithArg')
       .registerRunListener(async ({ script, argument }) => {
-        const { id } = script;
+        const scriptSource = await this.getScript({ id: script.id });
+
         return this.runScript({
-          id,
+          script: scriptSource,
           args: [argument],
           realtime: false,
         });
@@ -123,9 +125,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     this.homey.flow.getActionCard('run')
       .registerRunListener(async ({ script }) => {
-        const { id } = script;
+        const scriptSource = await this.getScript({ id: script.id });
+
         return this.runScript({
-          id,
+          script: scriptSource,
           realtime: false,
         });
       })
@@ -133,9 +136,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     this.homey.flow.getActionCard('runWithArg')
       .registerRunListener(async ({ script, argument }) => {
-        const { id } = script;
+        const scriptSource = await this.getScript({ id: script.id });
+
         return this.runScript({
-          id,
+          script: scriptSource,
           args: [argument],
           realtime: false,
         });
@@ -229,6 +233,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
   async getScript({ id }) {
     const script = this.scripts[id];
+
     if (!script) {
       throw new Error('Script Not Found');
     }
