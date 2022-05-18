@@ -27,13 +27,19 @@ module.exports = {
     try {
       const script = await homey.app.getScript({ id });
 
+      const result = await homey.app.runScript({
+        id: script.id,
+        name: script.name,
+        code: code || script.code,
+        lastExecuted: script.lastExecuted,
+        args,
+      }).finally(() => {
+        homey.app.updateScript({ id: script.id, lastExecuted: new Date() }).catch(() => {})
+      })
+
       return {
         success: true,
-        returns: await homey.app.runScript({
-          script,
-          code,
-          args,
-        }),
+        returns: result,
       };
     } catch (err) {
       return {

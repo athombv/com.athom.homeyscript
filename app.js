@@ -105,8 +105,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
         const scriptSource = await this.getScript({ id: script.id });
 
         return this.runScript({
-          script: scriptSource,
+          id: scriptSource.id,
+          name: scriptSource.name,
+          code: scriptSource.code,
+          lastExecuted: scriptSource.lastExecuted,
           realtime: false,
+        }).finally(() => {
+          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
@@ -116,9 +121,14 @@ module.exports = class HomeyScriptApp extends Homey.App {
         const scriptSource = await this.getScript({ id: script.id });
 
         return this.runScript({
-          script: scriptSource,
+          id: scriptSource.id,
+          name: scriptSource.name,
+          code: scriptSource.code,
+          lastExecuted: scriptSource.lastExecuted,
           args: [argument],
           realtime: false,
+        }).finally(() => {
+          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
@@ -128,8 +138,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
         const scriptSource = await this.getScript({ id: script.id });
 
         return this.runScript({
-          script: scriptSource,
+          id: scriptSource.id,
+          name: scriptSource.name,
+          code: scriptSource.code,
+          lastExecuted: scriptSource.lastExecuted,
           realtime: false,
+        }).finally(() => {
+          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
@@ -139,9 +154,14 @@ module.exports = class HomeyScriptApp extends Homey.App {
         const scriptSource = await this.getScript({ id: script.id });
 
         return this.runScript({
-          script: scriptSource,
+          id: scriptSource.id,
+          name: scriptSource.name,
+          code: scriptSource.code,
+          lastExecuted: scriptSource.lastExecuted,
           args: [argument],
           realtime: false,
+        }).finally(() => {
+          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
@@ -245,8 +265,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
   }
 
   async runScript({
-    script,
+    id,
+    name,
     code,
+    lastExecuted = new Date(),
     args = [],
     realtime = true,
   }) {
@@ -254,12 +276,12 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     // Create a Logger
     const log = (...props) => {
-      this.log(`[${script.name}]`, ...props);
+      this.log(`[${name}]`, ...props);
 
       if (realtime) {
         this.homey.api.realtime('log', {
           text: util.format(...props),
-          script: script.id,
+          script: id,
         });
       }
     };
@@ -276,10 +298,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
       URLSearchParams,
 
       // System
-      __filename__: `${script.name}.js`,
-      __script_id__: script.id,
-      __last_executed__: script.lastExecuted,
-      __ms_since_last_executed__: Date.now() - script.lastExecuted.getTime(),
+      __filename__: `${name}.js`,
+      __script_id__: id,
+      __last_executed__: lastExecuted,
+      __ms_since_last_executed__: Date.now() - lastExecuted.getTime(),
 
       // Homey API
       Homey: homeyAPI,
@@ -319,8 +341,8 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     try {
       // Create the Sandbox
-      const sandbox = new vm.Script(`Promise.resolve().then(async () => {\n${code || script.code}\n});`, {
-        filename: `${script.name}.js`,
+      const sandbox = new vm.Script(`Promise.resolve().then(async () => {\n${code}\n});`, {
+        filename: `${name}.js`,
         lineOffset: -1,
         columnOffset: 0
       });
@@ -330,10 +352,6 @@ module.exports = class HomeyScriptApp extends Homey.App {
         timeout: this.constructor.RUN_TIMEOUT,
         microtaskMode: 'afterEvaluate' // from Node 14 should properly timeout async script
       });
-
-      script.lastExecuted = new Date();
-      this.homey.settings.set('scripts', this.scripts);
-
 
       const result = await runPromise;
       log('\n———————————————————\n✅ Script Success\n');
@@ -365,7 +383,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
     return newScript;
   }
 
-  async updateScript({ id, name, code }) {
+  async updateScript({ id, name, code, lastExecuted }) {
     this.scripts[id] = {
       ...this.scripts[id],
     };
@@ -376,6 +394,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     if (code != null) {
       this.scripts[id].code = code;
+    }
+
+    if (lastExecuted != null) {
+      this.scripts[id].lastExecuted = lastExecuted;
     }
 
     this.homey.settings.set('scripts', this.scripts);
