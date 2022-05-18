@@ -268,10 +268,12 @@ module.exports = class HomeyScriptApp extends Homey.App {
     id,
     name,
     code,
-    lastExecuted = new Date(),
+    lastExecuted,
     args = [],
     realtime = true,
   }) {
+    if (lastExecuted == null) lastExecuted = new Date();
+
     const homeyAPI = await this.getHomeyAPI();
 
     // Create a Logger
