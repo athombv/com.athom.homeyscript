@@ -350,18 +350,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
     }
   }
 
-  async updateScript({ id, code }) {
-    this.scripts[id] = this.scripts[id] || {};
-    this.scripts[id].code = code;
-    this.homey.settings.set('scripts', this.scripts);
-  }
-
-  async deleteScript({ id }) {
-    delete this.scripts[id];
-    this.homey.settings.set('scripts', this.scripts);
-  }
-
-  async createScriptV2({ script }) {
+  async createScript({ script }) {
     const newScript = {
       id: uuid(),
       name: script.name,
@@ -375,7 +364,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
     return newScript;
   }
 
-  async updateScriptV2({ id, script }) {
+  async updateScript({ id, script }) {
     this.scripts[id] = {
       ...this.scripts[id],
       ...script,
@@ -385,6 +374,11 @@ module.exports = class HomeyScriptApp extends Homey.App {
     this.homey.settings.set('scripts', this.scripts);
 
     return this.scripts[id];
+  }
+
+  async deleteScript({ id }) {
+    delete this.scripts[id];
+    this.homey.settings.set('scripts', this.scripts);
   }
 
 }
