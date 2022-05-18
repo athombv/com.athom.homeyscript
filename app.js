@@ -240,15 +240,11 @@ module.exports = class HomeyScriptApp extends Homey.App {
   }
 
   async runScript({
-    id,
+    script,
     code,
     args = [],
     realtime = true,
   }) {
-
-    // Get the Script
-    const script = await this.getScript({ id });
-
     const homeyAPI = await this.getHomeyAPI();
 
     // Create a Logger

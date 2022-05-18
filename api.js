@@ -3,8 +3,6 @@
 module.exports = {
   async getScripts({ homey, query }) {
     const scripts = await homey.app.getScripts();
-
-
     const response = {};
 
     for (const script of Object.values(scripts)) {
