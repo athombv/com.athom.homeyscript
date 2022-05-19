@@ -20,7 +20,6 @@ module.exports = class HomeyScriptApp extends Homey.App {
   async onInit() {
     // Init Scripts
     this.scripts = this.homey.settings.get('scripts');
-    this.migrations = this.homey.settings.get('migrations') || [];
 
     this.localURL = await this.homey.api.getLocalUrl();
     this.sessionToken = await this.homey.api.getOwnerApiToken();
@@ -76,25 +75,22 @@ module.exports = class HomeyScriptApp extends Homey.App {
       this.homey.settings.set('scripts', this.scripts);
     }
 
-    if (this.scripts && this.migrations[0] == null) {
-      this.log(`Running migration 0`);
-
+    if (this.scripts) {
       const nextScripts = {};
       const scriptEntries = Object.entries(this.scripts);
 
       for (const [scriptId, script] of scriptEntries) {
+        const name = script.name || scriptId;
+
         nextScripts[scriptId] = {
           ...script,
           id: scriptId,
-          name: scriptId
+          name
         }
       }
 
       this.scripts = nextScripts
       this.homey.settings.set('scripts', this.scripts);
-
-      this.migrations[0] = { done: true };
-      this.homey.settings.set('migrations', this.migrations);
     }
 
 
