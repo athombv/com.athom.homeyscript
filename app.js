@@ -84,6 +84,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
         if (typeof script.name !== 'string') {
           anyScriptChanged = true;
           script.name = scriptId;
+          scripd.id = scriptId;
         }
       }
 
