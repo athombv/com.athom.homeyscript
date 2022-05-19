@@ -75,22 +75,21 @@ module.exports = class HomeyScriptApp extends Homey.App {
       this.homey.settings.set('scripts', this.scripts);
     }
 
+    // Migration: Add missing `name` property
     if (this.scripts) {
-      const nextScripts = {};
       const scriptEntries = Object.entries(this.scripts);
+      let anyScriptChanged = false;
 
       for (const [scriptId, script] of scriptEntries) {
-        const name = script.name || scriptId;
-
-        nextScripts[scriptId] = {
-          ...script,
-          id: scriptId,
-          name
+        if (typeof script.name !== 'string') {
+          anyScriptChanged = true;
+          script.name = scriptId;
         }
       }
 
-      this.scripts = nextScripts
-      this.homey.settings.set('scripts', this.scripts);
+      if (anyScriptChanged) {
+        this.homey.settings.set('scripts', this.scripts);
+      }
     }
 
 
