@@ -113,18 +113,6 @@ Gets all keys of global values.
 
 The `args` array contains arguments as provided by a Flow or the Web API.
 
-### Web API
-
-From any other location where you can use the Web API, you can call:
-
-```javascript
-const scriptId = 'myScript';
-const args = [ 'foo' ];
-
-const HomeyScript = await HomeyAPI.apps.getApp({ id: 'com.athom.homeyscript' });
-await HomeyScript.apiPost(`script/${scriptId}/run`, args);
-```
-
 ### Disclaimer
 
 This app has been created during one of Athom's Hacky Fridays.
