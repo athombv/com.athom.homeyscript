@@ -6,13 +6,12 @@ const util = require('util');
 const path = require('path');
 const http = require('http');
 const https = require('https');
+const uuid = require('uuid');
 
 const Homey = require('homey');
 const { HomeyAPI } = require('athom-api');
 const fetch = require('node-fetch');
 const _ = require('lodash');
-
-const { uuid } = require('./lib/uuid')
 
 module.exports = class HomeyScriptApp extends Homey.App {
 
@@ -373,7 +372,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
   async createScript({ name, code }) {
     const newScript = {
-      id: uuid(),
+      id: uuid.v4(),
       name: name,
       code: code,
       lastExecuted: null

@@ -25,6 +25,7 @@
   "dependencies": {
     "athom-api": "^3.7.3",
     "lodash": "^4.17.21",
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "uuid": "^8.3.2"
   }
 }
