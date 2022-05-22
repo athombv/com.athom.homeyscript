@@ -161,6 +161,54 @@ module.exports = class HomeyScriptApp extends Homey.App {
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
 
+    this.homey.flow.getActionCard('runCodeWithArgReturnsString')
+      .registerRunListener(async ({ code, argument }, state) => {
+        const result = await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code: code,
+          // lastExecuted: scriptSource.lastExecuted,
+          args: [argument],
+          realtime: state.realtime != null ? state.realtime : false,
+        });
+
+        return {
+          string: result
+        };
+      });
+
+    this.homey.flow.getActionCard('runCodeWithArgReturnsNumber')
+      .registerRunListener(async ({ code, argument }, state) => {
+        const result = await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code: code,
+          // lastExecuted: scriptSource.lastExecuted,
+          args: [argument],
+          realtime: state.realtime != null ? state.realtime : false,
+        });
+
+        return {
+          number: result
+        };
+      });
+
+    this.homey.flow.getActionCard('runCodeWithArgReturnsBoolean')
+      .registerRunListener(async ({ code, argument }, state) => {
+        const result = await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code: code,
+          // lastExecuted: scriptSource.lastExecuted,
+          args: [argument],
+          realtime: state.realtime != null ? state.realtime : false,
+        });
+
+        return {
+          boolean: result
+        };
+      });
+
     // Register Flow Tokens
     this.tokens = this.homey.settings.get('tokens') || {};
     this.tokensInstances = {};
