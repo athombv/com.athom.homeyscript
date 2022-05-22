@@ -167,7 +167,6 @@ module.exports = class HomeyScriptApp extends Homey.App {
           id: '__temporary__',
           name: 'Test',
           code: code,
-          // lastExecuted: scriptSource.lastExecuted,
           args: [argument],
           realtime: state.realtime != null ? state.realtime : false,
         });
@@ -183,7 +182,6 @@ module.exports = class HomeyScriptApp extends Homey.App {
           id: '__temporary__',
           name: 'Test',
           code: code,
-          // lastExecuted: scriptSource.lastExecuted,
           args: [argument],
           realtime: state.realtime != null ? state.realtime : false,
         });
@@ -199,7 +197,6 @@ module.exports = class HomeyScriptApp extends Homey.App {
           id: '__temporary__',
           name: 'Test',
           code: code,
-          // lastExecuted: scriptSource.lastExecuted,
           args: [argument],
           realtime: state.realtime != null ? state.realtime : false,
         });
