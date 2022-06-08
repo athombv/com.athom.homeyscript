@@ -6,6 +6,7 @@ const util = require('util');
 const path = require('path');
 const http = require('http');
 const https = require('https');
+const uuid = require('uuid');
 
 const Homey = require('homey');
 const { HomeyAPI } = require('athom-api');
@@ -74,45 +75,88 @@ module.exports = class HomeyScriptApp extends Homey.App {
       this.homey.settings.set('scripts', this.scripts);
     }
 
+    // Migration: Add missing `name` property
+    if (this.scripts) {
+      const scriptEntries = Object.entries(this.scripts);
+      let anyScriptChanged = false;
+
+      for (const [scriptId, script] of scriptEntries) {
+        if (typeof script.name !== 'string') {
+          anyScriptChanged = true;
+          script.name = scriptId;
+          script.id = scriptId;
+        }
+      }
+
+      if (anyScriptChanged) {
+        this.homey.settings.set('scripts', this.scripts);
+      }
+    }
+
+
     // Register Flow Cards
     this.homey.flow.getConditionCard('run')
       .registerRunListener(async ({ script }) => {
-        const { id } = script;
+        const scriptSource = await this.getScript({ id: script.id });
+
         return this.runScript({
-          id,
+          id: scriptSource.id,
+          name: scriptSource.name,
+          code: scriptSource.code,
+          lastExecuted: scriptSource.lastExecuted,
           realtime: false,
+        }).finally(() => {
+          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
 
     this.homey.flow.getConditionCard('runWithArg')
       .registerRunListener(async ({ script, argument }) => {
-        const { id } = script;
+        const scriptSource = await this.getScript({ id: script.id });
+
         return this.runScript({
-          id,
+          id: scriptSource.id,
+          name: scriptSource.name,
+          code: scriptSource.code,
+          lastExecuted: scriptSource.lastExecuted,
           args: [argument],
           realtime: false,
+        }).finally(() => {
+          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
 
     this.homey.flow.getActionCard('run')
       .registerRunListener(async ({ script }) => {
-        const { id } = script;
+        const scriptSource = await this.getScript({ id: script.id });
+
         return this.runScript({
-          id,
+          id: scriptSource.id,
+          name: scriptSource.name,
+          code: scriptSource.code,
+          lastExecuted: scriptSource.lastExecuted,
           realtime: false,
+        }).finally(() => {
+          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
 
     this.homey.flow.getActionCard('runWithArg')
       .registerRunListener(async ({ script, argument }) => {
-        const { id } = script;
+        const scriptSource = await this.getScript({ id: script.id });
+
         return this.runScript({
-          id,
+          id: scriptSource.id,
+          name: scriptSource.name,
+          code: scriptSource.code,
+          lastExecuted: scriptSource.lastExecuted,
           args: [argument],
           realtime: false,
+        }).finally(() => {
+          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
@@ -204,6 +248,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
   async getScript({ id }) {
     const script = this.scripts[id];
+
     if (!script) {
       throw new Error('Script Not Found');
     }
@@ -216,19 +261,19 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
   async runScript({
     id,
+    name,
     code,
+    lastExecuted,
     args = [],
     realtime = true,
   }) {
-
-    // Get the Script
-    const script = await this.getScript({ id });
+    if (lastExecuted == null) lastExecuted = new Date();
 
     const homeyAPI = await this.getHomeyAPI();
 
     // Create a Logger
     const log = (...props) => {
-      this.log(`[${id}]`, ...props);
+      this.log(`[${name}]`, ...props);
 
       if (realtime) {
         this.homey.api.realtime('log', {
@@ -250,10 +295,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
       URLSearchParams,
 
       // System
-      __filename__: `${id}.js`,
+      __filename__: `${name}.js`,
       __script_id__: id,
-      __last_executed__: script.lastExecuted,
-      __ms_since_last_executed__: Date.now() - script.lastExecuted.getTime(),
+      __last_executed__: lastExecuted,
+      __ms_since_last_executed__: Date.now() - lastExecuted.getTime(),
 
       // Homey API
       Homey: homeyAPI,
@@ -293,8 +338,8 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     try {
       // Create the Sandbox
-      const sandbox = new vm.Script(`Promise.resolve().then(async () => {\n${code || script.code}\n});`, {
-        filename: `${id}.js`,
+      const sandbox = new vm.Script(`Promise.resolve().then(async () => {\n${code}\n});`, {
+        filename: `${name}.js`,
         lineOffset: -1,
         columnOffset: 0
       });
@@ -304,10 +349,6 @@ module.exports = class HomeyScriptApp extends Homey.App {
         timeout: this.constructor.RUN_TIMEOUT,
         microtaskMode: 'afterEvaluate' // from Node 14 should properly timeout async script
       });
-
-      script.lastExecuted = new Date();
-      this.homey.settings.set('scripts', this.scripts);
-
 
       const result = await runPromise;
       log('\n———————————————————\n✅ Script Success\n');
@@ -325,11 +366,40 @@ module.exports = class HomeyScriptApp extends Homey.App {
     }
   }
 
-  async updateScript({ id, code }) {
-    this.scripts[id] = this.scripts[id] || {};
-    this.scripts[id].code = code;
+  async createScript({ name, code }) {
+    const newScript = {
+      id: uuid.v4(),
+      name: name,
+      code: code,
+      lastExecuted: null
+    }
+
+    this.scripts[newScript.id] = newScript
     this.homey.settings.set('scripts', this.scripts);
 
+    return newScript;
+  }
+
+  async updateScript({ id, name, code, lastExecuted }) {
+    this.scripts[id] = {
+      ...this.scripts[id],
+    };
+
+    if (name != null) {
+      this.scripts[id].name = name;
+    }
+
+    if (code != null) {
+      this.scripts[id].code = code;
+    }
+
+    if (lastExecuted != null) {
+      this.scripts[id].lastExecuted = lastExecuted;
+    }
+
+    this.homey.settings.set('scripts', this.scripts);
+
+    return this.scripts[id];
   }
 
   async deleteScript({ id }) {

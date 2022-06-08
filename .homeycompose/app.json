@@ -1,7 +1,7 @@
 {
   "id": "com.athom.homeyscript",
   "sdk": 3,
-  "version": "3.2.6",
+  "version": "3.3.0",
   "compatibility": ">=5.0.0",
   "name": {
     "en": "HomeyScript"
@@ -22,7 +22,7 @@
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
   },
-  "homepage": "https://homeyscript.homey.app",
+  "homepage": "https://my.homey.app/scripts",
   "support": "https://github.com/athombv/com.athom.homeyscript#disclaimer",
   "source": "https://github.com/athombv/com.athom.homeyscript",
   "platforms": [
@@ -40,6 +40,10 @@
     "runScript": {
       "method": "post",
       "path": "/script/:id/run"
+    },
+    "createScript": {
+      "method": "post",
+      "path": "/script"
     },
     "updateScript": {
       "method": "put",
