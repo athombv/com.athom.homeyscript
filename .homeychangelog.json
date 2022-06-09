@@ -28,5 +28,8 @@
   },
   "3.3.0": {
     "en": "Added option to rename scripts"
+  },
+  "3.3.1": {
+    "en": "use name instead of id in Flow argument"
   }
 }
