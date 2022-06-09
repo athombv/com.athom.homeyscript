@@ -31,5 +31,8 @@
   },
   "3.3.1": {
     "en": "use name instead of id in Flow argument"
+  },
+  "3.3.2": {
+    "en": "Add back Buffer to global scope"
   }
 }
