@@ -193,11 +193,11 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
   async onFlowGetScriptAutocomplete(query) {
     const scripts = await this.getScripts();
-    return Object.keys(scripts)
-      .filter(id => id.toLowerCase().includes(query.toLowerCase()))
-      .map(id => ({
-        id,
-        name: id,
+    return Object.values(scripts)
+      .filter(script => script.name.toLowerCase().includes(query.toLowerCase()))
+      .map(script => ({
+        id: script.id,
+        name: script.name,
       }));
   }
 
