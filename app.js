@@ -293,6 +293,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
       http,
       https,
       URLSearchParams,
+      Buffer,
 
       // System
       __filename__: `${name}.js`,
