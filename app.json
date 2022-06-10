@@ -140,6 +140,159 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            }
+          }
+        ],
+        "id": "runCode"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "tokens": [
+          {
+            "name": "boolean",
+            "type": "boolean",
+            "title": {
+              "en": "Result Tag",
+              "nl": "Resultaat Tag"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            }
+          }
+        ],
+        "id": "runCodeReturnsBoolean"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "tokens": [
+          {
+            "name": "number",
+            "type": "number",
+            "title": {
+              "en": "Result Tag",
+              "nl": "Resultaat Tag"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            }
+          }
+        ],
+        "id": "runCodeReturnsNumber"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "tokens": [
+          {
+            "name": "string",
+            "type": "string",
+            "title": {
+              "en": "Result Tag",
+              "nl": "Resultaat Tag"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            }
+          }
+        ],
+        "id": "runCodeReturnsString"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]]",
+          "nl": "Voer [[code]] uit met [[argument]]"
+        },
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            }
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            }
+          }
+        ],
+        "id": "runCodeWithArg"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
           "en": "Run [[code]] with [[argument]]",
           "nl": "Voer [[code]] uit met [[argument]]"
         },

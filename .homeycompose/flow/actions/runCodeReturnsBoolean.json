@@ -1,0 +1,31 @@
+{
+  "title": {
+    "en": "Run code",
+    "nl": "Voer code uit"
+  },
+  "titleFormatted": {
+    "en": "Run [[code]]",
+    "nl": "Voer [[code]] uit"
+  },
+  "tokens": [
+    {
+      "name": "boolean",
+      "type": "boolean",
+      "title": {
+        "en": "Result Tag",
+        "nl": "Resultaat Tag"
+      }
+    }
+  ],
+  "args": [
+    {
+      "name": "code",
+      "type": "code",
+      "language": "homeyscript",
+      "title": {
+        "en": "Code",
+        "nl": "Code"
+      }
+    }
+  ]
+}

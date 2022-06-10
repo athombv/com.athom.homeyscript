@@ -106,7 +106,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
           lastExecuted: scriptSource.lastExecuted,
           realtime: false,
         }).finally(() => {
-          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
+          this.updateScript({
+            id: scriptSource.id,
+            lastExecuted: new Date()
+          }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
@@ -123,7 +126,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
           args: [argument],
           realtime: false,
         }).finally(() => {
-          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
+          this.updateScript({
+            id: scriptSource.id,
+            lastExecuted: new Date()
+          }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
@@ -139,7 +145,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
           lastExecuted: scriptSource.lastExecuted,
           realtime: false,
         }).finally(() => {
-          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
+          this.updateScript({
+            id: scriptSource.id,
+            lastExecuted: new Date()
+          }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
@@ -156,10 +165,80 @@ module.exports = class HomeyScriptApp extends Homey.App {
           args: [argument],
           realtime: false,
         }).finally(() => {
-          this.updateScript({ id: scriptSource.id, lastExecuted: new Date() }).catch(this.error);
+          this.updateScript({
+            id: scriptSource.id,
+            lastExecuted: new Date()
+          }).catch(this.error);
         });
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
+
+    this.homey.flow.getActionCard('runCode')
+      .registerRunListener(async ({ code }, state) => {
+        await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code: code,
+          args: [],
+          realtime: state.realtime != null ? state.realtime : false,
+        });
+      });
+
+    this.homey.flow.getActionCard('runCodeReturnsString')
+      .registerRunListener(async ({ code }, state) => {
+        const result = await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code: code,
+          args: [],
+          realtime: state.realtime != null ? state.realtime : false,
+        });
+
+        return {
+          string: result
+        };
+      });
+
+    this.homey.flow.getActionCard('runCodeReturnsNumber')
+      .registerRunListener(async ({ code }, state) => {
+        const result = await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code: code,
+          args: [],
+          realtime: state.realtime != null ? state.realtime : false,
+        });
+
+        return {
+          number: result
+        };
+      });
+
+    this.homey.flow.getActionCard('runCodeReturnsBoolean')
+      .registerRunListener(async ({ code }, state) => {
+        const result = await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code: code,
+          args: [],
+          realtime: state.realtime != null ? state.realtime : false,
+        });
+
+        return {
+          boolean: result
+        };
+      });
+
+    this.homey.flow.getActionCard('runCodeWithArg')
+      .registerRunListener(async ({ code, argument }, state) => {
+        await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code: code,
+          args: [argument],
+          realtime: state.realtime != null ? state.realtime : false,
+        });
+      });
 
     this.homey.flow.getActionCard('runCodeWithArgReturnsString')
       .registerRunListener(async ({ code, argument }, state) => {
@@ -405,7 +484,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
       log('⚠️', err.stack);
       // Create a new Error because an Error from the sandbox behaves differently
       const error = new Error(err.message);
-      error.stack = error.stack;
+      error.stack = err.stack;
       throw error;
     } finally {
       homeyAPI && homeyAPI.destroy();
@@ -418,9 +497,9 @@ module.exports = class HomeyScriptApp extends Homey.App {
       name: name,
       code: code,
       lastExecuted: null
-    }
+    };
 
-    this.scripts[newScript.id] = newScript
+    this.scripts[newScript.id] = newScript;
     this.homey.settings.set('scripts', this.scripts);
 
     return newScript;
@@ -453,4 +532,4 @@ module.exports = class HomeyScriptApp extends Homey.App {
     this.homey.settings.set('scripts', this.scripts);
   }
 
-}
+};

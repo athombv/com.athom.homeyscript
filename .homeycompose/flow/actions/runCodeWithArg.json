@@ -1,0 +1,34 @@
+{
+  "title": {
+    "en": "Run code",
+    "nl": "Voer code uit"
+  },
+  "titleFormatted": {
+    "en": "Run [[code]] with [[argument]]",
+    "nl": "Voer [[code]] uit met [[argument]]"
+  },
+  "args": [
+    {
+      "name": "code",
+      "type": "code",
+      "language": "homeyscript",
+      "title": {
+        "en": "Code",
+        "nl": "Code"
+      }
+    },
+    {
+      "name": "argument",
+      "type": "text",
+      "required": false,
+      "title": {
+        "en": "Argument",
+        "nl": "Argument"
+      },
+      "placeholder": {
+        "en": "Argument",
+        "nl": "Argument"
+      }
+    }
+  ]
+}

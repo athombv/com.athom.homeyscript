@@ -1,0 +1,21 @@
+{
+  "title": {
+    "en": "Run code",
+    "nl": "Voer code uit"
+  },
+  "titleFormatted": {
+    "en": "Run [[code]]",
+    "nl": "Voer [[code]] uit"
+  },
+  "args": [
+    {
+      "name": "code",
+      "type": "code",
+      "language": "homeyscript",
+      "title": {
+        "en": "Code",
+        "nl": "Code"
+      }
+    }
+  ]
+}
