@@ -9,7 +9,7 @@ HomeyScript is a JavaScript-based scripting language that interacts with the Hom
 ## Usage
 
 1. Install HomeyScript from [https://homey.app/a/com.athom.homeyscript](https://homey.app/a/com.athom.homeyscript)
-2. Visit [https://homeyscript.homey.app](https://homeyscript.homey.app)
+2. Visit [https://my.homey.app/scripts](https://my.homey.app/scripts)
 3. Script as you please!
 
 ## Example
