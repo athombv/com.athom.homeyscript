@@ -7,6 +7,7 @@
     "en": "Run [[code]]",
     "nl": "Voer [[code]] uit"
   },
+  "advanced": true,
   "args": [
     {
       "name": "code",

@@ -143,6 +143,7 @@
           "en": "Run [[code]]",
           "nl": "Voer [[code]] uit"
         },
+        "advanced": true,
         "args": [
           {
             "name": "code",
@@ -261,6 +262,7 @@
           "en": "Run [[code]] with [[argument]]",
           "nl": "Voer [[code]] uit met [[argument]]"
         },
+        "advanced": true,
         "args": [
           {
             "name": "code",
