@@ -80,6 +80,68 @@
       },
       {
         "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nreturn true;"
+          }
+        ],
+        "id": "runCode"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]]",
+          "nl": "Voer [[code]] uit met [[argument]]"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArg"
+      },
+      {
+        "title": {
           "en": "Run a script with an argument",
           "nl": "Voer een script uit met een argument"
         },

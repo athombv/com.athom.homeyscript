@@ -114,6 +114,28 @@ module.exports = class HomeyScriptApp extends Homey.App {
       })
       .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
 
+    this.homey.flow.getConditionCard('runCode')
+      .registerRunListener(async ({ code }, state) => {
+        return Boolean(await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code: code,
+          args: [],
+          realtime: state.realtime != null ? state.realtime : false,
+        }));
+      });
+
+    this.homey.flow.getConditionCard('runCodeWithArg')
+      .registerRunListener(async ({ code, argument }, state) => {
+        return Boolean(await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code: code,
+          args: [argument],
+          realtime: state.realtime != null ? state.realtime : false,
+        }));
+      });
+
     this.homey.flow.getConditionCard('runWithArg')
       .registerRunListener(async ({ script, argument }) => {
         const scriptSource = await this.getScript({ id: script.id });
