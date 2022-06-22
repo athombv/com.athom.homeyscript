@@ -4,8 +4,8 @@
     "nl": "Voer code uit"
   },
   "titleFormatted": {
-    "en": "Run [[code]]",
-    "nl": "Voer [[code]] uit"
+    "en": "Run [[code]] and return Yes/No-Tag",
+    "nl": "Voer [[code]] uit en return Ja/Nee-Tag"
   },
   "tokens": [
     {
@@ -25,7 +25,8 @@
       "title": {
         "en": "Code",
         "nl": "Code"
-      }
+      },
+      "value": "// My Code\n\nreturn true;"
     }
   ]
 }

@@ -152,7 +152,8 @@
             "title": {
               "en": "Code",
               "nl": "Code"
-            }
+            },
+            "value": "// My Code"
           }
         ],
         "id": "runCode"
@@ -163,8 +164,8 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]]",
-          "nl": "Voer [[code]] uit"
+          "en": "Run [[code]] and return Yes/No-Tag",
+          "nl": "Voer [[code]] uit en return Ja/Nee-Tag"
         },
         "tokens": [
           {
@@ -184,7 +185,8 @@
             "title": {
               "en": "Code",
               "nl": "Code"
-            }
+            },
+            "value": "// My Code\n\nreturn true;"
           }
         ],
         "id": "runCodeReturnsBoolean"
@@ -195,8 +197,8 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]]",
-          "nl": "Voer [[code]] uit"
+          "en": "Run [[code]] and return Number-Tag",
+          "nl": "Voer [[code]] uit en return Nummer-Tag"
         },
         "tokens": [
           {
@@ -216,7 +218,8 @@
             "title": {
               "en": "Code",
               "nl": "Code"
-            }
+            },
+            "value": "// My Code\n\nreturn 1;"
           }
         ],
         "id": "runCodeReturnsNumber"
@@ -227,8 +230,8 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]]",
-          "nl": "Voer [[code]] uit"
+          "en": "Run [[code]] and return Text-Tag",
+          "nl": "Voer [[code]] uit en return Tekst-Tag"
         },
         "tokens": [
           {
@@ -248,7 +251,8 @@
             "title": {
               "en": "Code",
               "nl": "Code"
-            }
+            },
+            "value": "// My Code\n\nreturn 'Hello World!';"
           }
         ],
         "id": "runCodeReturnsString"
@@ -271,7 +275,8 @@
             "title": {
               "en": "Code",
               "nl": "Code"
-            }
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);"
           },
           {
             "name": "argument",
@@ -284,7 +289,8 @@
             "placeholder": {
               "en": "Argument",
               "nl": "Argument"
-            }
+            },
+            "value": "MyArg"
           }
         ],
         "id": "runCodeWithArg"
@@ -295,8 +301,8 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]] with [[argument]]",
-          "nl": "Voer [[code]] uit met [[argument]]"
+          "en": "Run [[code]] with [[argument]] and return Yes/No-Tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Ja/Nee-Tag"
         },
         "tokens": [
           {
@@ -316,7 +322,8 @@
             "title": {
               "en": "Code",
               "nl": "Code"
-            }
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
           },
           {
             "name": "argument",
@@ -329,7 +336,8 @@
             "placeholder": {
               "en": "Argument",
               "nl": "Argument"
-            }
+            },
+            "value": "MyArg"
           }
         ],
         "id": "runCodeWithArgReturnsBoolean"
@@ -340,8 +348,8 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]] with [[argument]]",
-          "nl": "Voer [[code]] uit met [[argument]]"
+          "en": "Run [[code]] with [[argument]] and return Number-Tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Nummer-Tag"
         },
         "tokens": [
           {
@@ -361,7 +369,8 @@
             "title": {
               "en": "Code",
               "nl": "Code"
-            }
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 1;"
           },
           {
             "name": "argument",
@@ -374,7 +383,8 @@
             "placeholder": {
               "en": "Argument",
               "nl": "Argument"
-            }
+            },
+            "value": "MyArg"
           }
         ],
         "id": "runCodeWithArgReturnsNumber"
@@ -385,8 +395,8 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]] with [[argument]]",
-          "nl": "Voer [[code]] uit met [[argument]]"
+          "en": "Run [[code]] with [[argument]] and return Text-Tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Tekst-Tag"
         },
         "tokens": [
           {
@@ -406,7 +416,8 @@
             "title": {
               "en": "Code",
               "nl": "Code"
-            }
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 'Hello World!';"
           },
           {
             "name": "argument",
@@ -419,7 +430,8 @@
             "placeholder": {
               "en": "Argument",
               "nl": "Argument"
-            }
+            },
+            "value": "MyArg"
           }
         ],
         "id": "runCodeWithArgReturnsString"

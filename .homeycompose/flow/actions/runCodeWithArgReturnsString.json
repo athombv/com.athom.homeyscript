@@ -4,8 +4,8 @@
     "nl": "Voer code uit"
   },
   "titleFormatted": {
-    "en": "Run [[code]] with [[argument]]",
-    "nl": "Voer [[code]] uit met [[argument]]"
+    "en": "Run [[code]] with [[argument]] and return Text-Tag",
+    "nl": "Voer [[code]] uit met [[argument]] en return Tekst-Tag"
   },
   "tokens": [
     {
@@ -25,7 +25,8 @@
       "title": {
         "en": "Code",
         "nl": "Code"
-      }
+      },
+      "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 'Hello World!';"
     },
     {
       "name": "argument",
@@ -38,7 +39,8 @@
       "placeholder": {
         "en": "Argument",
         "nl": "Argument"
-      }
+      },
+      "value": "MyArg"
     }
   ]
 }
