@@ -1,0 +1,6 @@
+{
+  "extends": "athom",
+  "ignorePatterns": [
+    "/examples/**"
+  ]
+}

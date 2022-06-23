@@ -1,0 +1,38 @@
+{
+  "3.1.0": {
+    "en": "Save & Test -> Test"
+  },
+  "3.1.1": {
+    "en": "Updated Homey API"
+  },
+  "3.2.0": {
+    "en": "Added support for starting Flow Cards."
+  },
+  "3.2.1": {
+    "en": "Small improvements."
+  },
+  "3.2.2": {
+    "en": "Updated examples."
+  },
+  "3.2.3": {
+    "en": "Provide option to override fetch agent. Better syntax error display."
+  },
+  "3.2.4": {
+    "en": "fix typo, add Flow argument title's"
+  },
+  "3.2.5": {
+    "en": "fix typo, add Flow argument title's"
+  },
+  "3.2.6": {
+    "en": "Added `Buffer` to global scope."
+  },
+  "3.3.0": {
+    "en": "Added option to rename scripts"
+  },
+  "3.3.1": {
+    "en": "use name instead of id in Flow argument"
+  },
+  "3.3.2": {
+    "en": "Add back Buffer to global scope"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "opts": {
+    "mainpagetitle": "HomeyScript",
+    "template": "./node_modules/homey-jsdoc-template",
+    "simpleAnalyticsHost": "sa.athom.com",
+    "destination": "./build"
+  },
+  "source": {
+    "include": [
+      "./README.md",
+      "./"
+    ]
+  },
+  "plugins": [
+    "plugins/markdown"
+  ]
+}

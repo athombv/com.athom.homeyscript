@@ -1,74 +1,120 @@
 # HomeyScript
 
-Write scripts for Homey, for when the Flow Editor might not be enough.
+> "The best thing since sliced bread!"
 
-Visit [https://homeyscript.athom.com](https://homeyscript.athom.com) to manage your scripts.
+Unleash the scripting power with HomeyScript. Automate everything you every dreamed of, even when Flows are not enough for you!
 
-## Features
+HomeyScript is a JavaScript-based scripting language that interacts with the Homey Web API and various Homey Apps SDK functions.
 
-* Write a script in JavaScript and have direct access to Homey's Web API (bèta)
-* Run a script as a Flow 'and' or 'then' card
+## Usage
+
+1. Install HomeyScript from [https://homey.app/a/com.athom.homeyscript](https://homey.app/a/com.athom.homeyscript)
+2. Visit [https://my.homey.app/scripts](https://my.homey.app/scripts)
+3. Script as you please!
+
+## Example
+
+```javascript
+// Get all devices
+const devices = await Homey.devices.getDevices();
+
+// Loop over all devices
+for (const device of Object.values(devices)) {
+
+  // If this device is a light (class)
+  // Or this is a 'What's plugged in?'-light (virtualClass)
+  if (device.class === 'light' || device.virtualClass === 'light') {
+    log(`\nTurning '${device.name}' on...`);
+
+    // Turn the light on by setting the capability `onoff` to `true`
+    await device.setCapabilityValue('onoff', true)
+      .then(() => log('OK'))
+      .catch(error => log(`Error:`, error));
+  }
+}
+```
+
+For more examples, see `/examples` in the source code.
 
 ## Documentation
-In HomeyScript, you can access a few global objects:
 
-* `Homey` - A HomeyAPI instance. [https://developer.athom.com/](https://developer.athom.com/docs/api)
-* `_` - Lodash. [https://lodash.com/](https://lodash.com/docs/4.17.4)
-* `fetch` - The Fetch API. [https://developer.mozilla.org/](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-* `global.get(id)` - Gets a global value
-* `global.set(id, value)` - Sets a global value
-* `global.keys()` - Gets a list of the ids of all globals
-* `setTagValue(id, opts, value)` - Create, edit, remove a flow tag. Use undefined to remove the tag. [https://developer.athom.com/](https://developer.athom.com/docs/apps/FlowToken.html)
-* `console` - V8 Logging API's.
-* `log(...args)` - A shortcut function to append to the output log.
-* `say(text)` - A shortcut function to make Homey speak.
-* `__filename__` - The script filename.
-* `__script_id__` - The script ID.
-* `__last_executed__` - A Date object describing the moment this script last executed
-* `__ms_since_last_executed__` - A number containing the amount of milliseconds elapsed since last execution
-* `args` - An (optional) Array of script args.
+In your HomeyScript, the following properties are directly accessible.
 
-## API
-It is possible to trigger a script remotely using the Homey Web API.
-```
-let HomeyScript = await Homey.apps.getApp({id:'com.athom.homeyscript'});
-HomeyScript.apiPost('script/<ScriptID>/run', [arg1, arg2]);
+### Global Properties
 
+The following properties are accessible anywhere.
+
+#### `log(Mixed obj1 [, Mixed obj, ..., Mixed objN])` -> `undefined`
+
+Log a value to the console.
+
+#### `say(String text)` -> `Promise`
+
+Make Homey say something.
+
+```javascript
+await say('Hello world!');
 ```
 
-## Changelog
+#### `tag(String id, String|Number|Boolean value)` -> `Promise`
 
-*Version 1.1.1*
+Creates or updates a Flow Token. These are persistent across reboots.
 
-Web API update to version 2.1.161
+Delete a Flow Token by providing `null` as value.
 
-Add custom global variable api
+Resolves after `milliseconds` milliseconds.
 
-Add globals to query the last execution time and elapsed time since last execution.
+```javascript
+await tag('My Tag', 1337); // Create
+await tag('My Tag', 1338); // Update
+await tag('My Tag', null); // Delete
+```
 
-*Version 1.1.0*
+#### `wait(Number milliseconds)` -> `Promise`
 
-Web API update to version 2.1.137
+Resolves after `milliseconds` milliseconds.
 
-Homey v2.0.0 compatibility
+```javascript
+log('Foo');
+await wait(1000);
+log('Bar');
+```
 
-*Version 1.0.5*
+#### `Homey` -> `HomeyAPI`
 
-Minor back-end changes.
+This is a [HomeyAPI](https://api.developer.athom.com/HomeyAPI.html) instance with permissions on behalf of the app (`homey:manager:api`).
 
-Web API update to version 2.0.138
+```javascript
+const devices = await Homey.devices.getDevices();
+```
 
-*Version 1.0.4*
+#### `fetch`
 
-Fix a bug that caused an exception to be thrown when accessing app api's
+Shortcut to [node-fetch](https://github.com/node-fetch/node-fetch).
 
-Web API update to version 2.0.95
+#### `_`
 
-*Version: 1.0.3*
+Shortcut to [lodash](https://github.com/lodash/lodash).
 
-It is now possible to use flow tags in HomeyScript, added an example of this createDayTag.js.
+#### `global.get(String key)` -> `Mixed`
 
-Web API update to version 2.0.94
+Get a global value that's accessible between HomeyScripts.
+
+#### `global.set(String key, Mixed value)` -> `undefined`
+
+Set a global value that's accessible between HomeyScripts.
+
+#### `global.keys()` -> `Array`
+
+Gets all keys of global values.
 
 
-_Note: This app is the result of one of Athom's Hacky Fridays, so official support is not available._
+#### `args` -> `Array`
+
+The `args` array contains arguments as provided by a Flow or the Web API.
+
+### Disclaimer
+
+This app has been created during one of Athom's Hacky Fridays.
+
+This means that we cannot give official support on it, but we welcome high quality issue reports.

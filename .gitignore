@@ -1,2 +1,5 @@
-/archive
+/node_modules
 /build
+
+# Added by Homey CLI
+/.homeybuild/

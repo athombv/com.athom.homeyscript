@@ -1,0 +1,57 @@
+{
+  "id": "com.athom.homeyscript",
+  "sdk": 3,
+  "version": "3.3.2",
+  "compatibility": ">=5.0.0",
+  "name": {
+    "en": "HomeyScript"
+  },
+  "brandColor": "#2B1F32",
+  "description": {
+    "en": "Script your Home"
+  },
+  "permissions": [
+    "homey:manager:api"
+  ],
+  "category": "tools",
+  "author": {
+    "name": "Athom B.V."
+  },
+  "images": {
+    "xlarge": "/assets/images/xlarge.png",
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "homepage": "https://my.homey.app/scripts",
+  "support": "https://github.com/athombv/com.athom.homeyscript#disclaimer",
+  "source": "https://github.com/athombv/com.athom.homeyscript",
+  "platforms": [
+    "local"
+  ],
+  "api": {
+    "getScripts": {
+      "method": "get",
+      "path": "/script"
+    },
+    "getScript": {
+      "method": "get",
+      "path": "/script/:id"
+    },
+    "runScript": {
+      "method": "post",
+      "path": "/script/:id/run"
+    },
+    "createScript": {
+      "method": "post",
+      "path": "/script"
+    },
+    "updateScript": {
+      "method": "put",
+      "path": "/script/:id"
+    },
+    "deleteScript": {
+      "method": "delete",
+      "path": "/script/:id"
+    }
+  }
+}

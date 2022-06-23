@@ -1,0 +1,20 @@
+{
+  "title": {
+    "en": "Run a script",
+    "nl": "Voer een script uit"
+  },
+  "titleFormatted": {
+    "en": "Run [[script]]",
+    "nl": "Voer [[script]] uit"
+  },
+  "args": [
+    {
+      "name": "script",
+      "type": "autocomplete",
+      "title": {
+        "en": "Script",
+        "nl": "Script"
+      }
+    }
+  ]
+}

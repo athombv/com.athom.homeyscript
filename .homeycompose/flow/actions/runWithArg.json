@@ -1,0 +1,32 @@
+{
+  "title": {
+    "en": "Run a script with an argument",
+    "nl": "Voer een script uit met een argument"
+  },
+  "titleFormatted": {
+    "en": "Run [[script]] with argument [[argument]]",
+    "nl": "Voer [[script]] uit met argument [[argument]]"
+  },
+  "args": [
+    {
+      "name": "script",
+      "type": "autocomplete",
+      "title": {
+        "en": "Script",
+        "nl": "Script"
+      }
+    },
+    {
+      "name": "argument",
+      "type": "text",
+      "title": {
+        "en": "Argument",
+        "nl": "Argument"
+      },
+      "placeholder": {
+        "en": "Argument",
+        "nl": "Argument"
+      }
+    }
+  ]
+}
