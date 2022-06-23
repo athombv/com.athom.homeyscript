@@ -4,13 +4,22 @@
   "description": "",
   "main": "api.js",
   "scripts": {
-    "start": "nodemon --watch . --exec \"homey app run\""
+    "lint": "eslint .",
+    "start": "nodemon --watch . --exec \"homey app run\"",
+    "serve": "concurrently \"serve build/\" \"npm run jsdoc:watch\"",
+    "build": "npm ci; npm run jsdoc:clean; npm run jsdoc;",
+    "jsdoc": "jsdoc --configure ./docs/jsdoc.json;",
+    "jsdoc:clean": "rm -rf ./build",
+    "jsdoc:watch": "watch \"npm run jsdoc:clean && npm run jsdoc\" ./lib docs"
   },
   "nodemonConfig": {
     "ignore": [
       "app.json",
       "build"
     ]
+  },
+  "engines": {
+    "node": ">=16"
   },
   "repository": {
     "type": "git",
@@ -27,5 +36,15 @@
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.7",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.2",
+    "eslint": "^8.18.0",
+    "eslint-config-athom": "^3.0.1",
+    "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.5.1",
+    "jsdoc": "^3.6.10",
+    "jsdoc-ts-utils": "^3.0.0",
+    "serve": "^13.0.2",
+    "watch": "^1.0.2"
   }
 }

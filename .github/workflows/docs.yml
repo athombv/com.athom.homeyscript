@@ -1,0 +1,32 @@
+name: Deploy Documentation To GitHub Pages
+
+# v1.0.0
+#
+# This workflow runs `npm run build` and then syncs the `build` folder to GitHub Pages.
+
+on:
+  push:
+    branches: [ production ]
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+
+    # Build
+    - name: Build
+      run: npm run build
+
+    # Deploy
+    - name: Deploy To GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3.8.0
+      with:
+        personal_token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
+        publish_dir: ./build
