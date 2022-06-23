@@ -10,7 +10,7 @@
     "build": "npm ci; npm run jsdoc:clean; npm run jsdoc;",
     "jsdoc": "jsdoc --configure ./docs/jsdoc.json;",
     "jsdoc:clean": "rm -rf ./build",
-    "jsdoc:watch": "watch \"npm run jsdoc:clean && npm run jsdoc\" ./lib docs"
+    "jsdoc:watch": "watch \"npm run jsdoc:clean && npm run jsdoc\" ./docs docs"
   },
   "nodemonConfig": {
     "ignore": [
