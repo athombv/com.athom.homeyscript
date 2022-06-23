@@ -105,7 +105,7 @@
              </header><div class="navigation__content" data-navigation-target><div class="navigation__search search">
             <input title="filter" placeholder="Filter..." data-navigation-search class="search__input" type="search">
             <button data-navigation-search-reset class="search__reset --mask" type="button" title="Reset"></button>
-           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div data-navigation class="navigation__menu trim"></div></div></div>
+           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div data-navigation class="navigation__menu trim"><nav class="nav-group"><h3 class="nav-group__title">Namespaces</h3><ul class="nav-group__list"><li data-lvl="0" data-search-key="global" class="nav-group__item"><a href="global.html"> global</a></li></ul></nav></div></div></div>
   </nav>
 
   <main id="main" class="main container__main">
@@ -130,75 +130,14 @@
 </blockquote>
 <p>Unleash the scripting power with HomeyScript. Automate everything you every dreamed of, even when Flows are not enough for you!</p>
 <p>HomeyScript is a JavaScript-based scripting language that interacts with the Homey Web API and various Homey Apps SDK functions.</p>
-<h2>Usage</h2>
+<h2>🚀 Usage</h2>
 <ol>
 <li>Install HomeyScript from <a href="https://homey.app/a/com.athom.homeyscript">https://homey.app/a/com.athom.homeyscript</a></li>
 <li>Visit <a href="https://my.homey.app/scripts">https://my.homey.app/scripts</a></li>
 <li>Script as you please!</li>
 </ol>
-<h2>Example</h2>
-<pre class="prettyprint source lang-javascript"><code>// Get all devices
-const devices = await Homey.devices.getDevices();
-
-// Loop over all devices
-for (const device of Object.values(devices)) {
-
-  // If this device is a light (class)
-  // Or this is a 'What's plugged in?'-light (virtualClass)
-  if (device.class === 'light' || device.virtualClass === 'light') {
-    log(`\nTurning '${device.name}' on...`);
-
-    // Turn the light on by setting the capability `onoff` to `true`
-    await device.setCapabilityValue('onoff', true)
-      .then(() => log('OK'))
-      .catch(error => log(`Error:`, error));
-  }
-}
-</code></pre>
-<p>For more examples, see <code>/examples</code> in the source code.</p>
-<h2>Documentation</h2>
-<p>In your HomeyScript, the following properties are directly accessible.</p>
-<h3>Global Properties</h3>
-<p>The following properties are accessible anywhere.</p>
-<h4><code>log(Mixed obj1 [, Mixed obj, ..., Mixed objN])</code> -&gt; <code>undefined</code></h4>
-<p>Log a value to the console.</p>
-<h4><code>say(String text)</code> -&gt; <code>Promise</code></h4>
-<p>Make Homey say something.</p>
-<pre class="prettyprint source lang-javascript"><code>await say('Hello world!');
-</code></pre>
-<h4><code>tag(String id, String|Number|Boolean value)</code> -&gt; <code>Promise</code></h4>
-<p>Creates or updates a Flow Token. These are persistent across reboots.</p>
-<p>Delete a Flow Token by providing <code>null</code> as value.</p>
-<p>Resolves after <code>milliseconds</code> milliseconds.</p>
-<pre class="prettyprint source lang-javascript"><code>await tag('My Tag', 1337); // Create
-await tag('My Tag', 1338); // Update
-await tag('My Tag', null); // Delete
-</code></pre>
-<h4><code>wait(Number milliseconds)</code> -&gt; <code>Promise</code></h4>
-<p>Resolves after <code>milliseconds</code> milliseconds.</p>
-<pre class="prettyprint source lang-javascript"><code>log('Foo');
-await wait(1000);
-log('Bar');
-</code></pre>
-<h4><code>Homey</code> -&gt; <code>HomeyAPI</code></h4>
-<p>This is a <a href="https://api.developer.athom.com/HomeyAPI.html">HomeyAPI</a> instance with permissions on behalf of the app (<code>homey:manager:api</code>).</p>
-<pre class="prettyprint source lang-javascript"><code>const devices = await Homey.devices.getDevices();
-</code></pre>
-<h4><code>fetch</code></h4>
-<p>Shortcut to <a href="https://github.com/node-fetch/node-fetch">node-fetch</a>.</p>
-<h4><code>_</code></h4>
-<p>Shortcut to <a href="https://github.com/lodash/lodash">lodash</a>.</p>
-<h4><code>global.get(String key)</code> -&gt; <code>Mixed</code></h4>
-<p>Get a global value that's accessible between HomeyScripts.</p>
-<h4><code>global.set(String key, Mixed value)</code> -&gt; <code>undefined</code></h4>
-<p>Set a global value that's accessible between HomeyScripts.</p>
-<h4><code>global.keys()</code> -&gt; <code>Array</code></h4>
-<p>Gets all keys of global values.</p>
-<h4><code>args</code> -&gt; <code>Array</code></h4>
-<p>The <code>args</code> array contains arguments as provided by a Flow or the Web API.</p>
-<h3>Disclaimer</h3>
-<p>This app has been created during one of Athom's Hacky Fridays.</p>
-<p>This means that we cannot give official support on it, but we welcome high quality issue reports.</p></article>
+<h2>📚 Documentation</h2>
+<p>Visit the <a href="./global">HomeyScript Reference</a> to learn what you can do in a HomeyScript.</p></article>
     </section>
 
 

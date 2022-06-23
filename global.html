@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Namespace: global - HomeyScript</title>
+
+  <meta property="og:image" content="https://etc.athom.com/logo/white/256.png"/>
+  <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png"/>
+  <link rel="icon" type="image/png" href="https://etc.athom.com/logo/transparent/128.png"/>
+  <link rel="preload" as="image" href="images/logo.png">
+  <link rel="preload" href="styles/homey.min.css" as="style">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="styles/atom-one-light.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="styles/homey.min.css">
+
+  <!-- preload javascript -->
+  <link rel="preload" as="script" href="scripts/ready.js">
+  <link rel="preload" as="script" href="scripts/navigation.js">
+  <link rel="preload" as="script" href="scripts/toc.js">
+  <link rel="preload" as="script" href="scripts/table.js">
+  <link rel="preload" as="script" href="scripts/hash-link.js">
+  <link rel="preload" as="script" href="scripts/docs-nav.js">
+  <link rel="preload" as="script" href="scripts/hash-highlight.js">
+  <link rel="preload" as="script" href="scripts/darkmode.js">
+
+  <!-- Start DarkMode -->
+  <script>
+    if (localStorage.getItem('darkmode') === 'true') {
+      document.documentElement.classList.add('darkmode');
+    }
+  </script>
+  <!-- End DarkMode -->
+</head>
+
+<body>
+
+
+<div class="container">
+  <div class="container__top-nav">
+    <button data-darkmode-toggle class="darkmode-toggle">
+      <span class="darkmode-toggle__icon --mask"></span>
+    </button>
+    <div class="docs-nav">
+      <button data-docs-nav-toggle class="docs-nav__button" title="All documentation"><span
+          class="docs-nav__button-icon --mask"></span></button>
+      <nav data-docs-nav-menu class="docs-nav__menu component">
+        <div class="docs-nav__banner trim">
+          <h2>Homey Developers</h2>
+        </div>
+        <div class="docs-nav__columns">
+          <div class="docs-nav__column trim">
+            <h3>Homey Apps SDK</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://apps.developer.homey.app/">Documentation</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank"
+                                            href="https://apps-sdk-v3.developer.homey.app/">Reference</a></li>
+            </ul>
+            <h3>Homey Web API</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://api.developer.homey.app/">Documentation</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank"
+                                            href="https://athombv.github.io/node-homey-api/">Reference</a></li>
+            </ul>
+            <h3>Tools</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://tools.developer.homey.app/">Developer
+                  Tools</a></li>
+            </ul>
+          </div>
+          <div class="docs-nav__column trim">
+            <h3>Node.js Modules</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-zigbeedriver/">Homey
+                  ZigbeeDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-zwavedriver/">Homey
+                  ZWaveDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-rfdriver/">Homey
+                  RFDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-log/">Homey
+                  Log</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-zigbee-clusters/">Zigbee
+                  Clusters</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-oauth2app/">Homey
+                  OAuth2</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <nav class="navigation container__navigation component">
+    <header class="navigation__header">
+                <div class="navigation__logo"><a href="index.html"><img class="display-block" src="images/logo.png" width="40" height="40" alt="Homey"></a></div>
+                <h2 class="navigation__title"><a href="index.html">HomeyScript</a></h2>
+                <button data-navigation-toggle class="navigation__button" title="menu"></button>
+             </header><div class="navigation__content" data-navigation-target><div class="navigation__search search">
+            <input title="filter" placeholder="Filter..." data-navigation-search class="search__input" type="search">
+            <button data-navigation-search-reset class="search__reset --mask" type="button" title="Reset"></button>
+           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div data-navigation class="navigation__menu trim"><nav class="nav-group"><h3 class="nav-group__title">Namespaces</h3><ul class="nav-group__list"><li data-lvl="0" data-search-key="global" class="nav-group__item"><a href="global.html"> global</a></li></ul></nav></div></div></div>
+  </nav>
+
+  <main id="main" class="main container__main">
+    
+  
+  
+  <div class="flex flex-direction-column flex-fill max-100">
+    <div class="flex">
+      <div class="main__center">
+        <div class="main__content align-baseline">
+          <h1 id="introduction" class="text-preset-heading-1">
+            Namespace: global
+          </h1>
+        </div>
+        <div class="main__index"></div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="main__center">
+        <div class="main__content align-baseline">
+          
+
+<section>
+  <header>
+    
+      <h2 class="display-none">
+        
+        global
+        
+      </h2>
+      
+    
+  </header>
+
+  <article>
+    <div class="container-overview">
+      
+
+      
+      
+      <div class="description"><p>All properties &amp; methods in this namespace are accessible in a HomeyScript.</p></div>
+      
+
+      
+
+
+
+
+      
+      <h2>Example</h2>
+      
+    <pre class="highlight"><code>// Get all devices
+const devices = await Homey.devices.getDevices();
+
+// Loop over all devices
+for (const device of Object.values(devices)) {
+
+  // If this device is a light (class)
+  // Or this is a 'What's plugged in?'-light (virtualClass)
+  if (device.class === 'light' || device.virtualClass === 'light') {
+    log(`\nTurning '${device.name}' on...`);
+
+    // Turn the light on by setting the capability `onoff` to `true`
+    await device.setCapabilityValue('onoff', true)
+      .then(() => log('OK'))
+      .catch(error => log(`Error:`, error));
+  }
+}</code></pre>
+
+
+      
+      
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section id="section-members">
+      <h2 class="subsection-title">Properties</h2>
+
+      
+      
+<section id="._" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#._"></a>_</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>_<span class="function__type-signature">: Object</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>Shortcut to <a href="https://www.npmjs.com/package/lodash">lodash</a>.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">Object</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
+<section id=".__filename__" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.__filename__"></a>__filename__</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>__filename__<span class="function__type-signature">: String</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>The filename of the HomeyScript.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">String</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
+<section id=".__last_executed__" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.__last_executed__"></a>__last_executed__</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>__last_executed__<span class="function__type-signature">: Date</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>When the HomeyScript has last executed.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">Date</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
+<section id=".__ms_since_last_executed__" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.__ms_since_last_executed__"></a>__ms_since_last_executed__</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>__ms_since_last_executed__<span class="function__type-signature">: Number</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>Milliseconds since the HomeyScript has last executed.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">Number</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
+<section id=".__script_id__" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.__script_id__"></a>__script_id__</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>__script_id__<span class="function__type-signature">: String</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>The Script ID of the HomeyScript.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">String</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
+<section id=".args" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.args"></a>args</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>args<span class="function__type-signature">: Array</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>Provided arguments to this script.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">Array</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+    <h4>Example</h4>
+    
+    <pre class="highlight"><code>log(args[0]); // "myArgument"</code></pre>
+
+
+    
+  </div>
+</section>
+
+      
+      
+<section id=".Buffer" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.Buffer"></a>Buffer</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>Buffer<span class="function__type-signature">: Object</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>Shortcut to <a href="https://nodejs.org/api/buffer.html">Buffer</a>.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">Object</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
+<section id=".Homey" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.Homey"></a>Homey</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>Homey<span class="function__type-signature">: HomeyAPI</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>A <a href="https://athombv.github.io/node-homey-api/HomeyAPIV2.html">HomeyAPI</a> instance.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">HomeyAPI</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+    <h4>Example</h4>
+    
+    <pre class="highlight"><code>const devices = await Homey.devices.getDevices();</code></pre>
+
+
+    
+  </div>
+</section>
+
+      
+      
+<section id=".http" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.http"></a>http</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>http<span class="function__type-signature">: Object</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>Shortcut to <a href="https://nodejs.org/api/http.html">http</a>.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">Object</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
+<section id=".https" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.https"></a>https</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>https<span class="function__type-signature">: Object</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>Shortcut to <a href="https://nodejs.org/api/https.html">https</a>.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">Object</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+      
+<section id=".URLSearchParams" class="method component trim">
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.URLSearchParams"></a>URLSearchParams</h3>
+  <span class="method__function function">
+    <span class="function__type-signature">(static) </span>URLSearchParams<span class="function__type-signature">: Class</span>
+  </span>
+
+  <div class="method__content trim">
+    
+
+    
+    <div class="description trim">
+      <p>Shortcut to <a href="https://nodejs.org/api/url.html#class-urlsearchparams">URLSearchParams</a>.</p>
+    </div>
+    
+
+    
+    <h4>Type</h4>
+    <ul>
+      <li>
+        
+<span class="param-type">Class</span>
+
+
+      </li>
+    </ul>
+    
+
+    
+
+
+
+
+    
+
+    
+  </div>
+</section>
+
+      
+    </section>
+    
+
+    
+    <section id="section-methods">
+      <h2 class="subsection-title">Methods</h2>
+
+      
+      
+
+
+<section id=".fetch" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.fetch"></a>fetch</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async, static) </span>fetch<span class="function__parameters">(<span class="function__parameter">url</span>, <span class="function__parameter">options</span>)</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Shortcut to <a href="https://www.npmjs.com/package/node-fetch/v/2.6.7">node-fetch</a>.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table data-table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>url</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">String</span>
+
+
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim">
+      </td>
+    </tr>
+
+    
+
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>options</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">Object</span>
+
+
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim">
+      </td>
+    </tr>
+
+    
+
+    
+    
+    </tbody>
+  </table>
+</figure>
+
+
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".get" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.get"></a>get</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>get<span class="function__parameters">(<span class="function__parameter">key</span>)</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Get a global value that's accessible between HomeyScripts.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table data-table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>key</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">String</span>
+
+
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim"><p>Key of the property</p>
+      </td>
+    </tr>
+
+    
+
+    
+    
+    </tbody>
+  </table>
+</figure>
+
+
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".keys" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.keys"></a>keys</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>keys<span class="function__parameters">()</span><span class="function__type-signature">:  Array</span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Gets all keys of global values.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Returns</h4>
+      
+      
+
+<div class="text-preset-small">
+  
+<span class="param-type">Array</span>
+
+
+</div>
+
+    </section>
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".log" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.log"></a>log</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async, static) </span>log<span class="function__parameters">(&hellip;<span class="function__parameter">arg1</span>)</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Log to the console.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table data-table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>arg1</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">Mixed</span>
+
+
+        
+
+        
+        
+
+        
+
+        
+        <span class="color-text-light">&lt;repeatable></span><br>
+        
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim">
+      </td>
+    </tr>
+
+    
+
+    
+    
+    </tbody>
+  </table>
+</figure>
+
+
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Example</h4>
+      
+    <pre class="highlight"><code>log('Hello World!');</code></pre>
+
+
+    </section>
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".say" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.say"></a>say</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async, static) </span>say<span class="function__parameters">(<span class="function__parameter">text</span>)</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Says something over the internal speaker.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table data-table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>text</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">String</span>
+
+
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim">
+      </td>
+    </tr>
+
+    
+
+    
+    
+    </tbody>
+  </table>
+</figure>
+
+
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Example</h4>
+      
+    <pre class="highlight"><code>await say('Hello world!');</code></pre>
+
+
+    </section>
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".set" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.set"></a>set</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(static) </span>set<span class="function__parameters">(<span class="function__parameter">key</span>, <span class="function__parameter">value</span>)</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Set a global value that's accessible between HomeyScripts.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table data-table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>key</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">String</span>
+
+
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim"><p>Key of the property</p>
+      </td>
+    </tr>
+
+    
+
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>value</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">Mixed</span>
+
+
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim"><p>Value of the property</p>
+      </td>
+    </tr>
+
+    
+
+    
+    
+    </tbody>
+  </table>
+</figure>
+
+
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".tag" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.tag"></a>tag</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async, static) </span>tag<span class="function__parameters">(<span class="function__parameter">id</span>, <span class="function__parameter">value</span>)</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Creates or updates a Flow Tag. These are persistent across reboots.</p>
+<p>Delete a Flow Tag by providing <code>null</code> as value.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table data-table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>id</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">String</span>
+
+
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim"><p>ID of the Tag</p>
+      </td>
+    </tr>
+
+    
+
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-1"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>value</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">Boolean</span>
+|
+
+<span class="param-type">null</span>
+
+
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim"><p>Value of the Tag</p>
+      </td>
+    </tr>
+
+    
+
+    
+    
+    </tbody>
+  </table>
+</figure>
+
+
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Example</h4>
+      
+    <pre class="highlight"><code>await tag('My Tag', 1337); // Create
+await tag('My Tag', 1338); // Update
+await tag('My Tag', null); // Delete</code></pre>
+
+
+    </section>
+    
+  </div>
+  
+
+</section>
+
+      
+      
+
+
+<section id=".wait" class="method trim component">
+  
+
+  
+  <h3 class="method__name"><a data-hash-link class="method__hash-link" href="#.wait"></a>wait</h3>
+  <span class="method__function function">
+    
+    <span class="function__type-signature">(async, static) </span>wait<span class="function__parameters">(<span class="function__parameter">milliseconds</span>)</span><span class="function__type-signature"></span>
+    
+  </span>
+  
+
+  
+  
+
+  
+  <div class="method__content trim">
+    
+    <div class="method__description">
+      <p>Resolves after <code>milliseconds</code> milliseconds.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Parameters</h4>
+      
+
+<figure class="table-container trim">
+  <table data-table class="params">
+    <thead>
+    <tr>
+      
+      <th>Name</th>
+      
+
+      <th>Type</th>
+
+      <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+    
+
+    <tr data-table-lvl="0" data-table-row-id="0-0"
+        data-table-row-parent="0" >
+      
+      <td class="name position-relative">
+        
+        <div class="lvl">
+          
+        </div>
+        <code>milliseconds</code>
+        
+      </td>
+      
+
+      <td class="params__type">
+        
+        
+<span class="param-type">Number</span>
+
+
+        
+
+        
+
+        
+
+      </td>
+
+
+      <td class="description last trim">
+      </td>
+    </tr>
+
+    
+
+    
+    
+    </tbody>
+  </table>
+</figure>
+
+
+    </section>
+    
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <section class="method__section trim">
+      <h4>Example</h4>
+      
+    <pre class="highlight"><code>log('Foo');
+await wait(1000);
+log('Bar');</code></pre>
+
+
+    </section>
+    
+  </div>
+  
+
+</section>
+
+      
+    </section>
+    
+
+    
+
+    
+  </article>
+
+</section>
+
+        </div>
+        <div class="main__index">
+          
+<nav class="toc trim">
+  <h4 class="toc__title font-weight-bold">Table of Contents</h4>
+
+  <ul class="toc__list">
+    <li class="toc__item"><a class="toc__link" href="#introduction">Introduction</a></li>
+
+    
+
+    
+
+    
+    <li class="toc__item">
+      <a class="toc__link" href="#section-members">Properties</a>
+      <ul class="toc__list toc__list--lvl2">
+        
+        <li class="toc__item">
+          <a class="toc__link" title="_" href="#_">_</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="__filename__" href="#__filename__">__filename__</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="__last_executed__" href="#__last_executed__">__last_executed__</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="__ms_since_last_executed__" href="#__ms_since_last_executed__">__ms_since_last_executed__</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="__script_id__" href="#__script_id__">__script_id__</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="args" href="#args">args</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="Buffer" href="#Buffer">Buffer</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="Homey" href="#Homey">Homey</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="http" href="#http">http</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="https" href="#https">https</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="URLSearchParams" href="#URLSearchParams">URLSearchParams</a>
+        </li>
+        
+      </ul>
+    </li>
+    
+
+    
+    <li class="toc__item">
+      <a class="toc__link" href="#section-methods">Methods</a>
+      <ul class="toc__list toc__list--lvl2">
+        
+        <li class="toc__item">
+          <a class="toc__link" title="fetch" href="#.fetch">fetch</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="get" href="#.get">get</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="keys" href="#.keys">keys</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="log" href="#.log">log</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="say" href="#.say">say</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="set" href="#.set">set</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="tag" href="#.tag">tag</a>
+        </li>
+        
+        <li class="toc__item">
+          <a class="toc__link" title="wait" href="#.wait">wait</a>
+        </li>
+        
+      </ul>
+    </li>
+    
+
+    
+
+    
+  </ul>
+
+</nav>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  </main>
+</div>
+
+<script src="scripts/ready.js"></script>
+<script src="scripts/navigation.js"></script>
+<script src="scripts/toc.js"></script>
+<script src="scripts/table.js"></script>
+<script src="scripts/hash-link.js"></script>
+<script src="scripts/docs-nav.js"></script>
+<script src="scripts/hash-highlight.js"></script>
+<script src="scripts/darkmode.js"></script>
+
+<link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
+<script src="scripts/highlight.min.js"></script>
+<!--<script src="scripts/linenumber.js"></script>-->
+
+
+<script async defer src="https://sa.athom.com/latest.js"></script>
+
+</body>
+</html>
