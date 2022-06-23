@@ -1,4 +1,9 @@
 {
+  "templates": {
+    "default": {
+      "outputSourceFiles": false
+    }
+  },
   "opts": {
     "mainpagetitle": "HomeyScript",
     "template": "./node_modules/homey-jsdoc-template",
@@ -7,8 +12,8 @@
   },
   "source": {
     "include": [
-      "./README.md",
-      "./"
+      "./docs/README.md",
+      "./docs/api.js"
     ]
   },
   "plugins": [
