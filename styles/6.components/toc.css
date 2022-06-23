@@ -1,0 +1,40 @@
+.toc:not(.disable-sticky) {
+    position: sticky;
+    top: 20px;
+}
+
+.toc__title {
+    margin-bottom: 15px;
+}
+
+.toc__list .toc__list {
+    padding-left: 10px;
+    margin-left: 0.5ch;
+    border-left: 1px solid var(--color-line-medium);
+}
+
+.toc > .toc__list > .toc__item {
+    margin-bottom: 10px;
+}
+
+.toc__link,
+.toc__link:visited {
+    padding: 5px 0;
+    display: block;
+    font-weight: var(--fontWeight-medium);
+    color: var(--color-mono-70);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.toc__list--lvl2 .toc__link {
+    color: var(--color-mono-50);
+    font-weight: var(--fontWeight-regular);
+}
+
+@media only screen and (min-width: 1700px) {
+    .toc__link,
+    .toc__link:visited {
+        overflow: visible;
+    }
+}

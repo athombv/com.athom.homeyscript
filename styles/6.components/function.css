@@ -1,0 +1,23 @@
+.function {
+    font-family: var(--fontFamily-code);
+    color: var(--color-mono-80);
+}
+
+.function__parameters {
+    /* placeholder */
+}
+
+.function__parameter {
+    color: var(--color-code-param);
+}
+
+.function__signature-attributes {
+    font-size: 60%;
+    color: var(--color-text-light);
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.function__type-signature {
+    color: var(--color-text-light);
+}

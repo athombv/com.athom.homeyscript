@@ -1,0 +1,22 @@
+
+.toastmessage {
+    position: fixed;
+    z-index: var(--z-index-toast-message);
+    width: 500px;
+    max-width: calc(100% + 20px);
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--component-padding, 10px);
+    border-radius: var(--borderRadius);
+    box-shadow: var(--boxShadow);
+    background: var(--color-component);
+    font-weight: var(--fontWeight-medium);
+    color: var(--color-highlight);
+}
+
+.toastmessage__link{
+    color: var(--color-text-light);
+    font-weight: var(--fontWeight-regular);
+    font-size: var(--fontSize-small);
+}

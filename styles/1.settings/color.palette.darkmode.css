@@ -1,0 +1,44 @@
+/* stylelint-disable */
+/**
+ * DarkMode Colors of the Homey Design System
+ *
+ * @description
+ * Don't confused by the naming 'DarkMode':
+ * there is no DarkMode in the website. The colors in this
+ * palette are used to present DarkMode parts of the Homey Web App / Mobile App.
+ *
+ * Rules:
+ * - use `-o-05` to describe an opacity color
+ * - use `-05` to describe a tint
+ *
+ * - use hex color for fixed colors
+ * - use rgb / rgba color when the color can be used for different opacity variants
+ * - use hsl colors when you want to make a color darker / lighter
+ */
+
+.darkmode {
+  /**
+   * Monochrome Palette
+   */
+  --color-mono-0: #000000;
+  --color-mono-01: #08090C;
+  --color-mono-02: #16171D;
+  --color-mono-05: #1E1F24;
+  --color-mono-07: #222329;
+  --color-mono-10: #292A2F;
+  --color-mono-15: #35363B;
+  --color-mono-20: #414247;
+  --color-mono-30: #58595D;
+  --color-mono-40: #707175;
+  --color-mono-50: #88898C;
+  --color-mono-60: #A0A0A3;
+  --color-mono-70: #B8B8BA;
+  --color-mono-80: #CFCFD1;
+  --color-mono-90: #E7E7E8;
+  --color-mono-95: #F2F2F3;
+  --color-mono-100: #ffffff;
+
+  --color-mono-o-02: rgba(255, 255, 255, .02);
+  --color-mono-o-10: rgba(255, 255, 255, .1);
+  --color-mono-o-50: rgba(255, 255, 255, .5);
+}

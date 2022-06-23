@@ -1,87 +1,231 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		
-		<title>HomeyScript</title>
-		
-		<link rel="shortcut icon" type="image/png" href="img/favicon.png?v=9"/>
-		<link rel="stylesheet" type="text/css" href="css/homeyscript.css" />
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-		
-		<script type="text/javascript" src="//cdn.athom.com/athom-api/2.1.111/athom-api.min.js"></script>
-		<script src="vendor/monaco-editor/min/vs/loader.js"></script>
-		<script src="js/homeyscript.js?v=12"></script>
-		<script src="js/homeyscript.topbar.js?v=12"></script>
-		<script src="js/homeyscript.editor.js?v=12"></script>
-		<script src="js/homeyscript.sidebar.js?v=12"></script>
-		<script src="js/homeyscript.api.js?v=12"></script>
-		
-	</head>
-	<body>
-		
-		<div class="hs-header">
-			<span class="title">
-			  <div class="image"></div>
-			  <div class="text">HomeyScript</div>
-			</span>
-			
-			<span class="controls">
-				<span class="button save">
-					<i class="fa fa-floppy-o" aria-hidden="true"></i>
-					Save
-				</span>
-				<span class="button run">
-					<i class="fa fa-play" aria-hidden="true"></i>
-					Save & Test
-				</span>
-			</span>
-			
-			<div id="hy-appselector"></div>
-      <script id="hy-appselector-script" type="text/javascript" src="https://etc.athom.com/appselector/appselector.js"></script>
-			
-			<span class="homey">
-			
-			</span>
-			
-			<span class="user" title="Log out">
-				
-				<div class="text">
-  				<div class="name"></div>
-  				<div class="homey"></div>
-				</div>
-				<img class="avatar" src="https://avatars.athom.com/default/small.jpg" />
-			
-			</span>
-			
-		</div>
-		
-		<div class="hs-wrap">
-		
-			<div class="hs-sidebar hs-scrollbar">
-				<div class="hs-files"></div>
-				<div class="hs-actions">
-					<div class="button create">
-						<i class="fa fa-plus" aria-hidden="true"></i>
-						New Script
-					</div>
-				</div>
-			</div>
-		
-			<div class="hs-editors-wrap">
-				<div class="hs-editors"></div>
-			</div>
-		
-		</div>
-		
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
-		  ga('create', 'UA-54367249-10', 'auto');
-		  ga('send', 'pageview');		
-		</script>
-		
-	</body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Home - HomeyScript</title>
+
+  <meta property="og:image" content="https://etc.athom.com/logo/white/256.png"/>
+  <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png"/>
+  <link rel="icon" type="image/png" href="https://etc.athom.com/logo/transparent/128.png"/>
+  <link rel="preload" as="image" href="images/logo.png">
+  <link rel="preload" href="styles/homey.min.css" as="style">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="styles/atom-one-light.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="styles/homey.min.css">
+
+  <!-- preload javascript -->
+  <link rel="preload" as="script" href="scripts/ready.js">
+  <link rel="preload" as="script" href="scripts/navigation.js">
+  <link rel="preload" as="script" href="scripts/toc.js">
+  <link rel="preload" as="script" href="scripts/table.js">
+  <link rel="preload" as="script" href="scripts/hash-link.js">
+  <link rel="preload" as="script" href="scripts/docs-nav.js">
+  <link rel="preload" as="script" href="scripts/hash-highlight.js">
+  <link rel="preload" as="script" href="scripts/darkmode.js">
+
+  <!-- Start DarkMode -->
+  <script>
+    if (localStorage.getItem('darkmode') === 'true') {
+      document.documentElement.classList.add('darkmode');
+    }
+  </script>
+  <!-- End DarkMode -->
+</head>
+
+<body>
+
+
+<div class="container">
+  <div class="container__top-nav">
+    <button data-darkmode-toggle class="darkmode-toggle">
+      <span class="darkmode-toggle__icon --mask"></span>
+    </button>
+    <div class="docs-nav">
+      <button data-docs-nav-toggle class="docs-nav__button" title="All documentation"><span
+          class="docs-nav__button-icon --mask"></span></button>
+      <nav data-docs-nav-menu class="docs-nav__menu component">
+        <div class="docs-nav__banner trim">
+          <h2>Homey Developers</h2>
+        </div>
+        <div class="docs-nav__columns">
+          <div class="docs-nav__column trim">
+            <h3>Homey Apps SDK</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://apps.developer.homey.app/">Documentation</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank"
+                                            href="https://apps-sdk-v3.developer.homey.app/">Reference</a></li>
+            </ul>
+            <h3>Homey Web API</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://api.developer.homey.app/">Documentation</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank"
+                                            href="https://athombv.github.io/node-homey-api/">Reference</a></li>
+            </ul>
+            <h3>Tools</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://tools.developer.homey.app/">Developer
+                  Tools</a></li>
+            </ul>
+          </div>
+          <div class="docs-nav__column trim">
+            <h3>Node.js Modules</h3>
+            <ul class="docs-nav__list">
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-zigbeedriver/">Homey
+                  ZigbeeDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-zwavedriver/">Homey
+                  ZWaveDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-rfdriver/">Homey
+                  RFDriver</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-log/">Homey
+                  Log</a></li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-zigbee-clusters/">Zigbee
+                  Clusters</a>
+              </li>
+              <li class="docs-nav__item"><a target="_blank" href="https://athombv.github.io/node-homey-oauth2app/">Homey
+                  OAuth2</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <nav class="navigation container__navigation component">
+    <header class="navigation__header">
+                <div class="navigation__logo"><a href="index.html"><img class="display-block" src="images/logo.png" width="40" height="40" alt="Homey"></a></div>
+                <h2 class="navigation__title"><a href="index.html">HomeyScript</a></h2>
+                <button data-navigation-toggle class="navigation__button" title="menu"></button>
+             </header><div class="navigation__content" data-navigation-target><div class="navigation__search search">
+            <input title="filter" placeholder="Filter..." data-navigation-search class="search__input" type="search">
+            <button data-navigation-search-reset class="search__reset --mask" type="button" title="Reset"></button>
+           </div><div data-navigation-scroll class="navigation__scroll scroll trim"><div data-navigation class="navigation__menu trim"></div></div></div>
+  </nav>
+
+  <main id="main" class="main container__main">
+    
+  
+  
+    
+  
+
+
+  
+  
+  <div class="main__center">
+    <div class="main__content align-baseline main-page trim">
+      
+
+
+    <section>
+        <article class="main-page__content"><h1>HomeyScript</h1>
+<blockquote>
+<p>&quot;The best thing since sliced bread!&quot;</p>
+</blockquote>
+<p>Unleash the scripting power with HomeyScript. Automate everything you every dreamed of, even when Flows are not enough for you!</p>
+<p>HomeyScript is a JavaScript-based scripting language that interacts with the Homey Web API and various Homey Apps SDK functions.</p>
+<h2>Usage</h2>
+<ol>
+<li>Install HomeyScript from <a href="https://homey.app/a/com.athom.homeyscript">https://homey.app/a/com.athom.homeyscript</a></li>
+<li>Visit <a href="https://my.homey.app/scripts">https://my.homey.app/scripts</a></li>
+<li>Script as you please!</li>
+</ol>
+<h2>Example</h2>
+<pre class="prettyprint source lang-javascript"><code>// Get all devices
+const devices = await Homey.devices.getDevices();
+
+// Loop over all devices
+for (const device of Object.values(devices)) {
+
+  // If this device is a light (class)
+  // Or this is a 'What's plugged in?'-light (virtualClass)
+  if (device.class === 'light' || device.virtualClass === 'light') {
+    log(`\nTurning '${device.name}' on...`);
+
+    // Turn the light on by setting the capability `onoff` to `true`
+    await device.setCapabilityValue('onoff', true)
+      .then(() => log('OK'))
+      .catch(error => log(`Error:`, error));
+  }
+}
+</code></pre>
+<p>For more examples, see <code>/examples</code> in the source code.</p>
+<h2>Documentation</h2>
+<p>In your HomeyScript, the following properties are directly accessible.</p>
+<h3>Global Properties</h3>
+<p>The following properties are accessible anywhere.</p>
+<h4><code>log(Mixed obj1 [, Mixed obj, ..., Mixed objN])</code> -&gt; <code>undefined</code></h4>
+<p>Log a value to the console.</p>
+<h4><code>say(String text)</code> -&gt; <code>Promise</code></h4>
+<p>Make Homey say something.</p>
+<pre class="prettyprint source lang-javascript"><code>await say('Hello world!');
+</code></pre>
+<h4><code>tag(String id, String|Number|Boolean value)</code> -&gt; <code>Promise</code></h4>
+<p>Creates or updates a Flow Token. These are persistent across reboots.</p>
+<p>Delete a Flow Token by providing <code>null</code> as value.</p>
+<p>Resolves after <code>milliseconds</code> milliseconds.</p>
+<pre class="prettyprint source lang-javascript"><code>await tag('My Tag', 1337); // Create
+await tag('My Tag', 1338); // Update
+await tag('My Tag', null); // Delete
+</code></pre>
+<h4><code>wait(Number milliseconds)</code> -&gt; <code>Promise</code></h4>
+<p>Resolves after <code>milliseconds</code> milliseconds.</p>
+<pre class="prettyprint source lang-javascript"><code>log('Foo');
+await wait(1000);
+log('Bar');
+</code></pre>
+<h4><code>Homey</code> -&gt; <code>HomeyAPI</code></h4>
+<p>This is a <a href="https://api.developer.athom.com/HomeyAPI.html">HomeyAPI</a> instance with permissions on behalf of the app (<code>homey:manager:api</code>).</p>
+<pre class="prettyprint source lang-javascript"><code>const devices = await Homey.devices.getDevices();
+</code></pre>
+<h4><code>fetch</code></h4>
+<p>Shortcut to <a href="https://github.com/node-fetch/node-fetch">node-fetch</a>.</p>
+<h4><code>_</code></h4>
+<p>Shortcut to <a href="https://github.com/lodash/lodash">lodash</a>.</p>
+<h4><code>global.get(String key)</code> -&gt; <code>Mixed</code></h4>
+<p>Get a global value that's accessible between HomeyScripts.</p>
+<h4><code>global.set(String key, Mixed value)</code> -&gt; <code>undefined</code></h4>
+<p>Set a global value that's accessible between HomeyScripts.</p>
+<h4><code>global.keys()</code> -&gt; <code>Array</code></h4>
+<p>Gets all keys of global values.</p>
+<h4><code>args</code> -&gt; <code>Array</code></h4>
+<p>The <code>args</code> array contains arguments as provided by a Flow or the Web API.</p>
+<h3>Disclaimer</h3>
+<p>This app has been created during one of Athom's Hacky Fridays.</p>
+<p>This means that we cannot give official support on it, but we welcome high quality issue reports.</p></article>
+    </section>
+
+
+    </div>
+  </div>
+  
+
+
+
+  </main>
+</div>
+
+<script src="scripts/ready.js"></script>
+<script src="scripts/navigation.js"></script>
+<script src="scripts/toc.js"></script>
+<script src="scripts/table.js"></script>
+<script src="scripts/hash-link.js"></script>
+<script src="scripts/docs-nav.js"></script>
+<script src="scripts/hash-highlight.js"></script>
+<script src="scripts/darkmode.js"></script>
+
+<link type="text/css" rel="stylesheet" href="styles/atom-one-light.css">
+<script src="scripts/highlight.min.js"></script>
+<!--<script src="scripts/linenumber.js"></script>-->
+
+
+<script async defer src="https://sa.athom.com/latest.js"></script>
+
+</body>
 </html>

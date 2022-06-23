@@ -1,0 +1,7 @@
+.trim > *:first-child {
+    margin-top: 0 !important;
+}
+
+.trim > *:last-child {
+    margin-bottom: 0 !important;
+}

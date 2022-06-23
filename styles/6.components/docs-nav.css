@@ -1,0 +1,143 @@
+.docs-nav {
+    position: relative;
+}
+
+.docs-nav h2 {
+    font-size: 24px;
+    color: var(--color-white);
+}
+
+.docs-nav h3 {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: var(--fontWeight-bold);
+}
+
+.docs-nav__button {
+    display: flex;
+    background: var(--color-component);
+    box-shadow: var(--boxShadow);
+    border-radius: 50%;
+    transition: var(--transition-fast);
+}
+
+.docs-nav__button-icon {
+    -webkit-mask-image: url('../images/grid-view-medium.svg'); /* safari fallback to avoid flicker */
+    --mask-image: url('../images/grid-view-medium.svg');
+    --mask-size: 20px;
+    display: block;
+    background-color: var(--color-icon-light);
+    width: 40px;
+    height: 40px;
+    transition: var(--transition-fast);
+}
+
+.docs-nav__button:hover {
+    transform: scale(1.05);
+}
+
+.docs-nav__button:active {
+    transform: scale(1);
+}
+
+.docs-nav__button:hover .docs-nav__button-icon {
+    background-color: var(--color-icon-light-hover);
+}
+
+.docs-nav__menu {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    z-index: var(--z-index-docs-nav);
+    top: calc(100% + 15px);
+    right: 0;
+    opacity: 0;
+    transition: 350ms ease-in-out;
+    transition-property: opacity, transform, visibility;
+    transform: perspective(300px) rotateX(-5deg) scale(0.95);
+    transform-origin: top right;
+}
+
+.docs-nav__banner {
+    margin: -20px;
+    background-image: url(https://etc.athom.com/logo/transparent/1024.png);
+    background-position: 47% -22%;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: var(--borderRadius) var(--borderRadius) 0 0;
+}
+
+body.is-docs-nav-active .docs-nav__menu {
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: perspective(300px) rotateX(0deg) scale(1);
+}
+
+.docs-nav__menu::before {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background-image: linear-gradient(135deg, #0F70F4 50%, rgba(15,112,224,0) 0%);
+    border-radius: 4px;
+    transform: translateY(-40%) translateX(50%) rotate(45deg);
+}
+
+.docs-nav__columns {
+    display: flex;
+}
+
+.docs-nav__column {
+    width: 200px;
+}
+
+.docs-nav__column + .docs-nav__column {
+    margin-left: 20px;
+}
+
+
+.docs-nav__item a {
+    color: var(--color-text);
+    padding: 2px 10px;
+    margin: 0 -10px;
+    border-radius: var(--borderRadius);
+    display: block;
+    transition: var(--transition-fast);
+}
+
+.docs-nav__item a::after {
+    content: '';
+    background-color: var(--color-text);
+    mask-image: url('../images/arrow-right.svg');
+    mask-size: 12px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    transition: var(--transition-fast);
+    margin-left: 1px;
+    transform: translateY(3px);
+}
+
+.docs-nav__item a:hover {
+    font-weight: var(--fontWeight-medium);
+    background: var(--color-background-hover);
+    text-decoration: none;
+}
+
+.docs-nav__item a:hover::after{
+    opacity: 1;
+    transform: translateX(5px) translateY(3px);
+}
+
+
+.docs-nav__item a::before {
+    /*content: '- ';*/
+    /*color: var(--color-text-light);*/
+}

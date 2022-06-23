@@ -1,0 +1,18 @@
+.darkmode-toggle {
+  display: flex;
+  background: var(--color-component);
+  box-shadow: var(--boxShadow);
+  border-radius: 50%;
+  transition: var(--transition-fast);
+}
+
+.darkmode-toggle__icon {
+  -webkit-mask-image: url('../images/moon.svg'); /* safari fallback to avoid flicker */
+  --mask-image: url('../images/moon.svg');
+  --mask-size: 20px;
+  display: block;
+  background-color: var(--color-icon-light);
+  width: 40px;
+  height: 40px;
+  transition: var(--transition-fast);
+}

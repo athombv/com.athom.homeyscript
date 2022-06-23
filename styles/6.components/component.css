@@ -1,0 +1,22 @@
+.component {
+  padding: var(--component-padding, 10px);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--boxShadow);
+  background: var(--color-component);
+  transition: box-shadow var(--duration-fast) ease-out 500ms;
+}
+
+.component.is-highlight {
+  transition: box-shadow var(--duration-normal) ease-in-out;
+  box-shadow: var(--boxShadow-highlight);
+}
+
+.component blockquote {
+  box-shadow: none;
+}
+
+@media only screen and (min-width: 768px) {
+  :root {
+    --component-padding: 20px;
+  }
+}

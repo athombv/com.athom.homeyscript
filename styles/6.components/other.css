@@ -1,0 +1,108 @@
+
+
+.class-description:empty {
+    margin: 0;
+}
+
+article dl {
+    margin-bottom: 40px;
+}
+
+article img {
+    max-width: 100%;
+}
+
+.variation {
+    display: none;
+}
+
+.ancestors, .attribs {
+    color: #999;
+}
+
+.ancestors a, .attribs a {
+    color: #999 !important;
+    text-decoration: none;
+}
+
+.clear {
+    clear: both;
+}
+
+.important {
+    font-weight: bold;
+    color: #950B02;
+}
+
+.yes-def {
+    text-indent: -1000px;
+}
+
+.name {
+    font-family: var(--fontFamily-code);
+}
+
+.name code {
+    color: var(--color-code-param);
+    background: none !important;
+    padding: 0;
+    font-size: 1em;
+}
+
+.param-type {
+    font-family: var(--fontFamily-code);
+    color: var(--color-code-param-type);
+}
+
+.details {
+    margin-top: 14px;
+    border-left: 2px solid #DDD;
+}
+
+.details dt {
+    width: 120px;
+    float: left;
+    padding-left: 10px;
+    padding-top: 6px;
+}
+
+.details dd {
+    margin-left: 70px;
+}
+
+.details ul {
+    margin: 0;
+}
+
+.details ul {
+    list-style-type: none;
+}
+
+.details li {
+    margin-left: 30px;
+    padding-top: 6px;
+}
+
+.details pre.highlight {
+    margin: 0
+}
+
+.details .object-value {
+    padding-top: 0;
+}
+
+.description {
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+}
+
+.code-caption {
+    font-family: var(--fontFamily-code);
+    font-size: 14px;
+    margin: 0;
+    font-weight: var(--fontWeight-medium);
+}
+
+.disabled {
+    color: #454545;
+}

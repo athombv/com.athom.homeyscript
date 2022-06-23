@@ -1,0 +1,87 @@
+.table {
+}
+
+
+/* Lvl indicator  */
+.lvl {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+
+.lvl--group .lvl__indent:last-of-type {
+    margin-top: 30px;
+}
+
+.lvl__indent:first-of-type {
+    margin-left: calc(10px + 1px);
+}
+
+.lvl__indent {
+    margin-left: 1px;
+    border-left: 1px solid var(--color-code-orange-o-50);
+    width: 20px;
+}
+
+
+[data-table-lvl="0"] td:first-child {
+    /* placeholder */
+}
+
+[data-table-lvl="1"] td:first-child {
+    position: relative;
+    padding-left: 30px;
+}
+
+[data-table-lvl="2"] td:first-child {
+    position: relative;
+    padding-left: 50px;
+}
+
+[data-table-lvl="3"] td:first-child {
+    position: relative;
+    padding-left: 70px;
+}
+
+/* Collapse functionality */
+[data-table-collapsed] {
+    cursor: pointer;
+    transition: background-color var(--duration-fast) var(--curve-fastInNormalOut);
+}
+
+[data-table-collapsed]:hover {
+    background-color: var(--color-mono-02);
+}
+
+[data-table-collapsed="false"] td:first-of-type {
+    font-weight: var(--fontWeight-bold);
+}
+
+[data-table-collapsed="false"] td:first-of-type::after {
+    content: '{';
+}
+
+[data-table-collapsed="true"] td:first-of-type::after {
+    content: '{...}';
+}
+
+[data-table-collapsed="true"] .lvl:not(.lvl--group), /* hide indent line when not group and is collapsed */
+[data-table-collapsed="true"] .lvl--group .lvl__indent:last-of-type /* hide last indent line when group and is collapsed */
+{
+    display: none;
+}
+
+
+[data-table-lvl]:not([data-table-lvl="0"]), /* hide any row at lvl 1+  */
+[data-table-lvl][data-table-row-is-shown="false"] /* hide rows with is-shown false attribute */
+{
+    display: none;
+}
+
+
+[data-table-lvl][data-table-row-is-shown="true"] {
+    display: table-row;
+}

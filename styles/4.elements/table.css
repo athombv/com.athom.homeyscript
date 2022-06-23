@@ -1,0 +1,45 @@
+table {
+    width: 100%;
+    border-spacing: 0;
+    /*border-top: 1px solid var(--color-line);*/
+    border-bottom: 1px solid var(--color-line);
+    border-collapse: collapse;
+    /*border-radius: var(--borderRadius);*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+table table {
+    /*width: calc(100% + 22px);*/
+    /*margin-left: -11px;*/
+    /*margin-right: -11px;*/
+    /*margin-bottom: -11px;*/
+    border-top: none;
+    border-bottom: none;
+    font-size: 14px;
+}
+
+table code {
+    font-size: 13px;
+}
+
+td, th {
+    border-top: 1px solid var(--color-line-light);
+    border-bottom: 1px solid var(--color-line-light);
+    margin: 0px;
+    text-align: left;
+    vertical-align: top;
+    padding: 5px 10px;
+    display: table-cell;
+}
+
+th {
+    border-color: var(--color-line);
+    border-top-width: 0;
+    border-bottom-width: 2px;
+}
+
+thead tr {
+    font-weight: var(--fontWeight-bold);
+}

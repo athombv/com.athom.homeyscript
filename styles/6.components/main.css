@@ -1,0 +1,47 @@
+.main {
+    display: flex;
+    justify-content: center;
+    padding: var(--main-padding, 10px);
+}
+
+.main__center {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto;
+    max-width: 100%;
+}
+
+.main__content {
+    flex: 1 1 auto;
+    width: 0;
+    max-width: 900px;
+}
+
+.main__content h2 {
+    margin-top: 30px;
+    border-top: 1px solid var(--color-line);
+    padding-top: 30px;
+}
+
+.main__index {
+    display: none;
+    width: 200px;
+    margin-left: 40px;
+}
+
+
+@media only screen and (min-width: 768px) {
+    :root {
+        --main-padding: 0;
+    }
+
+    .main__center {
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .main__index {
+        display: block;
+    }
+}

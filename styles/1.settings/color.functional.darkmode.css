@@ -1,0 +1,37 @@
+/* stylelint-disable */
+/**
+ * Darkmode Functional colors of the Homey Design System
+ *
+ * @description
+ * Rules:
+ * - Don't define colors directly inhere. You can do that in var.color.palette.dark.scss or var.color.palette
+ * - Don't define component colors in here. This is for global use only
+ */
+
+.darkmode {
+    /* Functional colors */
+    --color-text                   : var(--color-mono-100);
+    --color-text-medium            : var(--color-mono-60);
+    --color-text-light             : var(--color-mono-50);
+    --color-text-light-hover       : var(--color-mono-60);
+    --color-text-light-active      : var(--color-mono-70);
+
+    --color-text-heading           : var(--color-mono-100);
+    --color-text-paragraph         : var(--color-mono-60);
+
+    --color-line                   : var(--color-mono-20);
+    --color-line-hover             : var(--color-mono-30);
+    --color-line-active            : var(--color-mono-40);
+    --color-line-light             : var(--color-mono-15);
+
+    --color-body                   : var(--color-night-black);
+    --color-component              : var(--color-mono-07);
+
+    /* Icons */
+    --color-icon-light             : var(--color-mono-50);
+    --color-icon-light-hover       : var(--color-mono-70);
+    --color-icon-medium            : var(--color-mono-30);
+    --color-icon-dark              : var(--color-mono-80);
+    --color-icon-dark-hover        : var(--color-mono-100);
+
+}

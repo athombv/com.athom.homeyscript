@@ -1,0 +1,35 @@
+input {
+    transition: var(--duration-fast) var(--curve-fastInNormalOut);
+    transition-property: box-shadow, border-color, background-color;
+    color: var(--color-text);
+}
+
+input:hover {
+    box-shadow: var(--input-boxShadow-hover);
+    border-color: var(--input-border-hover);
+    background-color: var(--input-background);
+}
+
+input:focus {
+    box-shadow: var(--input-boxShadow-focus);
+    border-color: var(--input-border-focus);
+    background-color: var(--color-component);
+    outline: none;
+}
+
+input:invalid {
+    box-shadow: var(--input-boxShadow-error);
+    border-color: var(--input-border-error);
+}
+
+::placeholder{
+    color: var(--color-mono-50);
+}
+
+/* hide default cross */
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+}

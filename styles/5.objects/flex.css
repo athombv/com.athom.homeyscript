@@ -1,0 +1,19 @@
+.flex {
+    display: flex;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.flex-fill {
+    flex: 1 1 auto;
+}
+
+.align-items-start {
+    align-items: flex-start;
+}
+
+.max-100{
+    max-width: 100%;
+}

@@ -1,0 +1,6 @@
+/*
+ * Manuel baseline alignment
+ */
+.align-baseline h2 {
+    transform: translateY(10px);
+}

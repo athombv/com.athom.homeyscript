@@ -1,0 +1,29 @@
+/**
+ * Text Presets
+ */
+.text-preset-heading-1 {
+    font-size: var(--fontSize-xlarge);
+    font-weight: var(--fontWeight-medium);
+    margin-top: 30px;
+}
+
+.text-preset-caption {
+    font-size: var(--fontSize-medium);
+    font-weight: var(--fontWeight-regular);
+    color: var(--color-text-light);
+    line-height: 1;
+}
+
+.text-preset-intro {
+    font-size: var(--fontSize-medium);
+    line-height: 30px;
+    margin: 8px 0;
+}
+
+.text-preset-default {
+    font-size: var(--fontSize-default);
+}
+
+.text-preset-small {
+    font-size: var(--fontSize-small);
+}

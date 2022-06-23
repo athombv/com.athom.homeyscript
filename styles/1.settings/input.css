@@ -1,0 +1,16 @@
+:root {
+    --input-height: 30px;
+    --input-height-medium: 40px;
+    --input-height-large: 50px;
+    --input-border: var(--color-line);
+    --input-border-hover: var(--color-mono-15);
+    --input-border-selected: var(--color-highlight);
+    --input-border-focus: var(--color-blue-o-50);
+    --input-border-error: var(--color-red-o-50);
+    --input-background: var(--color-component);
+    --input-background-selected: var(--color-highlight);
+    --input-boxShadow-hover: 0 0 3px 0px rgba(0, 0, 0, .1);
+    --input-boxShadow-focus: 0 0 3px 0px rgba(0, 130, 250, .5);
+    --input-boxShadow-error: 0 0 3px 0px rgba(216, 28, 29, .5);
+    --input-borderRadius: var(--borderRadius);
+}

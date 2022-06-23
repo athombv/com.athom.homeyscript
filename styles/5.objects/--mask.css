@@ -1,0 +1,10 @@
+.--mask {
+    -webkit-mask-image: var(--mask-image);
+    -webkit-mask-size: var(--mask-size);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-image: var(--mask-image);
+    mask-size: var(--mask-size);
+    mask-repeat: no-repeat;
+    mask-position: center;
+}

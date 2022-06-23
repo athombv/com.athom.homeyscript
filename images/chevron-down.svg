@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>glyph / interface / chevron-down</title>
+    <defs>
+        <path d="M0,12.9396325 C0,12.2047244 0.281938326,11.4698163 0.845814978,10.8818898 C1.97356828,9.70603675 3.73568282,9.70603675 4.86343612,10.8818898 L23.9647577,30.7979003 L43.1365639,10.8818898 C44.2643172,9.70603675 46.0264317,9.70603675 47.154185,10.8818898 C48.2819383,12.0577428 48.2819383,13.8950131 47.154185,15.0708661 L26.0088106,37.1181102 C25.4449339,37.7060367 24.7400881,38 24.0352423,38 C23.2599119,38 22.5550661,37.7060367 22.061674,37.1181102 L0.916299559,15.0708661 C0.334801762,14.4645669 0.0494371023,13.796515 0.00591450481,13.1233171 L0,12.9396325 Z" id="path-1"></path>
+    </defs>
+    <g id="glyph-/-interface-/-chevron-down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#313132" xlink:href="#path-1"></use>
+    </g>
+</svg>

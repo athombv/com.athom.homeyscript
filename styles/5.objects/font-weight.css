@@ -1,0 +1,7 @@
+.font-weight-medium {
+    font-weight: var(--fontWeight-medium);
+}
+
+.font-weight-bold {
+    font-weight: var(--fontWeight-bold);
+}

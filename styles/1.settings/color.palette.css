@@ -1,0 +1,76 @@
+/**
+ * Color Palette
+ */
+
+:root {
+    /**
+     * Monochrome palette
+     */
+    --color-white: #ffffff;
+    --color-mono-0: #ffffff;
+    --color-mono-01: #FAFBFD;
+    --color-mono-02: #F1F2F6;
+    --color-mono-05: #e9eaee;
+    --color-mono-10: #DDDEE2;
+    --color-mono-15: #D1D2D5;
+    --color-mono-20: #c4c5c8;
+    --color-mono-30: #ACADB0;
+    --color-mono-40: #939496;
+    --color-mono-50: #7A7B7D;
+    --color-mono-60: #626264;
+    --color-mono-70: #49494A;
+    --color-mono-80: #313132;
+    --color-mono-90: #181818;
+    --color-mono-95: #0C0C0C;
+    --color-mono-100: #000000;
+    --color-black: #000000;
+    /* Mono opacity */
+    --color-mono-o-02: rgba(0, 0, 0, .02);
+    --color-mono-o-10: rgba(0, 0, 0, .1);
+    --color-mono-o-20: rgba(0, 0, 0, .2);
+    --color-mono-o-40: rgba(0, 0, 0, .4);
+    --color-mono-o-50: rgba(0, 0, 0, .5);
+    /* White opacity */
+    --color-white-o-50: rgba(255, 255, 255, .50);
+    --color-white-o-75: rgba(255, 255, 255, .75);
+    --color-white-o-100: rgba(255, 255, 255, 1);
+    /* Black opacity */
+    --color-black-o-50: rgba(0, 0, 0, 0.5);
+    /* Other */
+    --color-ice-white: #f6f7fb;
+    --color-night-black: #121319;
+
+    /**
+     * Color Palette
+     */
+    /* Blue */
+    --color-blue: rgba(0, 130, 250, 1.00);
+    --color-blue-o-05: rgba(0, 130, 250, 0.05);
+    --color-blue-o-08: rgba(0, 130, 250, 0.08);
+    --color-blue-o-10: rgba(0, 130, 250, 0.10);
+    --color-blue-o-15: rgba(0, 130, 250, 0.15);
+    --color-blue-o-20: rgba(0, 130, 250, 0.20);
+    --color-blue-o-50: rgba(0, 130, 250, 0.50);
+    --color-blue-hover: rgba(0, 123, 224, 1.00);
+    /* Green */
+    --color-green: rgba(63, 199, 0, 1.00);
+    --color-green-hover: rgba(59, 186, 0, 1.00);
+    /* Red */
+    --color-red: rgba(216, 28, 29, 1.00);
+    --color-red-o-05: rgba(216, 28, 29, 0.05);
+    --color-red-o-50: rgba(216, 28, 29, 0.50);
+    --color-red-o-80: rgba(216, 28, 29, 0.80);
+    --color-red-hover: rgba(191, 29, 29, 1.00);
+    /* Orange */
+    --color-orange: rgba(255, 183, 75, 1.00);
+    --color-orange-o-05: rgba(255, 183, 75, 0.05);
+    /* Yellow */
+    --color-yellow: rgba(247, 181, 0, 1.00);
+
+    /* Code Palette*/
+    --color-code-orange: rgb(212, 130, 0);
+    --color-code-orange-o-50: rgba(212, 130, 0,0.5);
+    --color-code-param: var(--color-code-orange);
+    --color-code-green: #4f9d00;
+    --color-code-param-type: var(--color-code-green);
+}

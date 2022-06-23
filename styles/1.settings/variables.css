@@ -1,0 +1,70 @@
+/**
+ * Global variables
+ */
+:root {
+  /* Box Shadows */
+  --boxShadow: 0 10px 44px 0 rgba(0, 0, 0, 0.07),
+  0 2px 12px 0 rgba(0, 0, 0, 0.1),
+  0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  --boxShadow-highlight: 0 10px 44px 0 var(--color-blue-o-15),
+  0 2px 12px 0 var(--color-blue-o-20),
+  0 2px 4px 0 var(--color-blue-o-08);
+
+  /* Border Radius */
+  --borderRadius-large: 20px;
+  --borderRadius: 10px;
+  --borderRadius-small: 5px;
+
+  /* Font-weights*/
+  --fontWeight-thin: 100;
+  --fontWeight-light: 300;
+  --fontWeight-regular: 400;
+  --fontWeight-medium: 500;
+  --fontWeight-bold: 700;
+
+  /* Transitions */
+  --transition-normal: all 500ms ease-in-out;
+  --transition-fast: all 200ms ease-in-out;
+  --transition-micro: all 100ms ease-in-out;
+  --transition-normal-partial: 500ms ease-in-out;
+  --transition-micro-partial: 100ms ease-in-out;
+
+  /* Durations */
+  --duration-normal: 500ms;
+  --duration-fast: 200ms;
+  --duration-micro: 100ms;
+
+  /* Curves */
+  --curve-fastInNormalOut: cubic-bezier(.25, 0, .5, 1);
+
+  /* Font Families */
+  --fontFamily: 'Roboto', sans-serif;
+  --fontFamily-code: 'Roboto Mono', Consolas, Monaco, 'Andale Mono', monospace;
+
+  /* Font Sizes */
+  --fontSize-xlarge: 24px;
+  --fontSize-medium: 18px;
+  --fontSize-default: 16px;
+  --fontSize-small: 14px;
+
+  /* Z-index */
+  --z-index-navigation: 100;
+  --z-index-docs-nav: 200;
+  --z-index-toast-message: 300;
+
+  /* Input */
+}
+
+@media only screen and (min-width: 768px) {
+  :root {
+    --fontSize-xlarge: 32px;
+    --fontSize-medium: 20px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  :root {
+    --fontSize-xlarge: 32px;
+    --fontSize-medium: 20px;
+  }
+}

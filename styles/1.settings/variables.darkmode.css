@@ -1,0 +1,11 @@
+/**
+ * Global variables
+ */
+.darkmode {
+  /* Box Shadows */
+  --boxShadow: 0 0 1px 1px var(--color-mono-20);
+  --boxShadow-highlight: 0 10px 44px 0 var(--color-blue-o-15),
+  0 2px 12px 0 var(--color-blue-o-20),
+  0 2px 4px 0 var(--color-blue-o-08),
+  0 0 1px 1px var(--color-mono-20);
+}

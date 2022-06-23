@@ -1,0 +1,121 @@
+:root {
+    --method-padding: 20px;
+}
+
+.method {
+    margin: 40px 0;
+}
+
+.method :not(pre) > code {
+    background-color: var(--color-background-code-method);
+}
+
+.method.component {
+    padding: var(--method-padding);
+}
+
+.method__header {
+
+}
+
+.method__name {
+    position: relative; /* for __has-link */
+    margin-bottom: 0;
+    transform: translateY(-8px); /* Optical correct */
+    font-family: var(--fontFamily-code);
+    font-weight: var(--fontWeight-medium);
+}
+
+.method:hover .method__hash-link {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.method__hash-link {
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    transform: translateX(-100%) translateY(-40%);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    opacity: 0;
+    pointer-events: none;
+    width: 16px;
+    height: 16px;
+    mask-image: url('../images/link.svg');;
+    mask-size: 14px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: var(--color-text-light);
+}
+
+.method__hash-link:visited {
+    background-color: var(--color-text-light);
+}
+
+.method__hash-link:hover {
+    background-color: var(--color-text-light-hover);
+    text-decoration: none;
+}
+
+.method__hash-link:active {
+    background-color: var(--color-text-link);
+}
+
+
+
+.method__function {
+    font-size: 14px;
+    margin-bottom: 0;
+    background: var(--color-component);
+    z-index: 10;
+    padding: 10px 0;
+    display: block;
+    border-top-left-radius: var(--borderRadius);
+    border-top-right-radius: var(--borderRadius);
+}
+
+.method__function:not(:last-child) {
+    border-bottom: 1px solid var(--color-line);
+}
+
+.method__content {
+    padding: 20px 0 0 0;
+}
+
+.method__section {
+    margin: 30px 0;
+}
+
+.method__description > *:first-child {
+    margin-top: 0;
+}
+
+@media only screen and (min-width: 768px) {
+    :root {
+        --method-padding: 30px;
+    }
+
+    .method__function {
+        top: 0;
+        position: sticky;
+        margin-top: -10px;
+        margin-left: calc(0px - var(--method-padding));
+        margin-right: calc(0px - var(--method-padding));
+        padding: 10px var(--method-padding);
+    }
+
+    .method__sticky {
+        position: sticky;
+        top: 0;
+        margin-top: -10px;
+        margin-left: calc(0px - var(--method-padding));
+        margin-right: calc(0px - var(--method-padding));
+        padding: 10px var(--method-padding);
+        border-bottom: 1px solid var(--color-line);
+        background: var(--color-component);
+        border-top-left-radius: var(--borderRadius);
+        border-top-right-radius: var(--borderRadius);
+        margin-bottom: -8px; /* compensate transform */
+    }
+}

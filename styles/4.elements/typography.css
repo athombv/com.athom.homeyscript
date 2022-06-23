@@ -1,0 +1,126 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+footer {
+    display: block;
+    padding: 6px;
+    margin-top: 12px;
+    font-style: italic;
+    font-size: 90%;
+}
+
+h1, h2, h3, h4 {
+    font-weight: var(--fontWeight-regular);
+    margin: 0;
+}
+
+h1 {
+    font-size: var(--fontSize-xlarge);
+    font-weight: var(--fontWeight-medium);
+    margin-bottom: 0;
+}
+
+header + p,
+h1 + p {
+    font-size: var(--fontSize-medium);
+    line-height: 30px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: var(--fontWeight-medium);
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+h3 + p {
+    margin-top: 10px;
+}
+
+h4 {
+    font-size: 16px;
+    font-weight: var(--fontWeight-bold);
+    margin-bottom: 10px;
+}
+
+h4 + p,
+h4 + ul,
+h4 + ol {
+    margin-top: 0;
+}
+
+h5, .container-overview .subsection-title {
+    font-size: 120%;
+    font-weight: bold;
+    letter-spacing: -0.01em;
+    margin: 8px 0 3px 0;
+}
+
+h6 {
+    font-size: 100%;
+    letter-spacing: -0.01em;
+    margin: 6px 0 3px 0;
+    font-style: italic;
+}
+
+/* Max-width of 65ch which equals 65 characters, known to be a good length for improved readability*/
+p {
+    max-width: 65ch;
+    margin: 1.5em 0;
+}
+
+code, kbd, var, samp {
+    font-family: var(--fontFamily-code);
+    font-size: 0.8em;
+}
+
+:not(pre) > code, kbd, var {
+    background: var(--color-background-code);
+    border-radius: var(--borderRadius-small);
+    padding: 0.1em .5em;
+    color: var(--color-text);
+}
+
+pre {
+    font-family: var(--fontFamily-code);
+    background: var(--color-background-pre);
+    color: var(--color-text);
+    display: block;
+    padding: 20px;
+    border-radius: var(--borderRadius);
+    overflow-x: auto;
+    max-width: 100%;
+    border: 1px solid var(--color-line);
+    margin-top: 5px;
+}
+
+pre code {
+    padding: 0;
+    background: none;
+}
+
+dl {
+    margin: 10px 0;
+}
+
+dl::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+dl dt {
+    clear: left;
+    float: left;
+}
