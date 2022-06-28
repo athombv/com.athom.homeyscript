@@ -1,0 +1,44 @@
+name: Lint
+
+# Optional secrets:
+# - SSH_KEY: if `npm ci` needs to install private npm packages
+
+# GitHub repo configuration:
+# 1. If you have protected branches, go to Branches > edit protected branch > enable 'Require status checks to pass before
+#    merging' and select the 'ESLint' status check.
+
+# Note: make sure to commit package-lock.json, this is needed for `npm ci`.
+
+# Defines the trigger for this action (e.g. [pull_request, push])
+# For more information see: https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#about-workflow-events)
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      # Checks out the current repository.
+      - uses: actions/checkout@v2
+
+      # Configures a Node.js environment.
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      # Set SSH key
+      - uses: webfactory/ssh-agent@v0.4.1
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+        if: env.SSH_KEY != null
+        with:
+          ssh-private-key: ${{ env.SSH_KEY }}
+
+      # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).
+      # Finally run `npm run lint` (make sure you have defined a lint command in package.json e.g. "lint": "eslint .").
+      - run: npm ci
+      - run: npm run lint

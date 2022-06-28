@@ -35,7 +35,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
         await Promise.all(files.map(async filename => {
           if (!filename.endsWith('.js')) return;
 
-          const id = 'example-' + filename.substring(0, filename.length - '.js'.length);
+          const id = `example-${filename.substring(0, filename.length - '.js'.length)}`;
           const filepath = path.join(__dirname, 'examples', filename);
           const code = await fs.readFile(filepath, 'utf8');
 
@@ -92,7 +92,6 @@ module.exports = class HomeyScriptApp extends Homey.App {
         this.homey.settings.set('scripts', this.scripts);
       }
     }
-
 
     // Register Flow Cards
     this.homey.flow.getConditionCard('run')
@@ -322,17 +321,15 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
   async getHomeyAPI() {
     const api = new HomeyAPI({
-        localUrl: this.localURL,
-        baseUrl: this.localURL,
-        token: this.sessionToken,
-        apiVersion: 2,
-        online: true
-      },
-      () => {
-        // called by HomeyAPI on 401 requests
-        api.setToken(this.sessionToken);
-      }
-    );
+      localUrl: this.localURL,
+      baseUrl: this.localURL,
+      token: this.sessionToken,
+      apiVersion: 2,
+      online: true,
+    }, () => {
+      // called by HomeyAPI on 401 requests
+      api.setToken(this.sessionToken);
+    });
 
     return api;
   }
@@ -383,8 +380,6 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
       this.tokens[id].value = value;
       this.homey.settings.set('tokens', this.tokens);
-
-      return;
     }
   }
 
@@ -451,21 +446,21 @@ module.exports = class HomeyScriptApp extends Homey.App {
       Homey: homeyAPI,
 
       // Logging
-      log: log,
+      log,
       console: {
-        log: log,
+        log,
         error: log,
         info: log,
       },
 
       // Shortcuts
-      say: async (text) => await homeyAPI.speechOutput.say({ text }),
-      tag: async (id, value) => await this.setToken({ id, value }),
-      wait: async (delay) => new Promise(resolve => setTimeout(resolve, delay)),
+      say: async text => homeyAPI.speechOutput.say({ text }),
+      tag: async (id, value) => this.setToken({ id, value }),
+      wait: async delay => new Promise(resolve => setTimeout(resolve, delay)),
 
       // Cross-Script Settings
       global: {
-        get: (key) => this.homey.settings.get(`homeyscript-${key}`),
+        get: key => this.homey.settings.get(`homeyscript-${key}`),
         set: (key, value) => this.homey.settings.set(`homeyscript-${key}`, value),
         keys: () => this.homey.settings.getKeys()
           .filter(key => key.startsWith('homeyscript-'))
@@ -488,13 +483,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
       const sandbox = new vm.Script(`Promise.resolve().then(async () => {\n${code}\n});`, {
         filename: `${name}.js`,
         lineOffset: -1,
-        columnOffset: 0
+        columnOffset: 0,
       });
 
       const runPromise = sandbox.runInNewContext(context, {
         displayErrors: true,
         timeout: this.constructor.RUN_TIMEOUT,
-        microtaskMode: 'afterEvaluate' // from Node 14 should properly timeout async script
+        microtaskMode: 'afterEvaluate', // from Node 14 should properly timeout async script
       });
 
       const result = await runPromise;
@@ -509,16 +504,18 @@ module.exports = class HomeyScriptApp extends Homey.App {
       error.stack = err.stack;
       throw error;
     } finally {
-      homeyAPI && homeyAPI.destroy();
+      if (homeyAPI) {
+        homeyAPI.destroy();
+      }
     }
   }
 
   async createScript({ name, code }) {
     const newScript = {
       id: uuid.v4(),
-      name: name,
-      code: code,
-      lastExecuted: null
+      name,
+      code,
+      lastExecuted: null,
     };
 
     this.scripts[newScript.id] = newScript;
@@ -527,7 +524,9 @@ module.exports = class HomeyScriptApp extends Homey.App {
     return newScript;
   }
 
-  async updateScript({ id, name, code, lastExecuted }) {
+  async updateScript({
+    id, name, code, lastExecuted,
+  }) {
     this.scripts[id] = {
       ...this.scripts[id],
     };

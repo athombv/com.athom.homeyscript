@@ -8,7 +8,7 @@ module.exports = {
     for (const script of Object.values(scripts)) {
       response[script.id] = {
         ...script,
-        code: undefined
+        code: undefined,
       };
     }
 
@@ -34,8 +34,8 @@ module.exports = {
         lastExecuted: script.lastExecuted,
         args,
       }).finally(() => {
-        homey.app.updateScript({ id: script.id, lastExecuted: new Date() }).catch(() => {})
-      })
+        homey.app.updateScript({ id: script.id, lastExecuted: new Date() }).catch(() => {});
+      });
 
       return {
         success: true,
@@ -48,7 +48,7 @@ module.exports = {
           message: err.message,
           stack: err.stack,
         },
-      }
+      };
     }
   },
 
@@ -58,7 +58,9 @@ module.exports = {
     return homey.app.createScript({ name, code });
   },
 
-  async updateScript({ homey, params, query, body = {} }) {
+  async updateScript({
+    homey, params, query, body = {},
+  }) {
     const { id } = params;
     const { name, code } = body;
 
@@ -70,4 +72,4 @@ module.exports = {
     return homey.app.deleteScript({ id });
   },
 
-}
+};
