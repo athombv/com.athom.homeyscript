@@ -4,16 +4,16 @@
     "nl": "Voer code uit"
   },
   "titleFormatted": {
-    "en": "Run [[code]] with [[argument]] and return Text-Tag",
-    "nl": "Voer [[code]] uit met [[argument]] en return Tekst-Tag"
+    "en": "Run [[code]] with [[argument]] and return Text-tag",
+    "nl": "Voer [[code]] uit met [[argument]] en return Tekst-tag"
   },
   "tokens": [
     {
       "name": "string",
       "type": "string",
       "title": {
-        "en": "Result Tag",
-        "nl": "Resultaat Tag"
+        "en": "Result",
+        "nl": "Resultaat"
       }
     }
   ],

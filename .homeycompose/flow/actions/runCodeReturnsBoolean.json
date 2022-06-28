@@ -4,16 +4,16 @@
     "nl": "Voer code uit"
   },
   "titleFormatted": {
-    "en": "Run [[code]] and return Yes/No-Tag",
-    "nl": "Voer [[code]] uit en return Ja/Nee-Tag"
+    "en": "Run [[code]] and return Yes/No-tag",
+    "nl": "Voer [[code]] uit en return Ja/Nee-tag"
   },
   "tokens": [
     {
       "name": "boolean",
       "type": "boolean",
       "title": {
-        "en": "Result Tag",
-        "nl": "Resultaat Tag"
+        "en": "Result",
+        "nl": "Resultaat"
       }
     }
   ],
