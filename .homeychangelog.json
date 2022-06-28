@@ -34,5 +34,8 @@
   },
   "3.3.2": {
     "en": "Add back Buffer to global scope"
+  },
+  "3.4.0": {
+    "en": "Add cards for Advanced Flow"
   }
 }
