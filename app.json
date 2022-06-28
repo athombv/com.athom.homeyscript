@@ -226,16 +226,16 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]] and return Yes/No-Tag",
-          "nl": "Voer [[code]] uit en return Ja/Nee-Tag"
+          "en": "Run [[code]] and return Yes/No-tag",
+          "nl": "Voer [[code]] uit en return Ja/Nee-tag"
         },
         "tokens": [
           {
             "name": "boolean",
             "type": "boolean",
             "title": {
-              "en": "Result Tag",
-              "nl": "Resultaat Tag"
+              "en": "Result",
+              "nl": "Resultaat"
             }
           }
         ],
@@ -259,16 +259,16 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]] and return Number-Tag",
-          "nl": "Voer [[code]] uit en return Nummer-Tag"
+          "en": "Run [[code]] and return Number-tag",
+          "nl": "Voer [[code]] uit en return Nummer-tag"
         },
         "tokens": [
           {
             "name": "number",
             "type": "number",
             "title": {
-              "en": "Result Tag",
-              "nl": "Resultaat Tag"
+              "en": "Result",
+              "nl": "Resultaat"
             }
           }
         ],
@@ -292,16 +292,16 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]] and return Text-Tag",
-          "nl": "Voer [[code]] uit en return Tekst-Tag"
+          "en": "Run [[code]] and return Text-tag",
+          "nl": "Voer [[code]] uit en return Tekst-tag"
         },
         "tokens": [
           {
             "name": "string",
             "type": "string",
             "title": {
-              "en": "Result Tag",
-              "nl": "Resultaat Tag"
+              "en": "Result",
+              "nl": "Resultaat"
             }
           }
         ],
@@ -363,16 +363,16 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]] with [[argument]] and return Yes/No-Tag",
-          "nl": "Voer [[code]] uit met [[argument]] en return Ja/Nee-Tag"
+          "en": "Run [[code]] with [[argument]] and return Yes/No-tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Ja/Nee-tag"
         },
         "tokens": [
           {
             "name": "boolean",
             "type": "boolean",
             "title": {
-              "en": "Result Tag",
-              "nl": "Resultaat Tag"
+              "en": "Result",
+              "nl": "Resultaat"
             }
           }
         ],
@@ -410,16 +410,16 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]] with [[argument]] and return Number-Tag",
-          "nl": "Voer [[code]] uit met [[argument]] en return Nummer-Tag"
+          "en": "Run [[code]] with [[argument]] and return Number-tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Nummer-tag"
         },
         "tokens": [
           {
             "name": "number",
             "type": "number",
             "title": {
-              "en": "Result Tag",
-              "nl": "Resultaat Tag"
+              "en": "Result",
+              "nl": "Resultaat"
             }
           }
         ],
@@ -457,16 +457,16 @@
           "nl": "Voer code uit"
         },
         "titleFormatted": {
-          "en": "Run [[code]] with [[argument]] and return Text-Tag",
-          "nl": "Voer [[code]] uit met [[argument]] en return Tekst-Tag"
+          "en": "Run [[code]] with [[argument]] and return Text-tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Tekst-tag"
         },
         "tokens": [
           {
             "name": "string",
             "type": "string",
             "title": {
-              "en": "Result Tag",
-              "nl": "Resultaat Tag"
+              "en": "Result",
+              "nl": "Resultaat"
             }
           }
         ],
