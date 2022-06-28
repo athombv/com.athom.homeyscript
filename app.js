@@ -107,7 +107,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
         }).finally(() => {
           this.updateScript({
             id: scriptSource.id,
-            lastExecuted: new Date()
+            lastExecuted: new Date(),
           }).catch(this.error);
         });
       })
@@ -118,7 +118,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
         return Boolean(await this.runScript({
           id: '__temporary__',
           name: 'Test',
-          code: code,
+          code,
           args: [],
           realtime: state.realtime != null ? state.realtime : false,
         }));
@@ -129,7 +129,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
         return Boolean(await this.runScript({
           id: '__temporary__',
           name: 'Test',
-          code: code,
+          code,
           args: [argument],
           realtime: state.realtime != null ? state.realtime : false,
         }));
@@ -149,7 +149,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
         }).finally(() => {
           this.updateScript({
             id: scriptSource.id,
-            lastExecuted: new Date()
+            lastExecuted: new Date(),
           }).catch(this.error);
         });
       })
@@ -168,7 +168,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
         }).finally(() => {
           this.updateScript({
             id: scriptSource.id,
-            lastExecuted: new Date()
+            lastExecuted: new Date(),
           }).catch(this.error);
         });
       })
@@ -188,7 +188,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
         }).finally(() => {
           this.updateScript({
             id: scriptSource.id,
-            lastExecuted: new Date()
+            lastExecuted: new Date(),
           }).catch(this.error);
         });
       })
@@ -199,7 +199,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
         await this.runScript({
           id: '__temporary__',
           name: 'Test',
-          code: code,
+          code,
           args: [],
           realtime: state.realtime != null ? state.realtime : false,
         });
@@ -210,13 +210,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
         const result = await this.runScript({
           id: '__temporary__',
           name: 'Test',
-          code: code,
+          code,
           args: [],
           realtime: state.realtime != null ? state.realtime : false,
         });
 
         return {
-          string: result
+          string: result,
         };
       });
 
@@ -225,13 +225,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
         const result = await this.runScript({
           id: '__temporary__',
           name: 'Test',
-          code: code,
+          code,
           args: [],
           realtime: state.realtime != null ? state.realtime : false,
         });
 
         return {
-          number: result
+          number: result,
         };
       });
 
@@ -240,13 +240,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
         const result = await this.runScript({
           id: '__temporary__',
           name: 'Test',
-          code: code,
+          code,
           args: [],
           realtime: state.realtime != null ? state.realtime : false,
         });
 
         return {
-          boolean: result
+          boolean: result,
         };
       });
 
@@ -255,7 +255,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
         await this.runScript({
           id: '__temporary__',
           name: 'Test',
-          code: code,
+          code,
           args: [argument],
           realtime: state.realtime != null ? state.realtime : false,
         });
@@ -266,13 +266,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
         const result = await this.runScript({
           id: '__temporary__',
           name: 'Test',
-          code: code,
+          code,
           args: [argument],
           realtime: state.realtime != null ? state.realtime : false,
         });
 
         return {
-          string: result
+          string: result,
         };
       });
 
@@ -281,13 +281,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
         const result = await this.runScript({
           id: '__temporary__',
           name: 'Test',
-          code: code,
+          code,
           args: [argument],
           realtime: state.realtime != null ? state.realtime : false,
         });
 
         return {
-          number: result
+          number: result,
         };
       });
 
@@ -296,13 +296,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
         const result = await this.runScript({
           id: '__temporary__',
           name: 'Test',
-          code: code,
+          code,
           args: [argument],
           realtime: state.realtime != null ? state.realtime : false,
         });
 
         return {
-          boolean: result
+          boolean: result,
         };
       });
 
