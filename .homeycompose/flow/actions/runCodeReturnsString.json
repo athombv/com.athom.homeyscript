@@ -1,0 +1,32 @@
+{
+  "title": {
+    "en": "Run code",
+    "nl": "Voer code uit"
+  },
+  "titleFormatted": {
+    "en": "Run [[code]] and return Text-tag",
+    "nl": "Voer [[code]] uit en return Tekst-tag"
+  },
+  "tokens": [
+    {
+      "name": "string",
+      "type": "string",
+      "title": {
+        "en": "Result",
+        "nl": "Resultaat"
+      }
+    }
+  ],
+  "args": [
+    {
+      "name": "code",
+      "type": "code",
+      "language": "homeyscript",
+      "title": {
+        "en": "Code",
+        "nl": "Code"
+      },
+      "value": "// My Code\n\nreturn 'Hello World!';"
+    }
+  ]
+}
