@@ -37,5 +37,8 @@
   },
   "3.4.0": {
     "en": "Add cards for Advanced Flow"
+  },
+  "3.4.1": {
+    "en": "Upgrade Homey API"
   }
 }
