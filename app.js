@@ -9,7 +9,8 @@ const https = require('https');
 const uuid = require('uuid');
 
 const Homey = require('homey');
-const { HomeyAPI } = require('athom-api');
+const { HomeyAPI: HomeyAPILegacy } = require('athom-api');
+const { HomeyAPIV2, HomeyAPIV3Local } = require('homey-api');
 const fetch = require('node-fetch');
 const _ = require('lodash');
 
@@ -24,6 +25,22 @@ module.exports = class HomeyScriptApp extends Homey.App {
     this.localURL = await this.homey.api.getLocalUrl();
     this.sessionToken = await this.homey.api.getOwnerApiToken();
 
+    this.apiProps = await (async () => {
+      const props = {
+        token: this.sessionToken,
+        baseUrl: this.localURL,
+        strategy: [],
+        properties: {
+          id: await this.homey.cloud.getHomeyId(),
+          softwareVersion: this.homey.version,
+        },
+      };
+
+      return props;
+    })();
+
+    const exampleFolder = this.homey.platformVersion >= 2 ? 'examples' : 'examples-v1';
+
     if (!this.scripts) {
       this.log('No scripts found.');
 
@@ -31,17 +48,18 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
       // Copy example scripts
       try {
-        const files = await fs.readdir(path.join(__dirname, 'examples'));
+        const files = await fs.readdir(path.join(__dirname, exampleFolder));
         await Promise.all(files.map(async filename => {
           if (!filename.endsWith('.js')) return;
 
           const id = `example-${filename.substring(0, filename.length - '.js'.length)}`;
-          const filepath = path.join(__dirname, 'examples', filename);
+          const filepath = path.join(__dirname, exampleFolder, filename);
           const code = await fs.readFile(filepath, 'utf8');
 
           scripts[id] = {
             code,
             lastExecuted: null,
+            version: 2,
           };
 
           this.log(`Found Example: ${id}`);
@@ -86,6 +104,11 @@ module.exports = class HomeyScriptApp extends Homey.App {
           script.name = scriptId;
           script.id = scriptId;
         }
+
+        if (typeof script.version !== 'number') {
+          anyScriptChanged = true;
+          script.version = 1;
+        }
       }
 
       if (anyScriptChanged) {
@@ -103,6 +126,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
           name: scriptSource.name,
           code: scriptSource.code,
           lastExecuted: scriptSource.lastExecuted,
+          version: scriptSource.version,
           realtime: false,
         }).finally(() => {
           this.updateScript({
@@ -144,6 +168,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
           name: scriptSource.name,
           code: scriptSource.code,
           lastExecuted: scriptSource.lastExecuted,
+          version: scriptSource.version,
           args: [argument],
           realtime: false,
         }).finally(() => {
@@ -164,6 +189,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
           name: scriptSource.name,
           code: scriptSource.code,
           lastExecuted: scriptSource.lastExecuted,
+          version: scriptSource.version,
           realtime: false,
         }).finally(() => {
           this.updateScript({
@@ -183,6 +209,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
           name: scriptSource.name,
           code: scriptSource.code,
           lastExecuted: scriptSource.lastExecuted,
+          version: scriptSource.version,
           args: [argument],
           realtime: false,
         }).finally(() => {
@@ -319,8 +346,24 @@ module.exports = class HomeyScriptApp extends Homey.App {
     })).catch(this.error);
   }
 
-  async getHomeyAPI() {
-    const api = new HomeyAPI({
+  createAppApi() {
+    if (this.homey.platform === 'local' && this.homey.platformVersion === 1) {
+      return new HomeyAPIV2(this.apiProps);
+    }
+
+    if (this.homey.platform === 'local' && this.homey.platformVersion === 2) {
+      return new HomeyAPIV3Local(this.apiProps);
+    }
+
+    throw new Error('Not Supported');
+  }
+
+  getHomeyAPI({ version }) {
+    if (version >= 2) {
+      return this.createAppApi();
+    }
+
+    const api = new HomeyAPILegacy({
       localUrl: this.localURL,
       baseUrl: this.localURL,
       token: this.sessionToken,
@@ -406,11 +449,14 @@ module.exports = class HomeyScriptApp extends Homey.App {
     code,
     lastExecuted,
     args = [],
+    version,
     realtime = true,
   }) {
     if (lastExecuted == null) lastExecuted = new Date();
 
-    const homeyAPI = await this.getHomeyAPI();
+    const homeyAPI = this.getHomeyAPI({ version });
+
+    console.log(homeyAPI);
 
     // Create a Logger
     const log = (...props) => {
@@ -515,6 +561,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
       id: uuid.v4(),
       name,
       code,
+      version: 2,
       lastExecuted: null,
     };
 
@@ -525,7 +572,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
   }
 
   async updateScript({
-    id, name, code, lastExecuted,
+    id, name, code, lastExecuted, version,
   }) {
     this.scripts[id] = {
       ...this.scripts[id],
@@ -541,6 +588,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     if (lastExecuted != null) {
       this.scripts[id].lastExecuted = lastExecuted;
+    }
+
+    if (version != null) {
+      this.scripts[id].version = version;
     }
 
     this.homey.settings.set('scripts', this.scripts);

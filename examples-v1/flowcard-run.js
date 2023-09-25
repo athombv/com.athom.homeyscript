@@ -5,7 +5,8 @@
 
 // Run 'Day Equals' Flow 'And' Card
 const { result: isWeekend } = await Homey.flow.runFlowCardCondition({
-  id: 'homey:manager:cron:day_equals',
+  uri: 'homey:manager:cron',
+  id: 'day_equals',
   args: {
     day: 'weekend',
   },
@@ -17,7 +18,8 @@ log('Is Weekend:', isWeekend);
 // This will pulse Green (#00FF00) when it's a weekend
 // or pulse Red (#FF0000) when it's a weekday
 await Homey.flow.runFlowCardAction({
-  id: 'homey:manager:ledring:animate_pulse',
+  uri: 'homey:manager:ledring',
+  id: 'show_animation',
   args: {
     animation: 'pulse',
     color: isWeekend
