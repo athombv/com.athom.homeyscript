@@ -1,23 +1,13 @@
 {
-  "deprecated": true,
   "title": {
     "en": "Run code",
     "nl": "Voer code uit"
   },
   "titleFormatted": {
-    "en": "Run [[code]] with [[argument]] and return Yes/No-tag",
-    "nl": "Voer [[code]] uit met [[argument]] en return Ja/Nee-tag"
+    "en": "Run [[code]] with [[argument]]",
+    "nl": "Voer [[code]] uit met [[argument]]"
   },
-  "tokens": [
-    {
-      "name": "boolean",
-      "type": "boolean",
-      "title": {
-        "en": "Result",
-        "nl": "Resultaat"
-      }
-    }
-  ],
+  "advanced": true,
   "args": [
     {
       "name": "code",

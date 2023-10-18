@@ -1,5 +1,4 @@
 {
-  "deprecated": true,
   "title": {
     "en": "Run code",
     "nl": "Voer code uit"
@@ -18,7 +17,7 @@
         "en": "Code",
         "nl": "Code"
       },
-      "value": "// My Code"
+      "value": "// My Code\n\nreturn true;"
     }
   ]
 }

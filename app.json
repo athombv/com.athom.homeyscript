@@ -79,6 +79,7 @@
         "id": "run"
       },
       {
+        "deprecated": true,
         "title": {
           "en": "Run code",
           "nl": "Voer code uit"
@@ -101,6 +102,69 @@
           }
         ],
         "id": "runCode"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nreturn true;"
+          }
+        ],
+        "id": "runCode_v2"
+      },
+      {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]]",
+          "nl": "Voer [[code]] uit met [[argument]]"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArg"
       },
       {
         "title": {
@@ -138,7 +202,7 @@
             "value": "MyArg"
           }
         ],
-        "id": "runCodeWithArg"
+        "id": "runCodeWithArg_v2"
       },
       {
         "title": {
@@ -197,6 +261,7 @@
         "id": "run"
       },
       {
+        "deprecated": true,
         "title": {
           "en": "Run code",
           "nl": "Voer code uit"
@@ -221,6 +286,31 @@
         "id": "runCode"
       },
       {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code"
+          }
+        ],
+        "id": "runCode_v2"
+      },
+      {
+        "deprecated": true,
         "title": {
           "en": "Run code",
           "nl": "Voer code uit"
@@ -254,6 +344,7 @@
         "id": "runCodeReturnsBoolean"
       },
       {
+        "deprecated": true,
         "title": {
           "en": "Run code",
           "nl": "Voer code uit"
@@ -287,6 +378,7 @@
         "id": "runCodeReturnsNumber"
       },
       {
+        "deprecated": true,
         "title": {
           "en": "Run code",
           "nl": "Voer code uit"
@@ -320,6 +412,7 @@
         "id": "runCodeReturnsString"
       },
       {
+        "deprecated": true,
         "title": {
           "en": "Run code",
           "nl": "Voer code uit"
@@ -358,6 +451,7 @@
         "id": "runCodeWithArg"
       },
       {
+        "deprecated": true,
         "title": {
           "en": "Run code",
           "nl": "Voer code uit"
@@ -405,6 +499,7 @@
         "id": "runCodeWithArgReturnsBoolean"
       },
       {
+        "deprecated": true,
         "title": {
           "en": "Run code",
           "nl": "Voer code uit"
@@ -452,6 +547,7 @@
         "id": "runCodeWithArgReturnsNumber"
       },
       {
+        "deprecated": true,
         "title": {
           "en": "Run code",
           "nl": "Voer code uit"

@@ -14,6 +14,13 @@ const { HomeyAPIV2, HomeyAPIV3Local } = require('homey-api');
 const fetch = require('node-fetch');
 const _ = require('lodash');
 
+// TODO
+// update all examples to use the new Homey API
+// create a changes list
+// deprecate all code cards
+// add script version
+// add script version to front end
+
 module.exports = class HomeyScriptApp extends Homey.App {
 
   static RUN_TIMEOUT = 1000 * 30; // 30s
@@ -22,13 +29,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
     // Init Scripts
     this.scripts = this.homey.settings.get('scripts');
 
-    this.localURL = await this.homey.api.getLocalUrl();
+    this.localUrl = await this.homey.api.getLocalUrl();
     this.sessionToken = await this.homey.api.getOwnerApiToken();
 
     this.apiProps = await (async () => {
       const props = {
         token: this.sessionToken,
-        baseUrl: this.localURL,
+        baseUrl: this.localUrl,
         strategy: [],
         properties: {
           id: await this.homey.cloud.getHomeyId(),
@@ -145,6 +152,19 @@ module.exports = class HomeyScriptApp extends Homey.App {
           code,
           args: [],
           realtime: state.realtime != null ? state.realtime : false,
+          version: 1,
+        }));
+      });
+
+    this.homey.flow.getConditionCard('runCode_v2')
+      .registerRunListener(async ({ code }, state) => {
+        return Boolean(await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code,
+          args: [],
+          realtime: state.realtime != null ? state.realtime : false,
+          version: 2,
         }));
       });
 
@@ -156,6 +176,19 @@ module.exports = class HomeyScriptApp extends Homey.App {
           code,
           args: [argument],
           realtime: state.realtime != null ? state.realtime : false,
+          version: 1,
+        }));
+      });
+
+    this.homey.flow.getConditionCard('runCodeWithArg_v2')
+      .registerRunListener(async ({ code, argument }, state) => {
+        return Boolean(await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code,
+          args: [argument],
+          realtime: state.realtime != null ? state.realtime : false,
+          version: 2,
         }));
       });
 
@@ -229,6 +262,19 @@ module.exports = class HomeyScriptApp extends Homey.App {
           code,
           args: [],
           realtime: state.realtime != null ? state.realtime : false,
+          version: 1,
+        });
+      });
+
+    this.homey.flow.getActionCard('runCode_v2')
+      .registerRunListener(async ({ code }, state) => {
+        await this.runScript({
+          id: '__temporary__',
+          name: 'Test',
+          code,
+          args: [],
+          realtime: state.realtime != null ? state.realtime : false,
+          version: 2,
         });
       });
 
@@ -364,8 +410,8 @@ module.exports = class HomeyScriptApp extends Homey.App {
     }
 
     const api = new HomeyAPILegacy({
-      localUrl: this.localURL,
-      baseUrl: this.localURL,
+      localUrl: this.localUrl,
+      baseUrl: this.localUrl,
       token: this.sessionToken,
       apiVersion: 2,
       online: true,
