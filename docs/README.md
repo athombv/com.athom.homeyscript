@@ -14,4 +14,4 @@ HomeyScript is a JavaScript-based scripting language that interacts with the Hom
 
 ## 📚 Documentation
 
-Visit the [HomeyScript Reference](./global) to learn what you can do in a HomeyScript.
+Visit the [HomeyScript Reference](https://athombv.github.io/com.athom.homeyscript/global.html) to learn what you can do in a HomeyScript.
