@@ -39,12 +39,14 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.5",
     "concurrently": "^7.2.2",
-    "eslint": "^8.18.0",
-    "eslint-config-athom": "^3.0.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
     "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.5.1",
     "jsdoc": "^3.6.10",
     "jsdoc-ts-utils": "^3.0.0",
+    "prettier": "^3.2.5",
     "serve": "^13.0.2",
     "watch": "^1.0.2"
   }

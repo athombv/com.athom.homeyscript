@@ -1,0 +1,46 @@
+{
+  "title": {
+    "en": "Run code",
+    "nl": "Voer code uit"
+  },
+  "titleFormatted": {
+    "en": "Run [[code]] with [[argument]] and return Number-tag",
+    "nl": "Voer [[code]] uit met [[argument]] en return Nummer-tag"
+  },
+  "tokens": [
+    {
+      "name": "number",
+      "type": "number",
+      "title": {
+        "en": "Result",
+        "nl": "Resultaat"
+      }
+    }
+  ],
+  "args": [
+    {
+      "name": "code",
+      "type": "code",
+      "language": "homeyscript",
+      "title": {
+        "en": "Code",
+        "nl": "Code"
+      },
+      "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 1;"
+    },
+    {
+      "name": "argument",
+      "type": "text",
+      "required": false,
+      "title": {
+        "en": "Argument",
+        "nl": "Argument"
+      },
+      "placeholder": {
+        "en": "Argument",
+        "nl": "Argument"
+      },
+      "value": "MyArg"
+    }
+  ]
+}
