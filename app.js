@@ -28,7 +28,7 @@ const { RunCodeReturnsBooleanAction } = require('./lib/flow/actions/RunCodeRetur
 const { RunCodeWithArgAction } = require('./lib/flow/actions/RunCodeWithArgAction');
 const { RunCodeWithArgReturnsStringAction } = require('./lib/flow/actions/RunCodeWithArgReturnsStringAction');
 const { RunCodeWithArgReturnsNumberAction } = require('./lib/flow/actions/RunCodeWithArgReturnsNumberAction');
-const { RunCodeWithArgReturnsBoolean } = require('./lib/flow/actions/RunCodeWithArgReturnsBoolean');
+const { RunCodeWithArgReturnsBooleanAction } = require('./lib/flow/actions/RunCodeWithArgReturnsBooleanAction');
 
 module.exports = class HomeyScriptApp extends Homey.App {
 
@@ -154,7 +154,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
     this.runCodeWithArgAction = new RunCodeWithArgAction({ homey: this.homey });
     this.runCodeWithArgReturnsStringAction = new RunCodeWithArgReturnsStringAction({ homey: this.homey });
     this.runCodeWithArgReturnsNumberAction = new RunCodeWithArgReturnsNumberAction({ homey: this.homey });
-    this.runCodeWithArgReturnsBoolean = new RunCodeWithArgReturnsBoolean({ homey: this.homey });
+    this.runCodeWithArgReturnsBooleanAction = new RunCodeWithArgReturnsBooleanAction({ homey: this.homey });
 
     // Register Flow Tokens
     this.tokens = this.homey.settings.get('tokens') || {};
