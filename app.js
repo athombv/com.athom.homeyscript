@@ -30,10 +30,6 @@ const { RunCodeWithArgReturnsStringAction } = require('./lib/flow/actions/RunCod
 const { RunCodeWithArgReturnsNumberAction } = require('./lib/flow/actions/RunCodeWithArgReturnsNumberAction');
 const { RunCodeWithArgReturnsBoolean } = require('./lib/flow/actions/RunCodeWithArgReturnsBoolean');
 
-// TODO
-// update all examples to use the new Homey API
-// create a changes list
-
 module.exports = class HomeyScriptApp extends Homey.App {
 
   static RUN_TIMEOUT = 1000 * 30; // 30s
@@ -41,7 +37,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
   async onInit() {
     // Remove since alot of them will be caused by user errors.
     process.removeAllListeners('unhandledRejection');
-    
+
     process.on('unhandledRejection', (reason, promise) => {
       this.error('Unhandled Rejection at:', promise, 'reason:', reason);
     });

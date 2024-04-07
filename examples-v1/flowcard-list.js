@@ -11,10 +11,9 @@ log('===========');
 log('And-cards:');
 log('===========');
 const conditionCards = await Homey.flow.getFlowCardConditions();
-for( const card of conditionCards ) {
+for( const card of Object.values(conditionCards) ) {
   log(card.titleFormatted || card.title)
   log(JSON.stringify({
-    uri: card.uri,
     id: card.id,
     args: card.args,
     droptoken: card.droptoken,
@@ -27,10 +26,9 @@ log('===========');
 log('Then-cards:');
 log('===========');
 const actionCards = await Homey.flow.getFlowCardActions();
-for( const card of actionCards ) {
+for( const card of Object.values(actionCards) ) {
   log(card.titleFormatted || card.title)
   log(JSON.stringify({
-    uri: card.uri,
     id: card.id,
     args: card.args,
     droptoken: card.droptoken,
