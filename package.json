@@ -32,10 +32,10 @@
   },
   "homepage": "https://github.com/athombv/com.athom.homeyscript#readme",
   "dependencies": {
-    "athom-api": "^3.7.7",
+    "athom-api": "^3.9.2",
     "homey-api": "^3.4.30",
     "lodash": "^4.17.21",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^2.7.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
