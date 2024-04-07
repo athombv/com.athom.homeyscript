@@ -39,6 +39,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
   static RUN_TIMEOUT = 1000 * 30; // 30s
 
   async onInit() {
+    // Remove since alot of them will be caused by user errors.
+    process.removeAllListeners('unhandledRejection');
+    
+    process.on('unhandledRejection', (reason, promise) => {
+      this.error('Unhandled Rejection at:', promise, 'reason:', reason);
+    });
+
     // Init Scripts
     this.scripts = this.homey.settings.get('scripts');
 
@@ -180,7 +187,8 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
   getHomeyAPI({ version }) {
     if (version >= 2) {
-      return this.createAppApi();
+      const api = this.createAppApi();
+      return api;
     }
 
     const api = new HomeyAPILegacy({
@@ -199,6 +207,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
   async onFlowGetScriptAutocomplete(query) {
     const scripts = await this.getScripts();
+
     return Object.values(scripts)
       .filter(script => script.name.toLowerCase().includes(query.toLowerCase()))
       .map(script => ({
