@@ -32,7 +32,7 @@ module.exports = {
         name: script.name,
         code: code ?? script.code,
         lastExecuted: script.lastExecuted,
-        version: 2,
+        version: script.version,
         args,
       }).finally(() => {
         homey.app.updateScript({ id: script.id, lastExecuted: new Date() }).catch(() => {});
