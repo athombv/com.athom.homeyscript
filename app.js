@@ -18,6 +18,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
   static RUN_TIMEOUT = 1000 * 30; // 30s
 
   async onInit() {
+    // Remove since alot of them will be caused by user errors.
+    process.removeAllListeners('unhandledRejection');
+
+    process.on('unhandledRejection', (reason, promise) => {
+      this.error('Unhandled Rejection:', reason);
+    });
+
     // Init Scripts
     this.scripts = this.homey.settings.get('scripts');
 
