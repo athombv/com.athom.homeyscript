@@ -40,5 +40,8 @@
   },
   "3.4.1": {
     "en": "Upgrade Homey API"
+  },
+  "3.4.2": {
+    "en": "Improve error handling"
   }
 }

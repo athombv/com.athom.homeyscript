@@ -1,7 +1,7 @@
 {
   "id": "com.athom.homeyscript",
   "sdk": 3,
-  "version": "3.4.1",
+  "version": "3.4.2",
   "compatibility": ">=5.0.0",
   "name": {
     "en": "HomeyScript"
