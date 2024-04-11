@@ -15,7 +15,5 @@ module.exports = {
       },
     },
   ],
-  ignorePatterns: [
-    "/examples/**"
-  ]
+  ignorePatterns: ['/examples/**', '/examples-v1/**', 'build'],
 };
