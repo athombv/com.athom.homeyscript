@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "start": "nodemon --watch . --exec \"homey app run\"",
-    "serve": "concurrently \"serve build/\" \"npm run jsdoc:watch\"",
+    "serve": "concurrently \"serve -l 5000 build/\" \"npm run jsdoc:watch\"",
     "build": "npm ci; npm run jsdoc:clean; npm run jsdoc;",
     "jsdoc": "jsdoc --configure ./docs/jsdoc.json;",
     "jsdoc:clean": "rm -rf ./build",
@@ -47,7 +47,7 @@
     "jsdoc": "^3.6.10",
     "jsdoc-ts-utils": "^3.0.0",
     "prettier": "^3.2.5",
-    "serve": "^13.0.2",
+    "serve": "^14.2.1",
     "watch": "^1.0.2"
   }
 }
