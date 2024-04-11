@@ -39,7 +39,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
     process.removeAllListeners('unhandledRejection');
 
     process.on('unhandledRejection', (reason, promise) => {
-      this.error('Unhandled Rejection at:', promise, 'reason:', reason);
+      this.error('Unhandled Rejection:', reason);
     });
 
     // Init Scripts
