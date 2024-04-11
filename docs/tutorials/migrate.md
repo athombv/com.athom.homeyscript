@@ -2,13 +2,13 @@ To create a unified API for all our products we decided to introduce [homey-api]
 
 **Editor Scripts** - [https://my.homey.app/scripts/](https://my.homey.app/scripts/)
 
-All scripts that use the deprecated API will still work but will have an yellow indicator that tells you that it is using the deprecated API version.
+All scripts that use the deprecated API will still work but will have a yellow indicator that tells you that it is using the deprecated API version. If your scripts are not using the global Homey API object there is no need to change the code.
 
 To use the new API you have to create a new script and copy over the previous code and change it according to the steps below.
 
 **Advanced FlowCards**
 
-All Advanced FlowCards that used the inline code editor have been deprecated. To use the new API the same Advanced FlowCard must be added again and the current code can be copied over and changed according the the steps below.
+All Advanced FlowCards that used the inline code editor have been deprecated. To use the new API the same Advanced FlowCard must be added again and the current code can be copied over and changed according the the steps below. The deprecated cards will still work and keep working so if the global Homey API object is not used there is no need to change the code.
 
 To convert scripts to the new API, you can use the following steps:
 
