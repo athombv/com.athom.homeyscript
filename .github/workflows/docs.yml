@@ -13,20 +13,22 @@ jobs:
     name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12'
+      # Setup
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: 'https://npm.pkg.github.com'
 
-    # Build
-    - name: Build
-      run: npm run build
+      # Build
+      - name: Build
+        run: npm run build
 
-    # Deploy
-    - name: Deploy To GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3.8.0
-      with:
-        personal_token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
-        publish_dir: ./build
+      # Deploy
+      - name: Deploy To GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3.8.0
+        with:
+          personal_token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
+          publish_dir: ./build

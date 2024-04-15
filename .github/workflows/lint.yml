@@ -1,7 +1,10 @@
 name: Lint
 
-# Optional secrets:
-# - SSH_KEY: if `npm ci` needs to install private npm packages
+# Version: 2.0.1
+# Modified: Yes
+#
+# Secrets:
+# - HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN
 
 # GitHub repo configuration:
 # 1. If you have protected branches, go to Branches > edit protected branch > enable 'Require status checks to pass before
@@ -12,33 +15,31 @@ name: Lint
 # Defines the trigger for this action (e.g. [pull_request, push])
 # For more information see: https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#about-workflow-events)
 on:
+  workflow_dispatch:
+  pull_request:
   push:
     branches:
       - master
-  pull_request:
+      - develop
 
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      # Checks out the current repository.
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      # Configures a Node.js environment.
-      - uses: actions/setup-node@v1
+      # Setup
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '12'
+          node-version-file: '.nvmrc'
+          registry-url: 'https://npm.pkg.github.com'
 
-      # Set SSH key
-      - uses: webfactory/ssh-agent@v0.4.1
+      - name: Install modules
+        run: npm clean-install --audit=false
         env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-        if: env.SSH_KEY != null
-        with:
-          ssh-private-key: ${{ env.SSH_KEY }}
+          GITHUB_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
 
-      # Run `npm ci` to re-create your local environment (make sure to commit your package-lock.json!).
-      # Finally run `npm run lint` (make sure you have defined a lint command in package.json e.g. "lint": "eslint .").
-      - run: npm ci
-      - run: npm run lint
+      - name: Lint
+        run: npm run lint
