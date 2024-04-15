@@ -43,5 +43,8 @@
   },
   "3.4.2": {
     "en": "Improve error handling"
+  },
+  "3.5.0": {
+    "en": "New scripts now use the new Homey API"
   }
 }
