@@ -29,6 +29,11 @@ jobs:
           node-version-file: '.nvmrc'
           registry-url: 'https://npm.pkg.github.com'
 
+      - name: Install modules
+        run: npm clean-install --audit=false
+        env:
+          GITHUB_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
+
       # Build
       - name: Build
         run: npm run build

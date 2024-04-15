@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "start": "nodemon --watch . --exec \"homey app run\"",
     "serve": "concurrently \"serve -l 5000 build/\" \"npm run jsdoc:watch\"",
-    "build": "npm ci; npm run jsdoc:clean; npm run jsdoc;",
+    "build": "npm run jsdoc:clean; npm run jsdoc;",
     "jsdoc": "jsdoc --configure ./docs/jsdoc.json;",
     "jsdoc:clean": "rm -rf ./build",
     "jsdoc:watch": "watch \"npm run jsdoc:clean && npm run jsdoc\" ./docs docs"
