@@ -2,12 +2,12 @@
   "name": "com.athom.homeyscript",
   "version": "1.0.0",
   "description": "",
-  "main": "api.js",
+  "main": "app.js",
   "scripts": {
     "lint": "eslint .",
     "start": "nodemon --watch . --exec \"homey app run\"",
-    "serve": "concurrently \"serve build/\" \"npm run jsdoc:watch\"",
-    "build": "npm ci; npm run jsdoc:clean; npm run jsdoc;",
+    "serve": "concurrently \"serve -l 5000 build/\" \"npm run jsdoc:watch\"",
+    "build": "npm run jsdoc:clean; npm run jsdoc;",
     "jsdoc": "jsdoc --configure ./docs/jsdoc.json;",
     "jsdoc:clean": "rm -rf ./build",
     "jsdoc:watch": "watch \"npm run jsdoc:clean && npm run jsdoc\" ./docs docs"
@@ -19,7 +19,7 @@
     ]
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "repository": {
     "type": "git",
@@ -32,19 +32,22 @@
   },
   "homepage": "https://github.com/athombv/com.athom.homeyscript#readme",
   "dependencies": {
-    "athom-api": "^3.7.7",
+    "athom-api": "^3.9.2",
+    "homey-api": "^3.4.31",
     "lodash": "^4.17.21",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^2.7.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "concurrently": "^7.2.2",
-    "eslint": "^8.18.0",
-    "eslint-config-athom": "^3.0.1",
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.5",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
     "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.5.2",
-    "jsdoc": "^3.6.10",
-    "jsdoc-ts-utils": "^3.0.0",
-    "serve": "^13.0.2",
+    "jsdoc": "^3.6.11",
+    "jsdoc-ts-utils": "^5.0.0",
+    "prettier": "^3.2.5",
+    "serve": "^14.2.1",
     "watch": "^1.0.2"
   }
 }

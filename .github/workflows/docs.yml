@@ -13,20 +13,34 @@ jobs:
     name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12'
+      - uses: webfactory/ssh-agent@v0.9.0
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+        if: env.SSH_KEY != null
+        with:
+          ssh-private-key: ${{ env.SSH_KEY }}
 
-    # Build
-    - name: Build
-      run: npm run build
+      # Setup
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: 'https://npm.pkg.github.com'
 
-    # Deploy
-    - name: Deploy To GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3.8.0
-      with:
-        personal_token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
-        publish_dir: ./build
+      - name: Install modules
+        run: npm clean-install --audit=false
+        env:
+          GITHUB_TOKEN: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
+
+      # Build
+      - name: Build
+        run: npm run build
+
+      # Deploy
+      - name: Deploy To GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3.8.0
+        with:
+          personal_token: ${{ secrets.HOMEY_GITHUB_ACTIONS_BOT_PERSONAL_ACCESS_TOKEN }}
+          publish_dir: ./build

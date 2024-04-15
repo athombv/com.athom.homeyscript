@@ -9,9 +9,26 @@ const https = require('https');
 const uuid = require('uuid');
 
 const Homey = require('homey');
-const { HomeyAPI } = require('athom-api');
+const { HomeyAPI: HomeyAPILegacy } = require('athom-api');
+const { HomeyAPIV2, HomeyAPIV3Local } = require('homey-api');
 const fetch = require('node-fetch');
 const _ = require('lodash');
+
+const { RunCondition } = require('./lib/flow/conditions/RunCondition');
+const { RunWithArgCondition } = require('./lib/flow/conditions/RunWithArgCondition');
+const { RunCodeCondition } = require('./lib/flow/conditions/RunCodeCondition');
+const { RunCodeWithArgCondition } = require('./lib/flow/conditions/RunCodeWithArgCondition');
+
+const { RunAction } = require('./lib/flow/actions/RunAction');
+const { RunCodeAction } = require('./lib/flow/actions/RunCodeAction');
+const { RunWithArgAction } = require('./lib/flow/actions/RunWithArgAction');
+const { RunCodeReturnsStringAction } = require('./lib/flow/actions/RunCodeReturnsStringAction');
+const { RunCodeReturnsNumberAction } = require('./lib/flow/actions/RunCodeReturnsNumberAction');
+const { RunCodeReturnsBooleanAction } = require('./lib/flow/actions/RunCodeReturnsBooleanAction');
+const { RunCodeWithArgAction } = require('./lib/flow/actions/RunCodeWithArgAction');
+const { RunCodeWithArgReturnsStringAction } = require('./lib/flow/actions/RunCodeWithArgReturnsStringAction');
+const { RunCodeWithArgReturnsNumberAction } = require('./lib/flow/actions/RunCodeWithArgReturnsNumberAction');
+const { RunCodeWithArgReturnsBooleanAction } = require('./lib/flow/actions/RunCodeWithArgReturnsBooleanAction');
 
 module.exports = class HomeyScriptApp extends Homey.App {
 
@@ -28,8 +45,24 @@ module.exports = class HomeyScriptApp extends Homey.App {
     // Init Scripts
     this.scripts = this.homey.settings.get('scripts');
 
-    this.localURL = await this.homey.api.getLocalUrl();
+    this.localUrl = await this.homey.api.getLocalUrl();
     this.sessionToken = await this.homey.api.getOwnerApiToken();
+
+    this.apiProps = await (async () => {
+      const props = {
+        token: this.sessionToken,
+        baseUrl: this.localUrl,
+        strategy: [],
+        properties: {
+          id: await this.homey.cloud.getHomeyId(),
+          softwareVersion: this.homey.version,
+        },
+      };
+
+      return props;
+    })();
+
+    const exampleFolder = this.homey.platformVersion >= 2 ? 'examples' : 'examples-v1';
 
     if (!this.scripts) {
       this.log('No scripts found.');
@@ -38,17 +71,18 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
       // Copy example scripts
       try {
-        const files = await fs.readdir(path.join(__dirname, 'examples'));
+        const files = await fs.readdir(path.join(__dirname, exampleFolder));
         await Promise.all(files.map(async filename => {
           if (!filename.endsWith('.js')) return;
 
           const id = `example-${filename.substring(0, filename.length - '.js'.length)}`;
-          const filepath = path.join(__dirname, 'examples', filename);
+          const filepath = path.join(__dirname, exampleFolder, filename);
           const code = await fs.readFile(filepath, 'utf8');
 
           scripts[id] = {
             code,
             lastExecuted: null,
+            version: 2,
           };
 
           this.log(`Found Example: ${id}`);
@@ -82,7 +116,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
       this.homey.settings.set('scripts', this.scripts);
     }
 
-    // Migration: Add missing `name` property
+    // Migration
     if (this.scripts) {
       const scriptEntries = Object.entries(this.scripts);
       let anyScriptChanged = false;
@@ -93,6 +127,11 @@ module.exports = class HomeyScriptApp extends Homey.App {
           script.name = scriptId;
           script.id = scriptId;
         }
+
+        if (typeof script.version !== 'number') {
+          anyScriptChanged = true;
+          script.version = 1;
+        }
       }
 
       if (anyScriptChanged) {
@@ -101,217 +140,21 @@ module.exports = class HomeyScriptApp extends Homey.App {
     }
 
     // Register Flow Cards
-    this.homey.flow.getConditionCard('run')
-      .registerRunListener(async ({ script }) => {
-        const scriptSource = await this.getScript({ id: script.id });
+    this.runCondition = new RunCondition({ homey: this.homey });
+    this.runWithArgCondition = new RunWithArgCondition({ homey: this.homey });
+    this.runCodeCondition = new RunCodeCondition({ homey: this.homey });
+    this.runCodeWithArgCondition = new RunCodeWithArgCondition({ homey: this.homey });
 
-        return this.runScript({
-          id: scriptSource.id,
-          name: scriptSource.name,
-          code: scriptSource.code,
-          lastExecuted: scriptSource.lastExecuted,
-          realtime: false,
-        }).finally(() => {
-          this.updateScript({
-            id: scriptSource.id,
-            lastExecuted: new Date(),
-          }).catch(this.error);
-        });
-      })
-      .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
-
-    this.homey.flow.getConditionCard('runCode')
-      .registerRunListener(async ({ code }, state) => {
-        return Boolean(await this.runScript({
-          id: '__temporary__',
-          name: 'Test',
-          code,
-          args: [],
-          realtime: state.realtime != null ? state.realtime : false,
-        }));
-      });
-
-    this.homey.flow.getConditionCard('runCodeWithArg')
-      .registerRunListener(async ({ code, argument }, state) => {
-        return Boolean(await this.runScript({
-          id: '__temporary__',
-          name: 'Test',
-          code,
-          args: [argument],
-          realtime: state.realtime != null ? state.realtime : false,
-        }));
-      });
-
-    this.homey.flow.getConditionCard('runWithArg')
-      .registerRunListener(async ({ script, argument }) => {
-        const scriptSource = await this.getScript({ id: script.id });
-
-        return this.runScript({
-          id: scriptSource.id,
-          name: scriptSource.name,
-          code: scriptSource.code,
-          lastExecuted: scriptSource.lastExecuted,
-          args: [argument],
-          realtime: false,
-        }).finally(() => {
-          this.updateScript({
-            id: scriptSource.id,
-            lastExecuted: new Date(),
-          }).catch(this.error);
-        });
-      })
-      .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
-
-    this.homey.flow.getActionCard('run')
-      .registerRunListener(async ({ script }) => {
-        const scriptSource = await this.getScript({ id: script.id });
-
-        return this.runScript({
-          id: scriptSource.id,
-          name: scriptSource.name,
-          code: scriptSource.code,
-          lastExecuted: scriptSource.lastExecuted,
-          realtime: false,
-        }).finally(() => {
-          this.updateScript({
-            id: scriptSource.id,
-            lastExecuted: new Date(),
-          }).catch(this.error);
-        });
-      })
-      .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
-
-    this.homey.flow.getActionCard('runWithArg')
-      .registerRunListener(async ({ script, argument }) => {
-        const scriptSource = await this.getScript({ id: script.id });
-
-        return this.runScript({
-          id: scriptSource.id,
-          name: scriptSource.name,
-          code: scriptSource.code,
-          lastExecuted: scriptSource.lastExecuted,
-          args: [argument],
-          realtime: false,
-        }).finally(() => {
-          this.updateScript({
-            id: scriptSource.id,
-            lastExecuted: new Date(),
-          }).catch(this.error);
-        });
-      })
-      .registerArgumentAutocompleteListener('script', query => this.onFlowGetScriptAutocomplete(query));
-
-    this.homey.flow.getActionCard('runCode')
-      .registerRunListener(async ({ code }, state) => {
-        await this.runScript({
-          id: '__temporary__',
-          name: 'Test',
-          code,
-          args: [],
-          realtime: state.realtime != null ? state.realtime : false,
-        });
-      });
-
-    this.homey.flow.getActionCard('runCodeReturnsString')
-      .registerRunListener(async ({ code }, state) => {
-        const result = await this.runScript({
-          id: '__temporary__',
-          name: 'Test',
-          code,
-          args: [],
-          realtime: state.realtime != null ? state.realtime : false,
-        });
-
-        return {
-          string: result,
-        };
-      });
-
-    this.homey.flow.getActionCard('runCodeReturnsNumber')
-      .registerRunListener(async ({ code }, state) => {
-        const result = await this.runScript({
-          id: '__temporary__',
-          name: 'Test',
-          code,
-          args: [],
-          realtime: state.realtime != null ? state.realtime : false,
-        });
-
-        return {
-          number: result,
-        };
-      });
-
-    this.homey.flow.getActionCard('runCodeReturnsBoolean')
-      .registerRunListener(async ({ code }, state) => {
-        const result = await this.runScript({
-          id: '__temporary__',
-          name: 'Test',
-          code,
-          args: [],
-          realtime: state.realtime != null ? state.realtime : false,
-        });
-
-        return {
-          boolean: result,
-        };
-      });
-
-    this.homey.flow.getActionCard('runCodeWithArg')
-      .registerRunListener(async ({ code, argument }, state) => {
-        await this.runScript({
-          id: '__temporary__',
-          name: 'Test',
-          code,
-          args: [argument],
-          realtime: state.realtime != null ? state.realtime : false,
-        });
-      });
-
-    this.homey.flow.getActionCard('runCodeWithArgReturnsString')
-      .registerRunListener(async ({ code, argument }, state) => {
-        const result = await this.runScript({
-          id: '__temporary__',
-          name: 'Test',
-          code,
-          args: [argument],
-          realtime: state.realtime != null ? state.realtime : false,
-        });
-
-        return {
-          string: result,
-        };
-      });
-
-    this.homey.flow.getActionCard('runCodeWithArgReturnsNumber')
-      .registerRunListener(async ({ code, argument }, state) => {
-        const result = await this.runScript({
-          id: '__temporary__',
-          name: 'Test',
-          code,
-          args: [argument],
-          realtime: state.realtime != null ? state.realtime : false,
-        });
-
-        return {
-          number: result,
-        };
-      });
-
-    this.homey.flow.getActionCard('runCodeWithArgReturnsBoolean')
-      .registerRunListener(async ({ code, argument }, state) => {
-        const result = await this.runScript({
-          id: '__temporary__',
-          name: 'Test',
-          code,
-          args: [argument],
-          realtime: state.realtime != null ? state.realtime : false,
-        });
-
-        return {
-          boolean: result,
-        };
-      });
+    this.runAction = new RunAction({ homey: this.homey });
+    this.runWithArgAction = new RunWithArgAction({ homey: this.homey });
+    this.runCodeAction = new RunCodeAction({ homey: this.homey });
+    this.runCodeReturnsStringAction = new RunCodeReturnsStringAction({ homey: this.homey });
+    this.runCodeReturnsNumberAction = new RunCodeReturnsNumberAction({ homey: this.homey });
+    this.runCodeReturnsBooleanAction = new RunCodeReturnsBooleanAction({ homey: this.homey });
+    this.runCodeWithArgAction = new RunCodeWithArgAction({ homey: this.homey });
+    this.runCodeWithArgReturnsStringAction = new RunCodeWithArgReturnsStringAction({ homey: this.homey });
+    this.runCodeWithArgReturnsNumberAction = new RunCodeWithArgReturnsNumberAction({ homey: this.homey });
+    this.runCodeWithArgReturnsBooleanAction = new RunCodeWithArgReturnsBooleanAction({ homey: this.homey });
 
     // Register Flow Tokens
     this.tokens = this.homey.settings.get('tokens') || {};
@@ -326,10 +169,27 @@ module.exports = class HomeyScriptApp extends Homey.App {
     })).catch(this.error);
   }
 
-  async getHomeyAPI() {
-    const api = new HomeyAPI({
-      localUrl: this.localURL,
-      baseUrl: this.localURL,
+  createAppApi() {
+    if (this.homey.platform === 'local' && this.homey.platformVersion === 1) {
+      return new HomeyAPIV2(this.apiProps);
+    }
+
+    if (this.homey.platform === 'local' && this.homey.platformVersion >= 2) {
+      return new HomeyAPIV3Local(this.apiProps);
+    }
+
+    throw new Error('Not Supported');
+  }
+
+  getHomeyAPI({ version }) {
+    if (version >= 2) {
+      const api = this.createAppApi();
+      return api;
+    }
+
+    const api = new HomeyAPILegacy({
+      localUrl: this.localUrl,
+      baseUrl: this.localUrl,
       token: this.sessionToken,
       apiVersion: 2,
       online: true,
@@ -343,6 +203,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
   async onFlowGetScriptAutocomplete(query) {
     const scripts = await this.getScripts();
+
     return Object.values(scripts)
       .filter(script => script.name.toLowerCase().includes(query.toLowerCase()))
       .map(script => ({
@@ -413,11 +274,12 @@ module.exports = class HomeyScriptApp extends Homey.App {
     code,
     lastExecuted,
     args = [],
+    version,
     realtime = true,
   }) {
     if (lastExecuted == null) lastExecuted = new Date();
 
-    const homeyAPI = await this.getHomeyAPI();
+    const homeyAPI = this.getHomeyAPI({ version });
 
     // Create a Logger
     const log = (...props) => {
@@ -522,6 +384,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
       id: uuid.v4(),
       name,
       code,
+      version: 2,
       lastExecuted: null,
     };
 
@@ -532,7 +395,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
   }
 
   async updateScript({
-    id, name, code, lastExecuted,
+    id, name, code, lastExecuted, version,
   }) {
     this.scripts[id] = {
       ...this.scripts[id],
@@ -548,6 +411,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
     if (lastExecuted != null) {
       this.scripts[id].lastExecuted = lastExecuted;
+    }
+
+    if (version != null) {
+      this.scripts[id].version = version;
     }
 
     this.homey.settings.set('scripts', this.scripts);
