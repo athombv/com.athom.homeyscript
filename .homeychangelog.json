@@ -34,5 +34,17 @@
   },
   "3.3.2": {
     "en": "Add back Buffer to global scope"
+  },
+  "3.4.0": {
+    "en": "Add cards for Advanced Flow"
+  },
+  "3.4.1": {
+    "en": "Upgrade Homey API"
+  },
+  "3.4.2": {
+    "en": "Improve error handling"
+  },
+  "3.5.0": {
+    "en": "New scripts now use the new Homey API"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "deprecated": true,
+  "title": {
+    "en": "Run code",
+    "nl": "Voer code uit"
+  },
+  "titleFormatted": {
+    "en": "Run [[code]]",
+    "nl": "Voer [[code]] uit"
+  },
+  "advanced": true,
+  "args": [
+    {
+      "name": "code",
+      "type": "code",
+      "language": "homeyscript",
+      "title": {
+        "en": "Code",
+        "nl": "Code"
+      },
+      "value": "// My Code\n\nreturn true;"
+    }
+  ]
+}

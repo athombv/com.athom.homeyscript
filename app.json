@@ -2,7 +2,7 @@
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.athom.homeyscript",
   "sdk": 3,
-  "version": "3.3.2",
+  "version": "3.5.0",
   "compatibility": ">=5.0.0",
   "name": {
     "en": "HomeyScript"
@@ -79,6 +79,132 @@
         "id": "run"
       },
       {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nreturn true;"
+          }
+        ],
+        "id": "runCode"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nreturn true;"
+          }
+        ],
+        "id": "runCode_v2"
+      },
+      {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]]",
+          "nl": "Voer [[code]] uit met [[argument]]"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArg"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]]",
+          "nl": "Voer [[code]] uit met [[argument]]"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArg_v2"
+      },
+      {
         "title": {
           "en": "Run a script with an argument",
           "nl": "Voer een script uit met een argument"
@@ -133,6 +259,618 @@
           }
         ],
         "id": "run"
+      },
+      {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code"
+          }
+        ],
+        "id": "runCode"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]]",
+          "nl": "Voer [[code]] uit"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code"
+          }
+        ],
+        "id": "runCode_v2"
+      },
+      {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] and return Yes/No-tag",
+          "nl": "Voer [[code]] uit en return Ja/Nee-tag"
+        },
+        "tokens": [
+          {
+            "name": "boolean",
+            "type": "boolean",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nreturn true;"
+          }
+        ],
+        "id": "runCodeReturnsBoolean"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] and return Yes/No-tag",
+          "nl": "Voer [[code]] uit en return Ja/Nee-tag"
+        },
+        "tokens": [
+          {
+            "name": "boolean",
+            "type": "boolean",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nreturn true;"
+          }
+        ],
+        "id": "runCodeReturnsBoolean_v2"
+      },
+      {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] and return Number-tag",
+          "nl": "Voer [[code]] uit en return Nummer-tag"
+        },
+        "tokens": [
+          {
+            "name": "number",
+            "type": "number",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nreturn 1;"
+          }
+        ],
+        "id": "runCodeReturnsNumber"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] and return Number-tag",
+          "nl": "Voer [[code]] uit en return Nummer-tag"
+        },
+        "tokens": [
+          {
+            "name": "number",
+            "type": "number",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nreturn 1;"
+          }
+        ],
+        "id": "runCodeReturnsNumber_v2"
+      },
+      {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] and return Text-tag",
+          "nl": "Voer [[code]] uit en return Tekst-tag"
+        },
+        "tokens": [
+          {
+            "name": "string",
+            "type": "string",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nreturn 'Hello World!';"
+          }
+        ],
+        "id": "runCodeReturnsString"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] and return Text-tag",
+          "nl": "Voer [[code]] uit en return Tekst-tag"
+        },
+        "tokens": [
+          {
+            "name": "string",
+            "type": "string",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nreturn 'Hello World!';"
+          }
+        ],
+        "id": "runCodeReturnsString_v2"
+      },
+      {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]]",
+          "nl": "Voer [[code]] uit met [[argument]]"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArg"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]]",
+          "nl": "Voer [[code]] uit met [[argument]]"
+        },
+        "advanced": true,
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArg_v2"
+      },
+      {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]] and return Yes/No-tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Ja/Nee-tag"
+        },
+        "tokens": [
+          {
+            "name": "boolean",
+            "type": "boolean",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArgReturnsBoolean"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]] and return Yes/No-tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Ja/Nee-tag"
+        },
+        "tokens": [
+          {
+            "name": "boolean",
+            "type": "boolean",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArgReturnsBoolean_v2"
+      },
+      {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]] and return Number-tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Nummer-tag"
+        },
+        "tokens": [
+          {
+            "name": "number",
+            "type": "number",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 1;"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArgReturnsNumber"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]] and return Number-tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Nummer-tag"
+        },
+        "tokens": [
+          {
+            "name": "number",
+            "type": "number",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 1;"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArgReturnsNumber_v2"
+      },
+      {
+        "deprecated": true,
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]] and return Text-tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Tekst-tag"
+        },
+        "tokens": [
+          {
+            "name": "string",
+            "type": "string",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 'Hello World!';"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArgReturnsString"
+      },
+      {
+        "title": {
+          "en": "Run code",
+          "nl": "Voer code uit"
+        },
+        "titleFormatted": {
+          "en": "Run [[code]] with [[argument]] and return Text-tag",
+          "nl": "Voer [[code]] uit met [[argument]] en return Tekst-tag"
+        },
+        "tokens": [
+          {
+            "name": "string",
+            "type": "string",
+            "title": {
+              "en": "Result",
+              "nl": "Resultaat"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "code",
+            "type": "code",
+            "language": "homeyscript",
+            "title": {
+              "en": "Code",
+              "nl": "Code"
+            },
+            "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 'Hello World!';"
+          },
+          {
+            "name": "argument",
+            "type": "text",
+            "required": false,
+            "title": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "placeholder": {
+              "en": "Argument",
+              "nl": "Argument"
+            },
+            "value": "MyArg"
+          }
+        ],
+        "id": "runCodeWithArgReturnsString_v2"
       },
       {
         "title": {

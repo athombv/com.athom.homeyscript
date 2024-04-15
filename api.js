@@ -30,8 +30,9 @@ module.exports = {
       const result = await homey.app.runScript({
         id: script.id,
         name: script.name,
-        code: code || script.code,
+        code: code ?? script.code,
         lastExecuted: script.lastExecuted,
+        version: script.version,
         args,
       }).finally(() => {
         homey.app.updateScript({ id: script.id, lastExecuted: new Date() }).catch(() => {});
@@ -62,9 +63,9 @@ module.exports = {
     homey, params, query, body = {},
   }) {
     const { id } = params;
-    const { name, code } = body;
+    const { name, code, version } = body;
 
-    return homey.app.updateScript({ id, name, code });
+    return homey.app.updateScript({ id, name, code, version });
   },
 
   async deleteScript({ homey, params }) {
