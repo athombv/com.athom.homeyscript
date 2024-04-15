@@ -100,7 +100,7 @@ body.is-navigation-search .nav-group__item:not(.is-match):not(.is-match-parent) 
     border-radius: 8px;
     transition: var(--transition-fast);
     cursor: pointer;
-    background: var(--color-white);
+    background: var(--color-component);
 }
 
 .nav-group__item-collapse:hover {

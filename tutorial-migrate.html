@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Home - HomeyScript</title>
+  <title>Tutorial: Migrating deprecated scripts - HomeyScript</title>
 
   <meta property="og:image" content="https://etc.athom.com/logo/white/256.png"/>
   <link rel="icon" href="https://etc.athom.com/logo/transparent/128.png"/>
@@ -109,43 +109,92 @@
   </nav>
 
   <main id="main" class="main container__main">
-    
-  
-  
-    
-  
-
-
-  
-  
-  <div class="main__center">
-    <div class="main__content align-baseline main-page trim">
-      
-
-
-    <section>
-        <article class="main-page__content"><h1>HomeyScript</h1>
-<blockquote>
-<p>&quot;The best thing since sliced bread!&quot;</p>
-</blockquote>
-<p>Unleash the scripting power with HomeyScript. Automate everything you every dreamed of, even when Flows are not enough for you!</p>
-<p>HomeyScript is a JavaScript-based scripting language that interacts with the Homey Web API and various Homey Apps SDK functions.</p>
-<h2>🚀 Usage</h2>
-<ol>
-<li>Install HomeyScript from <a href="https://homey.app/a/com.athom.homeyscript">https://homey.app/a/com.athom.homeyscript</a></li>
-<li>Visit <a href="https://my.homey.app/scripts">https://my.homey.app/scripts</a></li>
-<li>Script as you please!</li>
-</ol>
-<h2>📚 Documentation</h2>
-<p>Visit the <a href="https://athombv.github.io/com.athom.homeyscript/global.html">HomeyScript Reference</a> to learn what you can do in a HomeyScript.</p></article>
-    </section>
-
-
+    <div class="flex flex-direction-column flex-fill max-100">
+  <div class="flex">
+    <div class="main__center">
+      <div class="main__content align-baseline">
+        <h1 id="introduction" class="text-preset-heading-1">
+          Migrating deprecated scripts
+        </h1>
+      </div>
+      <div class="main__index"></div>
     </div>
   </div>
-  
+  <div class="flex">
+    <div class="main__center">
+      <div class="main__content align-baseline">
+        <p>To create a unified API for all our products we decided to introduce <a href="https://www.npmjs.com/package/homey-api">homey-api</a> as the successor to <a href="https://www.npmjs.com/package/athom-api">athom-api</a>. New HomeyScript's will automatically use the new API under the same global variable <a href="./global#.Homey"><code>Homey</code></a>.</p>
+<p><strong>Editor Scripts</strong> - <a href="https://my.homey.app/scripts/">https://my.homey.app/scripts/</a></p>
+<p>All scripts that use the deprecated API will still work but will have a yellow indicator that tells you that it is using the deprecated API version. If your scripts are not using the global Homey API object there is no need to change the code.</p>
+<p>To use the new API you have to create a new script and copy over the previous code and change it according to the steps below.</p>
+<p><strong>Advanced FlowCards</strong></p>
+<p>All Advanced FlowCards that used the inline code editor have been deprecated. To use the new API the same Advanced FlowCard must be added again and the current code can be copied over and changed according the the steps below. The deprecated cards will still work and keep working so if the global Homey API object is not used there is no need to change the code.</p>
+<p>To convert scripts to the new API, you can use the following steps:</p>
+<h2>Step 1 - Devices</h2>
+<p>For a device the <code>driverUri</code> and <code>zoneName</code> properties have been removed. The <code>driverUri</code> is now part of the <code>driverId</code> and the <code>zoneName</code> has to be fetched based on the <code>zone</code> property of the device.</p>
+<pre class="prettyprint source lang-javascript"><code>let deviceZone = await device.getZone();
 
+// Or
+deviceZone = await Homey.zones.getZone({ id: device.zone });
 
+// Or
+const zones = await Homey.zones.getZones();
+
+deviceZone = zones[device.zone];
+const zoneName = deviceZone ? deviceZone.name : 'Missing Zone';
+</code></pre>
+<h2>Step 2 - FlowCards</h2>
+<p>The calls to <code>Homey.flow.getFlowCardTriggers</code>, <code>Homey.flow.getFlowCardConditions</code> and <code>Homey.flow.getFlowCardActions</code> now all return an object with key value pairs instead of an array.</p>
+<pre class="prettyprint source lang-javascript"><code>// The following code changes from:
+const conditionCards = await Homey.flow.getFlowCardConditions();
+for (const card of conditionCards) {
+  // ...
+}
+
+// To:
+const conditionCards = await Homey.flow.getFlowCardConditions();
+for (const card of Object.values(conditionCards)) {
+  // ...
+}
+</code></pre>
+<p>The cards can be referenced by the <code>card.id</code> property. This is also the key of the card in the collection.</p>
+<pre class="prettyprint source lang-javascript"><code>const conditionCards = await Homey.flow.getFlowCardConditions();
+for (const card of Object.values(conditionCards)) {
+  console.log(conditionCards[card.id] === card);
+}
+</code></pre>
+<p>The property <code>uriObj</code> has been removed. Before this would contain some properties of the owner of the card. For example if the card belonged to a device it would contain the device name and the icon.</p>
+<p>Now you must fetch the device to which the card belongs. Since the id of a card will always be of the format <code>homey:&lt;ownerType&gt;:&lt;ownerId&gt;:&lt;cardId&gt;</code>. It's easy to get the device from the <code>Homey.devices.getDevices</code> call and find the <code>ownerId</code> or pass the <code>ownerId</code> to the <code>devices.getDevice</code> call.</p>
+<pre class="prettyprint source lang-javascript"><code>const [, ownerType, ownerId, cardId] = card.id.split(':');
+
+if (ownerType === 'device') {
+  const devices = await Homey.devices.getDevices();
+  console.log(devices[ownerId]);
+
+  // Or
+  const device = await Homey.devices.getDevice({ id: ownerId });
+}
+</code></pre>
+<p>Calls to <code>Homey.flow.runFlowCardCondition</code> and <code>Homey.flow.runFlowCardAction</code> no longer require the card <code>uri</code> as a parameter.</p>
+<pre class="prettyprint source lang-javascript"><code>// The following code changes from:
+await Homey.flow.runFlowCardAction({ uri: card.uri, id: card.id, args: { ... } });
+
+// To:
+await Homey.flow.runFlowCardAction({ id: card.id, args: { ... } });
+</code></pre>
+<h2>Step 3 - Insights</h2>
+<p>The <code>uriObj</code> property has been deleted from a Log as returned by <a href="https://athombv.github.io/node-homey-api/HomeyAPIV3Local.ManagerInsights.html#getLogs"><code>Homey.insights.getLogs()</code></a> the owner must be matched the same way as with FlowCards.</p>
+<h2>Step 4 - FlowToken</h2>
+<p>The <code>uriObj</code> property has been deleted from a FlowToken as returned by <a href="https://athombv.github.io/node-homey-api/HomeyAPIV3Local.ManagerFlowToken.html#getFlowTokens"><code>Homey.flowtoken.getFlowTokens()</code></a> the owner must be matched the same way as with FlowCards.</p>
+<h2>Step 5 - Drivers</h2>
+<p>The <code>uriObj</code> property has been deleted from a Driver as returned by <a href="https://athombv.github.io/node-homey-api/HomeyAPIV3Local.ManagerDrivers.html#getDrivers"><code>Homey.drivers.getDrivers()</code></a>. The icon can now be found under <code>driver.ownerIconObj</code> and the color under <code>driver.color</code>.</p>
+      </div>
+      <div class="main__index">
+        
+      </div>
+    </div>
+  </div>
+</div>
 
   </main>
 </div>
