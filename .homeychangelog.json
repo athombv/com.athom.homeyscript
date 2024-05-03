@@ -46,5 +46,8 @@
   },
   "3.5.0": {
     "en": "New scripts now use the new Homey API"
+  },
+  "3.5.1": {
+    "en": "Update homey-api"
   }
 }
