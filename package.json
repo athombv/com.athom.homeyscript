@@ -33,7 +33,7 @@
   "homepage": "https://github.com/athombv/com.athom.homeyscript#readme",
   "dependencies": {
     "athom-api": "^3.9.2",
-    "homey-api": "^3.4.31",
+    "homey-api": "^3.4.33",
     "lodash": "^4.17.21",
     "node-fetch": "^2.7.0",
     "uuid": "^8.3.2"
@@ -47,7 +47,7 @@
     "jsdoc": "^3.6.11",
     "jsdoc-ts-utils": "^5.0.0",
     "prettier": "^3.2.5",
-    "serve": "^14.2.1",
+    "serve": "^14.2.3",
     "watch": "^1.0.2"
   }
 }
