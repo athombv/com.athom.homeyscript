@@ -90,3 +90,18 @@ The `uriObj` property has been deleted from a FlowToken as returned by [`Homey.f
 
 ## Step 5 - Drivers
 The `uriObj` property has been deleted from a Driver as returned by [`Homey.drivers.getDrivers()`](https://athombv.github.io/node-homey-api/HomeyAPIV3Local.ManagerDrivers.html#getDrivers). The icon can now be found under `driver.ownerIconObj` and the color under `driver.color`.
+
+## Step 6 - Apps
+The following endpoints on the [`App`](https://athombv.github.io/node-homey-api/HomeyAPIV3Local.ManagerApps.App.html) class have been renamed.
+
+- `app.apiGet(path)` -> `app.get({ path })`
+
+- `app.apiPost(path, body)` -> `app.post({ path, body })`
+
+- `app.apiPut(path, body)` -> `app.put({ path, body })`
+
+- `app.apiDelete(path)` -> `app.delete({ path })`
+
+## Step 7 - Managers
+
+`Homey.zigBee` has been renamed to `Homey.zigbee`.
