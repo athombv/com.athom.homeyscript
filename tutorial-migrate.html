@@ -188,6 +188,24 @@ await Homey.flow.runFlowCardAction({ id: card.id, args: { ... } });
 <p>The <code>uriObj</code> property has been deleted from a FlowToken as returned by <a href="https://athombv.github.io/node-homey-api/HomeyAPIV3Local.ManagerFlowToken.html#getFlowTokens"><code>Homey.flowtoken.getFlowTokens()</code></a> the owner must be matched the same way as with FlowCards.</p>
 <h2>Step 5 - Drivers</h2>
 <p>The <code>uriObj</code> property has been deleted from a Driver as returned by <a href="https://athombv.github.io/node-homey-api/HomeyAPIV3Local.ManagerDrivers.html#getDrivers"><code>Homey.drivers.getDrivers()</code></a>. The icon can now be found under <code>driver.ownerIconObj</code> and the color under <code>driver.color</code>.</p>
+<h2>Step 6 - Apps</h2>
+<p>The following endpoints on the <a href="https://athombv.github.io/node-homey-api/HomeyAPIV3Local.ManagerApps.App.html"><code>App</code></a> class have been renamed.</p>
+<ul>
+<li>
+<p><code>app.apiGet(path)</code> -&gt; <code>app.get({ path })</code></p>
+</li>
+<li>
+<p><code>app.apiPost(path, body)</code> -&gt; <code>app.post({ path, body })</code></p>
+</li>
+<li>
+<p><code>app.apiPut(path, body)</code> -&gt; <code>app.put({ path, body })</code></p>
+</li>
+<li>
+<p><code>app.apiDelete(path)</code> -&gt; <code>app.delete({ path })</code></p>
+</li>
+</ul>
+<h2>Step 7 - Managers</h2>
+<p><code>Homey.zigBee</code> has been renamed to <code>Homey.zigbee</code>.</p>
       </div>
       <div class="main__index">
         
