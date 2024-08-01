@@ -3,7 +3,19 @@ name: Publish Homey App
 on:
   workflow_dispatch:
 
-jobs:
-    main:
-      uses: athombv/athom-github-workflow/.github/workflows/homey-app-publish.yml@master
-      secrets: inherit
+jobs:  
+    publish-app:
+      name: Publish App
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        
+        - name: Publish
+          uses: athombv/github-action-homey-app-publish@master
+          id: publish
+          with:
+            personal_access_token: ${{ secrets.HOMEY_PAT }}
+
+        - name: URL
+          run: |
+            echo "Manage your app at ${{ steps.publish.outputs.url }}." >> $GITHUB_STEP_SUMMARY

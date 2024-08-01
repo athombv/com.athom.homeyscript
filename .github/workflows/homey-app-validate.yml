@@ -2,7 +2,12 @@ name: Validate Homey App
 on:
   workflow_dispatch:
 
-jobs:
-  main:
-    uses: athombv/athom-github-workflow/.github/workflows/homey-app-validate.yml@master
-    secrets: inherit
+jobs:  
+    main:
+      name: Validate Homey App
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - uses: athombv/github-action-homey-app-validate@master
+          with:
+            level: verified
