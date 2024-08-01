@@ -1,0 +1,26 @@
+name: Update Homey App Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: choice
+        description: Version
+        required: true
+        default: patch
+        options:
+          - major
+          - minor
+          - patch
+      changelog:
+        type: string
+        description: Changelog
+        required: true
+
+jobs:
+  main:
+    uses: athombv/athom-github-workflow/.github/workflows/homey-app-version.yml@master
+    secrets: inherit
+    with:
+      version: ${{ github.event.inputs.version }}
+      changelog: ${{ github.event.inputs.changelog }}

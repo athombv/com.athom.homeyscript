@@ -1,0 +1,8 @@
+name: Translate Homey App
+on:
+  workflow_dispatch:
+
+jobs:
+  main:
+    uses: athombv/athom-github-workflow/.github/workflows/homey-app-translate.yml@master
+    secrets: inherit

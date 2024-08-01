@@ -1,0 +1,9 @@
+name: Publish Homey App
+
+on:
+  workflow_dispatch:
+
+jobs:
+    main:
+      uses: athombv/athom-github-workflow/.github/workflows/homey-app-publish.yml@master
+      secrets: inherit

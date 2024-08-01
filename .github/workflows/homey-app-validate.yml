@@ -1,0 +1,8 @@
+name: Validate Homey App
+on:
+  workflow_dispatch:
+
+jobs:
+  main:
+    uses: athombv/athom-github-workflow/.github/workflows/homey-app-validate.yml@master
+    secrets: inherit
