@@ -5,11 +5,33 @@
   "version": "3.5.1",
   "compatibility": ">=5.0.0",
   "name": {
-    "en": "HomeyScript"
+    "en": "HomeyScript",
+    "nl": "HomeyScript",
+    "da": "HomeyScript",
+    "de": "HomeyScript",
+    "es": "HomeyScript",
+    "fr": "HomeyScript",
+    "it": "HomeyScript",
+    "no": "HomeyScript",
+    "sv": "HomeyScript",
+    "pl": "HomeyScript",
+    "ru": "HomeyScript",
+    "ko": "HomeyScript"
   },
   "brandColor": "#2B1F32",
   "description": {
-    "en": "Script your Home"
+    "en": "Script your Home",
+    "nl": "Script je Huis",
+    "da": "Skript dit Hjem",
+    "de": "Skripte dein Zuhause",
+    "es": "Escribe un guión para tu hogar",
+    "fr": "Script ton Domicile",
+    "it": "Scriptare la tua Casa",
+    "no": "Skript ditt Hjem",
+    "sv": "Script ditt Hem",
+    "pl": "Skryptuj Swój Dom",
+    "ru": "Скрипт твоего Дома",
+    "ko": "당신의 집을 스크립트로 작성하세요"
   },
   "permissions": [
     "homey:manager:api"
@@ -60,11 +82,31 @@
       {
         "title": {
           "en": "Run a script",
-          "nl": "Voer een script uit"
+          "nl": "Voer een script uit",
+          "da": "Kør et script",
+          "de": "Ein Skript ausführen",
+          "es": "Ejecutar un script",
+          "fr": "Exécuter un script",
+          "it": "Esegui uno script",
+          "no": "Kjør et skript",
+          "sv": "Kör ett skript",
+          "pl": "Uruchom skrypt",
+          "ru": "Запустить скрипт",
+          "ko": "스크립트 실행"
         },
         "titleFormatted": {
           "en": "Run [[script]]",
-          "nl": "Voer [[script]] uit"
+          "nl": "Voer [[script]] uit",
+          "da": "Kør [[script]]",
+          "de": "Führe [[script]] aus",
+          "es": "Ejecutar [[script]]",
+          "fr": "Exécuter [[script]]",
+          "it": "Esegui [[script]]",
+          "no": "Kjør [[script]]",
+          "sv": "Kör [[script]]",
+          "pl": "Uruchom [[script]]",
+          "ru": "Запустить [[script]]",
+          "ko": "[[script]] 실행"
         },
         "args": [
           {
@@ -72,7 +114,17 @@
             "type": "autocomplete",
             "title": {
               "en": "Script",
-              "nl": "Script"
+              "nl": "Script",
+              "da": "Skript",
+              "de": "Skript",
+              "es": "Script",
+              "fr": "Script",
+              "it": "Script",
+              "no": "Skript",
+              "sv": "Skript",
+              "pl": "Skrypt",
+              "ru": "Скрипт",
+              "ko": "스크립트"
             }
           }
         ],
@@ -82,11 +134,31 @@
         "deprecated": true,
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]]",
-          "nl": "Voer [[code]] uit"
+          "nl": "Voer [[code]] uit",
+          "da": "Kør [[code]]",
+          "de": "Führen Sie [[code]] aus",
+          "es": "Ejecutar [[code]]",
+          "fr": "Exécuter [[code]]",
+          "it": "Esegui [[code]]",
+          "no": "Kjør [[code]]",
+          "sv": "Kör [[code]]",
+          "pl": "Uruchom [[code]]",
+          "ru": "Запустить [[code]]",
+          "ko": "[[code]] 실행"
         },
         "advanced": true,
         "args": [
@@ -96,7 +168,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nreturn true;"
           }
@@ -106,11 +188,31 @@
       {
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]]",
-          "nl": "Voer [[code]] uit"
+          "nl": "Voer [[code]] uit",
+          "da": "Kør [[code]]",
+          "de": "Führen Sie [[code]] aus",
+          "es": "Ejecutar [[code]]",
+          "fr": "Exécuter [[code]]",
+          "it": "Esegui [[code]]",
+          "no": "Kjør [[code]]",
+          "sv": "Kör [[code]]",
+          "pl": "Uruchom [[code]]",
+          "ru": "Запустить [[code]]",
+          "ko": "[[code]] 실행"
         },
         "advanced": true,
         "args": [
@@ -120,7 +222,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nreturn true;"
           }
@@ -131,11 +243,31 @@
         "deprecated": true,
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] with [[argument]]",
-          "nl": "Voer [[code]] uit met [[argument]]"
+          "nl": "Voer [[code]] uit met [[argument]]",
+          "da": "Kør [[code]] med [[argument]]",
+          "de": "Führe [[code]] mit [[argument]] aus",
+          "es": "Ejecuta [[code]] con [[argument]]",
+          "fr": "Exécutez [[code]] avec [[argument]]",
+          "it": "Esegui [[code]] con [[argument]]",
+          "no": "Kjør [[code]] med [[argument]]",
+          "sv": "Kör [[code]] med [[argument]]",
+          "pl": "Uruchom [[code]] z [[argument]]",
+          "ru": "Запустить [[code]] с [[argument]]",
+          "ko": "[[argument]]과 함께 [[code]] 실행"
         },
         "advanced": true,
         "args": [
@@ -145,7 +277,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
           },
@@ -155,11 +297,31 @@
             "required": false,
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "value": "MyArg"
           }
@@ -169,11 +331,31 @@
       {
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] with [[argument]]",
-          "nl": "Voer [[code]] uit met [[argument]]"
+          "nl": "Voer [[code]] uit met [[argument]]",
+          "da": "Kør [[code]] med [[argument]]",
+          "de": "Führe [[code]] mit [[argument]] aus",
+          "es": "Ejecutar [[code]] con [[argument]]",
+          "fr": "Exécuter [[code]] avec [[argument]]",
+          "it": "Esegui [[code]] con [[argument]]",
+          "no": "Kjør [[code]] med [[argument]]",
+          "sv": "Kör [[code]] med [[argument]]",
+          "pl": "Uruchom [[code]] z [[argument]]",
+          "ru": "Запустить [[code]] с [[argument]]",
+          "ko": "[[code]] 실행 [[argument]]"
         },
         "advanced": true,
         "args": [
@@ -183,7 +365,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
           },
@@ -193,11 +385,31 @@
             "required": false,
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "value": "MyArg"
           }
@@ -207,11 +419,31 @@
       {
         "title": {
           "en": "Run a script with an argument",
-          "nl": "Voer een script uit met een argument"
+          "nl": "Voer een script uit met een argument",
+          "da": "Kør et script med et argument",
+          "de": "Führen Sie ein Skript mit einem Argument aus",
+          "es": "Ejecutar un script con un argumento",
+          "fr": "Exécuter un script avec un argument",
+          "it": "Esegui uno script con un argomento",
+          "no": "Kjør et skript med et argument",
+          "sv": "Kör ett skript med ett argument",
+          "pl": "Uruchom skrypt z argumentem",
+          "ru": "Запустите сценарий с аргументом",
+          "ko": "인수를 사용하여 스크립트를 실행합니다"
         },
         "titleFormatted": {
           "en": "Run [[script]] with argument [[argument]]",
-          "nl": "Voer [[script]] uit met argument [[argument]]"
+          "nl": "Voer [[script]] uit met argument [[argument]]",
+          "da": "Kør [[script]] med argumentet [[argument]]",
+          "de": "Führen Sie [[script]] mit Argument [[argument]] aus",
+          "es": "Ejecutar [[script]] con el argumento [[argument]]",
+          "fr": "Exécuter [[script]] avec l'argument [[argument]]",
+          "it": "Esegui [[script]] con l'argomento [[argument]]",
+          "no": "Kjør [[script]] med argumentet [[argument]]",
+          "sv": "Kör [[script]] med argumentet [[argument]]",
+          "pl": "Uruchom [[script]] z argumentem [[argument]]",
+          "ru": "Запустите [[script]] с аргументом [[argument]]",
+          "ko": "[[script]] 스크립트를 인수 [[argument]]와 함께 실행합니다"
         },
         "args": [
           {
@@ -219,7 +451,17 @@
             "type": "autocomplete",
             "title": {
               "en": "Script",
-              "nl": "Script"
+              "nl": "Script",
+              "da": "Script",
+              "de": "Script",
+              "es": "Script",
+              "fr": "Script",
+              "it": "Script",
+              "no": "Script",
+              "sv": "Script",
+              "pl": "Script",
+              "ru": "Script",
+              "ko": "Script"
             }
           },
           {
@@ -227,11 +469,31 @@
             "type": "text",
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             }
           }
         ],
@@ -242,11 +504,31 @@
       {
         "title": {
           "en": "Run a script",
-          "nl": "Voer een script uit"
+          "nl": "Voer een script uit",
+          "da": "Kør et script",
+          "de": "Ein Skript ausführen",
+          "es": "Ejecutar un script",
+          "fr": "Exécuter un script",
+          "it": "Esegui uno script",
+          "no": "Kjør et skript",
+          "sv": "Kör ett skript",
+          "pl": "Uruchom skrypt",
+          "ru": "Выполнить скрипт",
+          "ko": "스크립트 실행"
         },
         "titleFormatted": {
           "en": "Run [[script]]",
-          "nl": "Voer [[script]] uit"
+          "nl": "Voer [[script]] uit",
+          "da": "Kør [[script]]",
+          "de": "Führe [[script]] aus",
+          "es": "Ejecutar [[script]]",
+          "fr": "Exécutez [[script]]",
+          "it": "Esegui [[script]]",
+          "no": "Kjør [[script]]",
+          "sv": "Kör [[script]]",
+          "pl": "Uruchom [[script]]",
+          "ru": "Выполнить [[script]]",
+          "ko": "[[script]] 실행"
         },
         "args": [
           {
@@ -254,7 +536,17 @@
             "type": "autocomplete",
             "title": {
               "en": "Script",
-              "nl": "Script"
+              "nl": "Script",
+              "da": "Script",
+              "de": "Skript",
+              "es": "Script",
+              "fr": "Script",
+              "it": "Script",
+              "no": "Script",
+              "sv": "Script",
+              "pl": "Skrypt",
+              "ru": "Скрипт",
+              "ko": "스크립트"
             }
           }
         ],
@@ -264,11 +556,31 @@
         "deprecated": true,
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]]",
-          "nl": "Voer [[code]] uit"
+          "nl": "Voer [[code]] uit",
+          "da": "Kør [[code]]",
+          "de": "Führen Sie [[code]] aus",
+          "es": "Ejecutar [[code]]",
+          "fr": "Exécuter [[code]]",
+          "it": "Esegui [[code]]",
+          "no": "Kjør [[code]]",
+          "sv": "Kör [[code]]",
+          "pl": "Uruchom [[code]]",
+          "ru": "Запустить [[code]]",
+          "ko": "[[code]] 실행"
         },
         "advanced": true,
         "args": [
@@ -288,11 +600,31 @@
       {
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Выполнить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]]",
-          "nl": "Voer [[code]] uit"
+          "nl": "Voer [[code]] uit",
+          "da": "Kør [[code]]",
+          "de": "Führe [[code]] aus",
+          "es": "Ejecuta [[code]]",
+          "fr": "Exécute [[code]]",
+          "it": "Esegui [[code]]",
+          "no": "Kjør [[code]]",
+          "sv": "Kör [[code]]",
+          "pl": "Uruchom [[code]]",
+          "ru": "Выполнить [[code]]",
+          "ko": "[[code]] 실행"
         },
         "advanced": true,
         "args": [
@@ -302,7 +634,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code"
           }
@@ -313,11 +655,31 @@
         "deprecated": true,
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui il codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] and return Yes/No-tag",
-          "nl": "Voer [[code]] uit en return Ja/Nee-tag"
+          "nl": "Voer [[code]] uit en return Ja/Nee-tag",
+          "da": "Kør [[code]] og returner Ja/Nej-tag",
+          "de": "Führen Sie [[code]] aus und geben Sie Ja/Nein-Tag zurück",
+          "es": "Ejecutar [[code]] y devolver etiqueta Sí/No",
+          "fr": "Exécuter [[code]] et retourner le tag Oui/Non",
+          "it": "Esegui [[code]] e restituisci il tag Sì/No",
+          "no": "Kjør [[code]] og returner Ja/Nei-tag",
+          "sv": "Kör [[code]] och returnera Ja/Nej-tag",
+          "pl": "Uruchom [[code]] i zwróć tag Tak/Nie",
+          "ru": "Выполните [[code]] и верните тег Да/Нет",
+          "ko": "[[code]] 실행하고 예/아니오 태그 반환"
         },
         "tokens": [
           {
@@ -325,7 +687,17 @@
             "type": "boolean",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -336,7 +708,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nreturn true;"
           }
@@ -346,11 +728,31 @@
       {
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui il codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] and return Yes/No-tag",
-          "nl": "Voer [[code]] uit en return Ja/Nee-tag"
+          "nl": "Voer [[code]] uit en return Ja/Nee-tag",
+          "da": "Kør [[code]] og returner Ja/Nej-tag",
+          "de": "Führe [[code]] aus und gib Ja/Nein-Tag zurück",
+          "es": "Ejecutar [[code]] y devolver etiqueta Sí/No",
+          "fr": "Exécuter [[code]] et renvoyer l'étiquette Oui/Non",
+          "it": "Esegui [[code]] e restituisci tag Sì/No",
+          "no": "Kjør [[code]] og returner Ja/Nei-merke",
+          "sv": "Kör [[code]] och returnera Ja/Nej-tag",
+          "pl": "Uruchom [[code]] i zwróć tag Tak/Nie",
+          "ru": "Запустить [[code]] и вернуть метку Да/Нет",
+          "ko": "[[code]]를 실행하고 예/아니오 태그 반환"
         },
         "tokens": [
           {
@@ -358,7 +760,17 @@
             "type": "boolean",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -369,7 +781,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nreturn true;"
           }
@@ -380,11 +802,31 @@
         "deprecated": true,
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter du code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] and return Number-tag",
-          "nl": "Voer [[code]] uit en return Nummer-tag"
+          "nl": "Voer [[code]] uit en return Nummer-tag",
+          "da": "Kør [[code]] og returner nummer-tag",
+          "de": "Führen Sie [[code]] aus und geben Sie Nummer-Tag zurück",
+          "es": "Ejecuta [[code]] y devuelve la etiqueta de número",
+          "fr": "Exécutez [[code]] et retournez l'étiquette de nombre",
+          "it": "Esegui [[code]] e restituisci il tag numero",
+          "no": "Kjør [[code]] og returner nummer-merke",
+          "sv": "Kör [[code]] och returnera nummer-taggen",
+          "pl": "Uruchom [[code]] i zwróć tag liczbowy",
+          "ru": "Запустить [[code]] и вернуть тег числа",
+          "ko": "[[code]] 실행하고 숫자 태그 반환"
         },
         "tokens": [
           {
@@ -392,7 +834,17 @@
             "type": "number",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -403,7 +855,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nreturn 1;"
           }
@@ -413,11 +875,31 @@
       {
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Выполнить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] and return Number-tag",
-          "nl": "Voer [[code]] uit en return Nummer-tag"
+          "nl": "Voer [[code]] uit en return Nummer-tag",
+          "da": "Kør [[code]] og returner nummer-tag",
+          "de": "Führe [[code]] aus und gib Nummer-Tag zurück",
+          "es": "Ejecuta [[code]] y devuelve la etiqueta de número",
+          "fr": "Exécuter [[code]] et retourner l'étiquette de numéro",
+          "it": "Esegui [[code]] e restituisci il tag numero",
+          "no": "Kjør [[code]] og returner tallkode",
+          "sv": "Kör [[code]] och returnera siffertagg",
+          "pl": "Uruchom [[code]] i zwróć tag liczbowy",
+          "ru": "Выполнить [[code]] и вернуть тег номера",
+          "ko": "[[code]] 실행 후 숫자 태그 반환"
         },
         "tokens": [
           {
@@ -425,7 +907,17 @@
             "type": "number",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -436,7 +928,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nreturn 1;"
           }
@@ -447,11 +949,31 @@
         "deprecated": true,
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui il codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] and return Text-tag",
-          "nl": "Voer [[code]] uit en return Tekst-tag"
+          "nl": "Voer [[code]] uit en return Tekst-tag",
+          "da": "Kør [[code]] og returner tekst-tag",
+          "de": "Führe [[code]] aus und gib Text-Tag zurück",
+          "es": "Ejecuta [[code]] y devuelve etiqueta de texto",
+          "fr": "Exécutez [[code]] et renvoyez l'étiquette de texte",
+          "it": "Esegui [[code]] e restituisci l'etichetta di testo",
+          "no": "Kjør [[code]] og returner tekst-etikett",
+          "sv": "Kör [[code]] och returnera text-tagg",
+          "pl": "Uruchom [[code]] i zwróć tag tekstowy",
+          "ru": "Запустите [[code]] и верните текстовый тег",
+          "ko": "[[code]]을 실행하고 텍스트 태그 반환"
         },
         "tokens": [
           {
@@ -459,7 +981,17 @@
             "type": "string",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -470,7 +1002,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nreturn 'Hello World!';"
           }
@@ -480,11 +1022,31 @@
       {
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] and return Text-tag",
-          "nl": "Voer [[code]] uit en return Tekst-tag"
+          "nl": "Voer [[code]] uit en return Tekst-tag",
+          "da": "Kør [[code]] og returner tekst-tag",
+          "de": "Führe [[code]] aus und gib Text-Tag zurück",
+          "es": "Ejecuta [[code]] y devuelve etiqueta de texto",
+          "fr": "Exécutez [[code]] et retournez une balise de texte",
+          "it": "Esegui [[code]] e restituisci un tag di testo",
+          "no": "Kjør [[code]] og returner tekst-tagg",
+          "sv": "Kör [[code]] och returnera text-tagg",
+          "pl": "Uruchom [[code]] i zwróć znacznik tekstu",
+          "ru": "Запустите [[code]] и верните текстовый тег",
+          "ko": "[[code]]를 실행하고 텍스트 태그 반환"
         },
         "tokens": [
           {
@@ -492,7 +1054,17 @@
             "type": "string",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -503,7 +1075,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nreturn 'Hello World!';"
           }
@@ -514,11 +1096,31 @@
         "deprecated": true,
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] with [[argument]]",
-          "nl": "Voer [[code]] uit met [[argument]]"
+          "nl": "Voer [[code]] uit met [[argument]]",
+          "da": "Kør [[code]] med [[argument]]",
+          "de": "Führen Sie [[code]] mit [[argument]] aus",
+          "es": "Ejecutar [[code]] con [[argument]]",
+          "fr": "Exécuter [[code]] avec [[argument]]",
+          "it": "Esegui [[code]] con [[argument]]",
+          "no": "Kjør [[code]] med [[argument]]",
+          "sv": "Kör [[code]] med [[argument]]",
+          "pl": "Uruchom [[code]] z [[argument]]",
+          "ru": "Запустить [[code]] с [[argument]]",
+          "ko": "[[argument]]으로 [[code]] 실행"
         },
         "advanced": true,
         "args": [
@@ -528,7 +1130,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nconsole.log(args[0]);"
           },
@@ -538,11 +1150,31 @@
             "required": false,
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "value": "MyArg"
           }
@@ -552,11 +1184,31 @@
       {
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запуск кода",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] with [[argument]]",
-          "nl": "Voer [[code]] uit met [[argument]]"
+          "nl": "Voer [[code]] uit met [[argument]]",
+          "da": "Kør [[code]] med [[argument]]",
+          "de": "Führe [[code]] mit [[argument]] aus",
+          "es": "Ejecutar [[code]] con [[argument]]",
+          "fr": "Exécuter [[code]] avec [[argument]]",
+          "it": "Esegui [[code]] con [[argument]]",
+          "no": "Kjør [[code]] med [[argument]]",
+          "sv": "Kör [[code]] med [[argument]]",
+          "pl": "Uruchom [[code]] z [[argument]]",
+          "ru": "Запустить [[code]] с [[argument]]",
+          "ko": "[[code]] 실행[[argument]]"
         },
         "advanced": true,
         "args": [
@@ -566,7 +1218,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nconsole.log(args[0]);"
           },
@@ -576,11 +1238,31 @@
             "required": false,
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "value": "MyArg"
           }
@@ -591,11 +1273,31 @@
         "deprecated": true,
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] with [[argument]] and return Yes/No-tag",
-          "nl": "Voer [[code]] uit met [[argument]] en return Ja/Nee-tag"
+          "nl": "Voer [[code]] uit met [[argument]] en return Ja/Nee-tag",
+          "da": "Kør [[code]] med [[argument]] og returner Ja/Nej-tag",
+          "de": "Führe [[code]] mit [[argument]] aus und gib Ja/Nein-Tag zurück",
+          "es": "Ejecutar [[code]] con [[argument]] y devolver etiqueta Sí/No",
+          "fr": "Exécuter [[code]] avec [[argument]] et retourner une étiquette Oui/Non",
+          "it": "Esegui [[code]] con [[argument]] e restituisci tag Sì/No",
+          "no": "Kjør [[code]] med [[argument]] og returner Ja/Nei-tag",
+          "sv": "Kör [[code]] med [[argument]] och returnera Ja/Nej-tag",
+          "pl": "Uruchom [[code]] z [[argument]] i zwróć tag Tak/Nie",
+          "ru": "Запустите [[code]] с [[argument]] и верните тег Да/Нет",
+          "ko": "[[argument]]와 함께 [[code]]를 실행하고 예/아니요 태그 반환"
         },
         "tokens": [
           {
@@ -603,7 +1305,17 @@
             "type": "boolean",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -614,7 +1326,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
           },
@@ -624,11 +1346,31 @@
             "required": false,
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "value": "MyArg"
           }
@@ -638,11 +1380,31 @@
       {
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Выполнить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] with [[argument]] and return Yes/No-tag",
-          "nl": "Voer [[code]] uit met [[argument]] en return Ja/Nee-tag"
+          "nl": "Voer [[code]] uit met [[argument]] en return Ja/Nee-tag",
+          "da": "Kør [[code]] med [[argument]] og returner Ja/Nej-tag",
+          "de": "Führe [[code]] mit [[argument]] aus und gib ein Ja/Nein-Tag zurück",
+          "es": "Ejecuta [[code]] con [[argument]] y devuelve una etiqueta Sí/No",
+          "fr": "Exécute [[code]] avec [[argument]] et retourne une étiquette Oui/Non",
+          "it": "Esegui [[code]] con [[argument]] e restituisci una tag Sì/No",
+          "no": "Kjør [[code]] med [[argument]] og returner Ja/Nei-merke",
+          "sv": "Kör [[code]] med [[argument]] och returnera ett Ja/Nej-tag",
+          "pl": "Uruchom [[code]] z [[argument]] i zwróć tag Tak/Nie",
+          "ru": "Выполните [[code]] с [[argument]] и верните тег Да/Нет",
+          "ko": "[[code]]를 [[argument]]으로 실행하고 예/아니오 태그 반환"
         },
         "tokens": [
           {
@@ -650,7 +1412,17 @@
             "type": "boolean",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -661,7 +1433,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
           },
@@ -671,11 +1453,31 @@
             "required": false,
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "value": "MyArg"
           }
@@ -686,11 +1488,31 @@
         "deprecated": true,
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] with [[argument]] and return Number-tag",
-          "nl": "Voer [[code]] uit met [[argument]] en return Nummer-tag"
+          "nl": "Voer [[code]] uit met [[argument]] en return Nummer-tag",
+          "da": "Kør [[code]] med [[argument]] og returner Number-tag",
+          "de": "Führe [[code]] mit [[argument]] aus und gib Number-tag zurück",
+          "es": "Ejecutar [[code]] con [[argument]] y devolver etiqueta de número",
+          "fr": "Exécuter [[code]] avec [[argument]] et renvoyer une étiquette numérique",
+          "it": "Esegui [[code]] con [[argument]] e restituisci il tag numero",
+          "no": "Kjør [[code]] med [[argument]] og returner Nummer-tag",
+          "sv": "Kör [[code]] med [[argument]] och returnera Num-mer-tag",
+          "pl": "Uruchom [[code]] z [[argument]] i zwróć tag liczby",
+          "ru": "Выполнить [[code]] с [[argument]] и вернуть Number-tag",
+          "ko": "[[code]]를 [[argument]]와 함께 실행하고 Number-tag 반환"
         },
         "tokens": [
           {
@@ -698,7 +1520,17 @@
             "type": "number",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -709,7 +1541,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 1;"
           },
@@ -719,11 +1561,31 @@
             "required": false,
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "value": "MyArg"
           }
@@ -733,11 +1595,31 @@
       {
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] with [[argument]] and return Number-tag",
-          "nl": "Voer [[code]] uit met [[argument]] en return Nummer-tag"
+          "nl": "Voer [[code]] uit met [[argument]] en return Nummer-tag",
+          "da": "Kør [[code]] med [[argument]] og returner Nummer-tag",
+          "de": "Führen Sie [[code]] mit [[argument]] aus und geben Sie die Nummer-Taste zurück",
+          "es": "Ejecutar [[code]] con [[argument]] y devolver la etiqueta de número",
+          "fr": "Exécuter [[code]] avec [[argument]] et retourner l'étiquette Nombre",
+          "it": "Esegui [[code]] con [[argument]] e restituisci il tag Numero",
+          "no": "Kjør [[code]] med [[argument]] og returner Nummer-tag",
+          "sv": "Kör [[code]] med [[argument]] och returnera Nummer-tagg",
+          "pl": "Uruchom [[code]] z [[argument]] i zwróć Tag Numer",
+          "ru": "Запуск [[code]] с [[argument]] и возврат тега Число",
+          "ko": "[[argument]]와 함께 [[code]] 실행하고 숫자 태그 반환"
         },
         "tokens": [
           {
@@ -745,7 +1627,17 @@
             "type": "number",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -756,7 +1648,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 1;"
           },
@@ -766,11 +1668,31 @@
             "required": false,
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "value": "MyArg"
           }
@@ -781,11 +1703,31 @@
         "deprecated": true,
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Запустить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] with [[argument]] and return Text-tag",
-          "nl": "Voer [[code]] uit met [[argument]] en return Tekst-tag"
+          "nl": "Voer [[code]] uit met [[argument]] en return Tekst-tag",
+          "da": "Kør [[code]] med [[argument]] og returner tekst-tag",
+          "de": "Führen Sie [[code]] mit [[argument]] aus und geben Sie Text-Tag zurück",
+          "es": "Ejecuta [[code]] con [[argument]] y devuelve la etiqueta de texto",
+          "fr": "Exécutez [[code]] avec [[argument]] et renvoyez une balise texte",
+          "it": "Esegui [[code]] con [[argument]] e restituisci il tag di testo",
+          "no": "Kjør [[code]] med [[argument]] og returner tekst-etikett",
+          "sv": "Kör [[code]] med [[argument]] och returnera texttagg",
+          "pl": "Uruchom [[code]] z [[argument]] i zwróć znacznik tekstowy",
+          "ru": "Запустите [[code]] с [[argument]] и верните текстовый тег",
+          "ko": "[[code]]를 [[argument]]로 실행하고 텍스트 태그 반환"
         },
         "tokens": [
           {
@@ -793,7 +1735,17 @@
             "type": "string",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -804,7 +1756,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 'Hello World!';"
           },
@@ -814,11 +1776,31 @@
             "required": false,
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "value": "MyArg"
           }
@@ -828,11 +1810,31 @@
       {
         "title": {
           "en": "Run code",
-          "nl": "Voer code uit"
+          "nl": "Voer code uit",
+          "da": "Kør kode",
+          "de": "Code ausführen",
+          "es": "Ejecutar código",
+          "fr": "Exécuter le code",
+          "it": "Esegui codice",
+          "no": "Kjør kode",
+          "sv": "Kör kod",
+          "pl": "Uruchom kod",
+          "ru": "Выполнить код",
+          "ko": "코드 실행"
         },
         "titleFormatted": {
           "en": "Run [[code]] with [[argument]] and return Text-tag",
-          "nl": "Voer [[code]] uit met [[argument]] en return Tekst-tag"
+          "nl": "Voer [[code]] uit met [[argument]] en return Tekst-tag",
+          "da": "Kør [[code]] med [[argument]] og returner Tekst-tag",
+          "de": "Führe [[code]] mit [[argument]] aus und gib Text-Tag zurück",
+          "es": "Ejecutar [[code]] con [[argument]] y devolver etiqueta de texto",
+          "fr": "Exécutez [[code]] avec [[argument]] et retournez l'étiquette texte",
+          "it": "Esegui [[code]] con [[argument]] e restituisci etichetta di testo",
+          "no": "Kjør [[code]] med [[argument]] og returner tekst-tag",
+          "sv": "Kör [[code]] med [[argument]] och returnera text-tagg",
+          "pl": "Uruchom [[code]] z [[argument]] i zwróć etykietę tekstową",
+          "ru": "Выполнить [[code]] с [[argument]] и вернуть текстовый тег",
+          "ko": "[[code]]을 [[argument]] 로 실행하고 텍스트 태그 반환"
         },
         "tokens": [
           {
@@ -840,7 +1842,17 @@
             "type": "string",
             "title": {
               "en": "Result",
-              "nl": "Resultaat"
+              "nl": "Resultaat",
+              "da": "Resultat",
+              "de": "Ergebnis",
+              "es": "Resultado",
+              "fr": "Résultat",
+              "it": "Risultato",
+              "no": "Resultat",
+              "sv": "Resultat",
+              "pl": "Wynik",
+              "ru": "Результат",
+              "ko": "결과"
             }
           }
         ],
@@ -851,7 +1863,17 @@
             "language": "homeyscript",
             "title": {
               "en": "Code",
-              "nl": "Code"
+              "nl": "Code",
+              "da": "Kode",
+              "de": "Code",
+              "es": "Código",
+              "fr": "Code",
+              "it": "Codice",
+              "no": "Kode",
+              "sv": "Kod",
+              "pl": "Kod",
+              "ru": "Код",
+              "ko": "코드"
             },
             "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 'Hello World!';"
           },
@@ -861,11 +1883,31 @@
             "required": false,
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "value": "MyArg"
           }
@@ -875,11 +1917,31 @@
       {
         "title": {
           "en": "Run a script with an argument",
-          "nl": "Voer een script uit met een argument"
+          "nl": "Voer een script uit met een argument",
+          "da": "Kør et script med et argument",
+          "de": "Führe ein Script mit einem Argument aus",
+          "es": "Ejecutar un script con un argumento",
+          "fr": "Exécuter un script avec un argument",
+          "it": "Eseguire uno script con un argomento",
+          "no": "Kjør et skript med et argument",
+          "sv": "Kör ett skript med ett argument",
+          "pl": "Uruchom skrypt z argumentem",
+          "ru": "Запустить скрипт с аргументом",
+          "ko": "인수를 사용하여 스크립트 실행"
         },
         "titleFormatted": {
           "en": "Run [[script]] with argument [[argument]]",
-          "nl": "Voer [[script]] uit met argument [[argument]]"
+          "nl": "Voer [[script]] uit met argument [[argument]]",
+          "da": "Kør [[script]] med argument [[argument]]",
+          "de": "Führe [[script]] mit dem Argument [[argument]] aus",
+          "es": "Ejecutar [[script]] con argumento [[argument]]",
+          "fr": "Exécuter [[script]] avec l'argument [[argument]]",
+          "it": "Esegui [[script]] con l'argomento [[argument]]",
+          "no": "Kjør [[script]] med argumentet [[argument]]",
+          "sv": "Kör [[script]] med argumentet [[argument]]",
+          "pl": "Uruchom [[script]] z argumentem [[argument]]",
+          "ru": "Запуск [[script]] с аргументом [[argument]]",
+          "ko": "[[script]]를 [[argument]] 인수로 실행"
         },
         "args": [
           {
@@ -887,7 +1949,17 @@
             "type": "autocomplete",
             "title": {
               "en": "Script",
-              "nl": "Script"
+              "nl": "Script",
+              "da": "Script",
+              "de": "Script",
+              "es": "Script",
+              "fr": "Script",
+              "it": "Script",
+              "no": "Skript",
+              "sv": "Skript",
+              "pl": "Skrypt",
+              "ru": "Скрипт",
+              "ko": "스크립트"
             }
           },
           {
@@ -895,11 +1967,31 @@
             "type": "text",
             "title": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             },
             "placeholder": {
               "en": "Argument",
-              "nl": "Argument"
+              "nl": "Argument",
+              "da": "Argument",
+              "de": "Argument",
+              "es": "Argumento",
+              "fr": "Argument",
+              "it": "Argomento",
+              "no": "Argument",
+              "sv": "Argument",
+              "pl": "Argument",
+              "ru": "Аргумент",
+              "ko": "인수"
             }
           }
         ],

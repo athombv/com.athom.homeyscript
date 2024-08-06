@@ -2,11 +2,31 @@
   "deprecated": true,
   "title": {
     "en": "Run code",
-    "nl": "Voer code uit"
+    "nl": "Voer code uit",
+    "da": "Kør kode",
+    "de": "Code ausführen",
+    "es": "Ejecutar código",
+    "fr": "Exécuter le code",
+    "it": "Esegui codice",
+    "no": "Kjør kode",
+    "sv": "Kör kod",
+    "pl": "Uruchom kod",
+    "ru": "Запустить код",
+    "ko": "코드 실행"
   },
   "titleFormatted": {
     "en": "Run [[code]] with [[argument]]",
-    "nl": "Voer [[code]] uit met [[argument]]"
+    "nl": "Voer [[code]] uit met [[argument]]",
+    "da": "Kør [[code]] med [[argument]]",
+    "de": "Führe [[code]] mit [[argument]] aus",
+    "es": "Ejecuta [[code]] con [[argument]]",
+    "fr": "Exécutez [[code]] avec [[argument]]",
+    "it": "Esegui [[code]] con [[argument]]",
+    "no": "Kjør [[code]] med [[argument]]",
+    "sv": "Kör [[code]] med [[argument]]",
+    "pl": "Uruchom [[code]] z [[argument]]",
+    "ru": "Запустить [[code]] с [[argument]]",
+    "ko": "[[argument]]과 함께 [[code]] 실행"
   },
   "advanced": true,
   "args": [
@@ -16,7 +36,17 @@
       "language": "homeyscript",
       "title": {
         "en": "Code",
-        "nl": "Code"
+        "nl": "Code",
+        "da": "Kode",
+        "de": "Code",
+        "es": "Código",
+        "fr": "Code",
+        "it": "Codice",
+        "no": "Kode",
+        "sv": "Kod",
+        "pl": "Kod",
+        "ru": "Код",
+        "ko": "코드"
       },
       "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn true;"
     },
@@ -26,11 +56,31 @@
       "required": false,
       "title": {
         "en": "Argument",
-        "nl": "Argument"
+        "nl": "Argument",
+        "da": "Argument",
+        "de": "Argument",
+        "es": "Argumento",
+        "fr": "Argument",
+        "it": "Argomento",
+        "no": "Argument",
+        "sv": "Argument",
+        "pl": "Argument",
+        "ru": "Аргумент",
+        "ko": "인수"
       },
       "placeholder": {
         "en": "Argument",
-        "nl": "Argument"
+        "nl": "Argument",
+        "da": "Argument",
+        "de": "Argument",
+        "es": "Argumento",
+        "fr": "Argument",
+        "it": "Argomento",
+        "no": "Argument",
+        "sv": "Argument",
+        "pl": "Argument",
+        "ru": "Аргумент",
+        "ko": "인수"
       },
       "value": "MyArg"
     }
