@@ -9,6 +9,13 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v3
+
+        - uses: webfactory/ssh-agent@v0.9.0
+          env:
+            SSH_KEY: ${{ secrets.SSH_KEY }}
+          if: env.SSH_KEY != null
+          with:
+            ssh-private-key: ${{ env.SSH_KEY }}
         
         - name: Publish
           uses: athombv/github-action-homey-app-publish@master
