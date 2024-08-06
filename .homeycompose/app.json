@@ -4,11 +4,33 @@
   "version": "3.5.1",
   "compatibility": ">=5.0.0",
   "name": {
-    "en": "HomeyScript"
+    "en": "HomeyScript",
+    "nl": "HomeyScript",
+    "da": "HomeyScript",
+    "de": "HomeyScript",
+    "es": "HomeyScript",
+    "fr": "HomeyScript",
+    "it": "HomeyScript",
+    "no": "HomeyScript",
+    "sv": "HomeyScript",
+    "pl": "HomeyScript",
+    "ru": "HomeyScript",
+    "ko": "HomeyScript"
   },
   "brandColor": "#2B1F32",
   "description": {
-    "en": "Script your Home"
+    "en": "Script your Home",
+    "nl": "Script je Huis",
+    "da": "Skript dit Hjem",
+    "de": "Skripte dein Zuhause",
+    "es": "Escribe un guión para tu hogar",
+    "fr": "Script ton Domicile",
+    "it": "Scriptare la tua Casa",
+    "no": "Skript ditt Hjem",
+    "sv": "Script ditt Hem",
+    "pl": "Skryptuj Swój Dom",
+    "ru": "Скрипт твоего Дома",
+    "ko": "당신의 집을 스크립트로 작성하세요"
   },
   "permissions": [
     "homey:manager:api"

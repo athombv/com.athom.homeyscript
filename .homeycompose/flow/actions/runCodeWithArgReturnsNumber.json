@@ -2,11 +2,31 @@
   "deprecated": true,
   "title": {
     "en": "Run code",
-    "nl": "Voer code uit"
+    "nl": "Voer code uit",
+    "da": "Kør kode",
+    "de": "Code ausführen",
+    "es": "Ejecutar código",
+    "fr": "Exécuter le code",
+    "it": "Esegui codice",
+    "no": "Kjør kode",
+    "sv": "Kör kod",
+    "pl": "Uruchom kod",
+    "ru": "Запустить код",
+    "ko": "코드 실행"
   },
   "titleFormatted": {
     "en": "Run [[code]] with [[argument]] and return Number-tag",
-    "nl": "Voer [[code]] uit met [[argument]] en return Nummer-tag"
+    "nl": "Voer [[code]] uit met [[argument]] en return Nummer-tag",
+    "da": "Kør [[code]] med [[argument]] og returner Number-tag",
+    "de": "Führe [[code]] mit [[argument]] aus und gib Number-tag zurück",
+    "es": "Ejecutar [[code]] con [[argument]] y devolver etiqueta de número",
+    "fr": "Exécuter [[code]] avec [[argument]] et renvoyer une étiquette numérique",
+    "it": "Esegui [[code]] con [[argument]] e restituisci il tag numero",
+    "no": "Kjør [[code]] med [[argument]] og returner Nummer-tag",
+    "sv": "Kör [[code]] med [[argument]] och returnera Num-mer-tag",
+    "pl": "Uruchom [[code]] z [[argument]] i zwróć tag liczby",
+    "ru": "Выполнить [[code]] с [[argument]] и вернуть Number-tag",
+    "ko": "[[code]]를 [[argument]]와 함께 실행하고 Number-tag 반환"
   },
   "tokens": [
     {
@@ -14,7 +34,17 @@
       "type": "number",
       "title": {
         "en": "Result",
-        "nl": "Resultaat"
+        "nl": "Resultaat",
+        "da": "Resultat",
+        "de": "Ergebnis",
+        "es": "Resultado",
+        "fr": "Résultat",
+        "it": "Risultato",
+        "no": "Resultat",
+        "sv": "Resultat",
+        "pl": "Wynik",
+        "ru": "Результат",
+        "ko": "결과"
       }
     }
   ],
@@ -25,7 +55,17 @@
       "language": "homeyscript",
       "title": {
         "en": "Code",
-        "nl": "Code"
+        "nl": "Code",
+        "da": "Kode",
+        "de": "Code",
+        "es": "Código",
+        "fr": "Code",
+        "it": "Codice",
+        "no": "Kode",
+        "sv": "Kod",
+        "pl": "Kod",
+        "ru": "Код",
+        "ko": "코드"
       },
       "value": "// My Code\n\nconsole.log(args[0]);\n\nreturn 1;"
     },
@@ -35,11 +75,31 @@
       "required": false,
       "title": {
         "en": "Argument",
-        "nl": "Argument"
+        "nl": "Argument",
+        "da": "Argument",
+        "de": "Argument",
+        "es": "Argumento",
+        "fr": "Argument",
+        "it": "Argomento",
+        "no": "Argument",
+        "sv": "Argument",
+        "pl": "Argument",
+        "ru": "Аргумент",
+        "ko": "인수"
       },
       "placeholder": {
         "en": "Argument",
-        "nl": "Argument"
+        "nl": "Argument",
+        "da": "Argument",
+        "de": "Argument",
+        "es": "Argumento",
+        "fr": "Argument",
+        "it": "Argomento",
+        "no": "Argument",
+        "sv": "Argument",
+        "pl": "Argument",
+        "ru": "Аргумент",
+        "ko": "인수"
       },
       "value": "MyArg"
     }

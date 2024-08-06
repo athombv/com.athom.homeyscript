@@ -1,11 +1,31 @@
 {
   "title": {
     "en": "Run a script",
-    "nl": "Voer een script uit"
+    "nl": "Voer een script uit",
+    "da": "Kør et script",
+    "de": "Ein Skript ausführen",
+    "es": "Ejecutar un script",
+    "fr": "Exécuter un script",
+    "it": "Esegui uno script",
+    "no": "Kjør et skript",
+    "sv": "Kör ett skript",
+    "pl": "Uruchom skrypt",
+    "ru": "Запустить скрипт",
+    "ko": "스크립트 실행"
   },
   "titleFormatted": {
     "en": "Run [[script]]",
-    "nl": "Voer [[script]] uit"
+    "nl": "Voer [[script]] uit",
+    "da": "Kør [[script]]",
+    "de": "Führe [[script]] aus",
+    "es": "Ejecutar [[script]]",
+    "fr": "Exécuter [[script]]",
+    "it": "Esegui [[script]]",
+    "no": "Kjør [[script]]",
+    "sv": "Kör [[script]]",
+    "pl": "Uruchom [[script]]",
+    "ru": "Запустить [[script]]",
+    "ko": "[[script]] 실행"
   },
   "args": [
     {
@@ -13,7 +33,17 @@
       "type": "autocomplete",
       "title": {
         "en": "Script",
-        "nl": "Script"
+        "nl": "Script",
+        "da": "Skript",
+        "de": "Skript",
+        "es": "Script",
+        "fr": "Script",
+        "it": "Script",
+        "no": "Skript",
+        "sv": "Skript",
+        "pl": "Skrypt",
+        "ru": "Скрипт",
+        "ko": "스크립트"
       }
     }
   ]
