@@ -1998,5 +1998,32 @@
         "id": "runWithArg"
       }
     ]
+  },
+  "widgets": {
+    "script": {
+      "name": {
+        "en": "Script"
+      },
+      "settings": [],
+      "api": {
+        "getSomething": {
+          "method": "GET",
+          "path": "/"
+        },
+        "addSomething": {
+          "method": "POST",
+          "path": "/"
+        },
+        "updateSomething": {
+          "method": "PUT",
+          "path": "/:id"
+        },
+        "deleteSomething": {
+          "method": "DELETE",
+          "path": "/:id"
+        }
+      },
+      "id": "script"
+    }
   }
 }

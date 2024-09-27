@@ -1,0 +1,28 @@
+<html>
+  <head>
+  </head>
+
+  <body class="homey-widget">
+    <script type="text/javascript">
+      function onHomeyReady(Homey) {
+        
+        // Fetch something from your app.
+        Homey.api('GET', '/', {})
+          .then((html) => {
+            console.log(html);
+
+            // read the original head
+            const head = document.head.innerHTML;
+
+            document.documentElement.innerHTML = html;
+
+            // merge original head with new head
+            document.head.innerHTML = head + document.head.innerHTML;
+
+            Homey.ready();
+          })
+          .catch(console.error);
+      }
+    </script>
+  </body>
+</html>
