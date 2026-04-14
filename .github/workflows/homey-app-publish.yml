@@ -1,0 +1,28 @@
+name: Publish Homey App
+
+on:
+  workflow_dispatch:
+
+jobs:  
+    publish-app:
+      name: Publish App
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+
+        - uses: webfactory/ssh-agent@v0.9.0
+          env:
+            SSH_KEY: ${{ secrets.SSH_KEY }}
+          if: env.SSH_KEY != null
+          with:
+            ssh-private-key: ${{ env.SSH_KEY }}
+        
+        - name: Publish
+          uses: athombv/github-action-homey-app-publish@master
+          id: publish
+          with:
+            personal_access_token: ${{ secrets.HOMEY_PAT }}
+
+        - name: URL
+          run: |
+            echo "Manage your app at ${{ steps.publish.outputs.url }}." >> $GITHUB_STEP_SUMMARY

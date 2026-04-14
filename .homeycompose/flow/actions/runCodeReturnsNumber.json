@@ -2,11 +2,31 @@
   "deprecated": true,
   "title": {
     "en": "Run code",
-    "nl": "Voer code uit"
+    "nl": "Voer code uit",
+    "da": "Kør kode",
+    "de": "Code ausführen",
+    "es": "Ejecutar código",
+    "fr": "Exécuter du code",
+    "it": "Esegui codice",
+    "no": "Kjør kode",
+    "sv": "Kör kod",
+    "pl": "Uruchom kod",
+    "ru": "Запустить код",
+    "ko": "코드 실행"
   },
   "titleFormatted": {
     "en": "Run [[code]] and return Number-tag",
-    "nl": "Voer [[code]] uit en return Nummer-tag"
+    "nl": "Voer [[code]] uit en return Nummer-tag",
+    "da": "Kør [[code]] og returner nummer-tag",
+    "de": "Führen Sie [[code]] aus und geben Sie Nummer-Tag zurück",
+    "es": "Ejecuta [[code]] y devuelve la etiqueta de número",
+    "fr": "Exécutez [[code]] et retournez l'étiquette de nombre",
+    "it": "Esegui [[code]] e restituisci il tag numero",
+    "no": "Kjør [[code]] og returner nummer-merke",
+    "sv": "Kör [[code]] och returnera nummer-taggen",
+    "pl": "Uruchom [[code]] i zwróć tag liczbowy",
+    "ru": "Запустить [[code]] и вернуть тег числа",
+    "ko": "[[code]] 실행하고 숫자 태그 반환"
   },
   "tokens": [
     {
@@ -14,7 +34,17 @@
       "type": "number",
       "title": {
         "en": "Result",
-        "nl": "Resultaat"
+        "nl": "Resultaat",
+        "da": "Resultat",
+        "de": "Ergebnis",
+        "es": "Resultado",
+        "fr": "Résultat",
+        "it": "Risultato",
+        "no": "Resultat",
+        "sv": "Resultat",
+        "pl": "Wynik",
+        "ru": "Результат",
+        "ko": "결과"
       }
     }
   ],
@@ -25,7 +55,17 @@
       "language": "homeyscript",
       "title": {
         "en": "Code",
-        "nl": "Code"
+        "nl": "Code",
+        "da": "Kode",
+        "de": "Code",
+        "es": "Código",
+        "fr": "Code",
+        "it": "Codice",
+        "no": "Kode",
+        "sv": "Kod",
+        "pl": "Kod",
+        "ru": "Код",
+        "ko": "코드"
       },
       "value": "// My Code\n\nreturn 1;"
     }

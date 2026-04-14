@@ -1,11 +1,31 @@
 {
   "title": {
     "en": "Run a script with an argument",
-    "nl": "Voer een script uit met een argument"
+    "nl": "Voer een script uit met een argument",
+    "da": "Kør et script med et argument",
+    "de": "Führe ein Script mit einem Argument aus",
+    "es": "Ejecutar un script con un argumento",
+    "fr": "Exécuter un script avec un argument",
+    "it": "Eseguire uno script con un argomento",
+    "no": "Kjør et skript med et argument",
+    "sv": "Kör ett skript med ett argument",
+    "pl": "Uruchom skrypt z argumentem",
+    "ru": "Запустить скрипт с аргументом",
+    "ko": "인수를 사용하여 스크립트 실행"
   },
   "titleFormatted": {
     "en": "Run [[script]] with argument [[argument]]",
-    "nl": "Voer [[script]] uit met argument [[argument]]"
+    "nl": "Voer [[script]] uit met argument [[argument]]",
+    "da": "Kør [[script]] med argument [[argument]]",
+    "de": "Führe [[script]] mit dem Argument [[argument]] aus",
+    "es": "Ejecutar [[script]] con argumento [[argument]]",
+    "fr": "Exécuter [[script]] avec l'argument [[argument]]",
+    "it": "Esegui [[script]] con l'argomento [[argument]]",
+    "no": "Kjør [[script]] med argumentet [[argument]]",
+    "sv": "Kör [[script]] med argumentet [[argument]]",
+    "pl": "Uruchom [[script]] z argumentem [[argument]]",
+    "ru": "Запуск [[script]] с аргументом [[argument]]",
+    "ko": "[[script]]를 [[argument]] 인수로 실행"
   },
   "args": [
     {
@@ -13,7 +33,17 @@
       "type": "autocomplete",
       "title": {
         "en": "Script",
-        "nl": "Script"
+        "nl": "Script",
+        "da": "Script",
+        "de": "Script",
+        "es": "Script",
+        "fr": "Script",
+        "it": "Script",
+        "no": "Skript",
+        "sv": "Skript",
+        "pl": "Skrypt",
+        "ru": "Скрипт",
+        "ko": "스크립트"
       }
     },
     {
@@ -21,11 +51,31 @@
       "type": "text",
       "title": {
         "en": "Argument",
-        "nl": "Argument"
+        "nl": "Argument",
+        "da": "Argument",
+        "de": "Argument",
+        "es": "Argumento",
+        "fr": "Argument",
+        "it": "Argomento",
+        "no": "Argument",
+        "sv": "Argument",
+        "pl": "Argument",
+        "ru": "Аргумент",
+        "ko": "인수"
       },
       "placeholder": {
         "en": "Argument",
-        "nl": "Argument"
+        "nl": "Argument",
+        "da": "Argument",
+        "de": "Argument",
+        "es": "Argumento",
+        "fr": "Argument",
+        "it": "Argomento",
+        "no": "Argument",
+        "sv": "Argument",
+        "pl": "Argument",
+        "ru": "Аргумент",
+        "ko": "인수"
       }
     }
   ]

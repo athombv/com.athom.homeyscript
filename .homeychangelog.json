@@ -49,5 +49,11 @@
   },
   "3.5.1": {
     "en": "Update homey-api"
+  },
+  "3.6.0": {
+    "en": "Added translations."
+  },
+  "3.6.1": {
+    "en": "Update homey-api for energy endpoints."
   }
 }

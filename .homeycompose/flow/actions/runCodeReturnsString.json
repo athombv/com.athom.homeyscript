@@ -2,11 +2,31 @@
   "deprecated": true,
   "title": {
     "en": "Run code",
-    "nl": "Voer code uit"
+    "nl": "Voer code uit",
+    "da": "Kør kode",
+    "de": "Code ausführen",
+    "es": "Ejecutar código",
+    "fr": "Exécuter le code",
+    "it": "Esegui il codice",
+    "no": "Kjør kode",
+    "sv": "Kör kod",
+    "pl": "Uruchom kod",
+    "ru": "Запустить код",
+    "ko": "코드 실행"
   },
   "titleFormatted": {
     "en": "Run [[code]] and return Text-tag",
-    "nl": "Voer [[code]] uit en return Tekst-tag"
+    "nl": "Voer [[code]] uit en return Tekst-tag",
+    "da": "Kør [[code]] og returner tekst-tag",
+    "de": "Führe [[code]] aus und gib Text-Tag zurück",
+    "es": "Ejecuta [[code]] y devuelve etiqueta de texto",
+    "fr": "Exécutez [[code]] et renvoyez l'étiquette de texte",
+    "it": "Esegui [[code]] e restituisci l'etichetta di testo",
+    "no": "Kjør [[code]] og returner tekst-etikett",
+    "sv": "Kör [[code]] och returnera text-tagg",
+    "pl": "Uruchom [[code]] i zwróć tag tekstowy",
+    "ru": "Запустите [[code]] и верните текстовый тег",
+    "ko": "[[code]]을 실행하고 텍스트 태그 반환"
   },
   "tokens": [
     {
@@ -14,7 +34,17 @@
       "type": "string",
       "title": {
         "en": "Result",
-        "nl": "Resultaat"
+        "nl": "Resultaat",
+        "da": "Resultat",
+        "de": "Ergebnis",
+        "es": "Resultado",
+        "fr": "Résultat",
+        "it": "Risultato",
+        "no": "Resultat",
+        "sv": "Resultat",
+        "pl": "Wynik",
+        "ru": "Результат",
+        "ko": "결과"
       }
     }
   ],
@@ -25,7 +55,17 @@
       "language": "homeyscript",
       "title": {
         "en": "Code",
-        "nl": "Code"
+        "nl": "Code",
+        "da": "Kode",
+        "de": "Code",
+        "es": "Código",
+        "fr": "Code",
+        "it": "Codice",
+        "no": "Kode",
+        "sv": "Kod",
+        "pl": "Kod",
+        "ru": "Код",
+        "ko": "코드"
       },
       "value": "// My Code\n\nreturn 'Hello World!';"
     }
