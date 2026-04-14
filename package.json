@@ -45,7 +45,6 @@
     "eslint-config-prettier": "^9.1.0",
     "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.5.2",
     "jsdoc": "^3.6.11",
-    "jsdoc-ts-utils": "^5.0.0",
     "prettier": "^3.2.5",
     "serve": "^14.2.3",
     "watch": "^1.0.2"
