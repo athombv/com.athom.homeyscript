@@ -46,7 +46,7 @@
     "small": "/assets/images/small.png"
   },
   "homepage": "https://my.homey.app/scripts",
-  "support": "https://github.com/athombv/com.athom.homeyscript#disclaimer",
+  "support": "https://homey.app/support/",
   "source": "https://github.com/athombv/com.athom.homeyscript",
   "platforms": [
     "local"
