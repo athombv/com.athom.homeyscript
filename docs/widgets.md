@@ -86,19 +86,20 @@ the widget. For periodic updates, use a Flow that runs the saved script.
 
 Homey's [widget SDK guide](https://apps.developer.homey.app/the-basics/widgets)
 requires separate `preview-light.png` and `preview-dark.png` files that accurately
-represent the widget. Our previews use a 1024 × 1024 transparent canvas, following
-the CLI starter template, with a centered widget at its natural content height.
+represent the widget. Follow the linked Figma template's abstract visual style:
+use rounded placeholder bars for titles, labels, values, and timestamps, with no
+rendered text or numbers. Keep recognizable controls such as the play icon.
 
-The button preview shows the default argumentless layout: a round play control,
-editable label, script title, and readiness text. The result preview shows a sample
-numeric return value with a unit and execution timestamp. Colors, Roboto font
-weights, padding, and control sizes match the widget styles. Transparent variants
-omit the card surface and shadow while retaining the same content and spacing.
+Our previews use a 1024 × 1024 canvas with the template's light or dark background
+and a centered widget at its natural content height. The button preview shows the
+default argumentless layout: a round play control with a label placeholder. The
+result preview uses a larger placeholder for the return value. Both include small
+placeholders for the script title and status. Transparent variants omit the card
+surface and shadow; the preview canvas remains visible behind their content.
 
-Keep the adjacent SVG sources and PNG exports in sync. Export at 1024 × 1024 with
-Roboto Regular, Medium, and Bold available, preserving the alpha channel. Inspect
-both themes at the picker size (128 × 128), as well as full resolution. The SVGs
-are editable sources; Homey consumes the PNG files.
+Keep the adjacent SVG sources and PNG exports in sync. Export at 1024 × 1024 and
+inspect both themes at the picker size (128 × 128), as well as full resolution.
+The SVGs are editable sources; Homey consumes the PNG files. No fonts are needed.
 
 ### Validation
 
