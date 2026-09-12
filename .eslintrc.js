@@ -9,6 +9,10 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['widgets/*/public/*.js'],
+      env: { browser: true },
+    },
+    {
       files: ['*.js', '*.mjs'],
       rules: {
         'no-unused-vars': ['warn', { args: 'none' }],

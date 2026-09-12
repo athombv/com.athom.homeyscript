@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Script Button</title>
+    <link rel="stylesheet" href="widget.css" />
+  </head>
+  <body class="homey-widget">
+    <main>
+      <p id="script-name" class="homey-text-small-light">Script Button</p>
+      <form id="run-form">
+        <button id="run" type="submit" disabled>
+          <svg id="play-icon" aria-hidden="true" viewBox="0 0 24 24">
+            <path
+              d="M7 4.5a1.5 1.5 0 0 1 2.3-1.27l12 7.5a1.5 1.5 0 0 1 0 2.54l-12 7.5A1.5 1.5 0 0 1 7 19.5z"
+            />
+          </svg>
+        </button>
+        <label id="label" for="run">Run script</label>
+        <input
+          id="argument"
+          type="text"
+          aria-label="Script argument"
+          placeholder="Argument"
+          autocomplete="off"
+          enterkeyhint="send"
+          hidden
+          disabled
+        />
+      </form>
+      <p id="status" class="homey-text-small-light" role="status">Loading…</p>
+      <pre id="result" class="homey-text-regular" hidden></pre>
+    </main>
+    <script src="widget.js"></script>
+  </body>
+</html>

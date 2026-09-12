@@ -1,0 +1,105 @@
+{
+  "name": {
+    "en": "Script Button"
+  },
+  "settings": [
+    {
+      "id": "script",
+      "type": "autocomplete",
+      "title": {
+        "en": "Script"
+      }
+    },
+    {
+      "id": "showTitle",
+      "type": "checkbox",
+      "title": {
+        "en": "Show script title"
+      },
+      "value": true
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "title": {
+        "en": "Custom script title (optional)"
+      },
+      "value": "",
+      "hint": {
+        "en": "Shown inside the widget. Leave empty to use the script name."
+      }
+    },
+    {
+      "id": "showLabel",
+      "type": "checkbox",
+      "title": {
+        "en": "Show button label"
+      },
+      "value": true,
+      "hint": {
+        "en": "Show the label beside the play button when argument input is disabled."
+      }
+    },
+    {
+      "id": "label",
+      "type": "text",
+      "title": {
+        "en": "Button label"
+      },
+      "value": "Run script",
+      "hint": {
+        "en": "Shown beside the play button when argument input is disabled. Also names the button for accessibility."
+      }
+    },
+    {
+      "id": "showStatus",
+      "type": "checkbox",
+      "title": {
+        "en": "Show hint / last execution"
+      },
+      "value": true,
+      "hint": {
+        "en": "Show readiness, progress, and success text below the button. Errors remain visible."
+      }
+    },
+    {
+      "id": "showResult",
+      "type": "checkbox",
+      "title": {
+        "en": "Show script result"
+      },
+      "value": true,
+      "hint": {
+        "en": "Show the returned value below the button. Errors remain visible."
+      }
+    },
+    {
+      "id": "enableArgument",
+      "type": "checkbox",
+      "title": {
+        "en": "Enable argument input"
+      },
+      "value": false,
+      "hint": {
+        "en": "Show an input beside the play button. Submit with play or Enter to pass the text as args[0]. Empty input runs without arguments."
+      }
+    },
+    {
+      "id": "clearAfterRun",
+      "type": "checkbox",
+      "title": {
+        "en": "Clear after run"
+      },
+      "value": false,
+      "hint": {
+        "en": "Clear the argument input after a successful run. Keep the text when a run fails. Only applies when argument input is enabled."
+      }
+    }
+  ],
+  "api": {
+    "runScript": {
+      "method": "POST",
+      "path": "/run"
+    }
+  }
+}
