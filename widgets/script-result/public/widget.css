@@ -1,0 +1,33 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  color: var(--homey-text-color, #222);
+  background: var(--homey-background-color, #fff);
+  font-family: inherit;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--homey-su-3, 12px);
+}
+p {
+  margin: 0;
+}
+#result {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+#status,
+#script-name {
+  color: var(--homey-color-mono-600, #626265);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+#status.error {
+  color: var(--homey-text-color-danger, #c13232);
+}
+
+html[data-transparent='true'] body {
+  background: transparent;
+}

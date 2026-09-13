@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HomeyScript widget playground</title>
+    <link rel="stylesheet" href="/homey-widget/css/homey.widgets.css" />
+    <link rel="stylesheet" href="playground.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Widget playground</h1>
+      <p>Real widget markup, styles and fonts. All script runs and actions are simulated.</p>
+    </header>
+    <div class="controls">
+      <label
+        >Example
+        <select id="example"></select
+      ></label>
+      <label
+        >Widget variant
+        <select id="variant">
+          <option value="script-result">Script Result</option>
+          <option value="script-result-transparent">Script Result · transparent</option>
+          <option value="script-button">Script Button</option>
+          <option value="script-button-transparent">Script Button · transparent</option>
+        </select>
+      </label>
+      <label
+        >Theme
+        <select id="theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select></label
+      >
+      <label
+        >Font scale
+        <select id="font-scale">
+          <option value="1">100%</option>
+          <option value="1.25">125%</option>
+          <option value="1.5">150%</option>
+        </select></label
+      >
+      <label><input type="checkbox" id="enable-argument" /> Script Button argument input</label>
+    </div>
+    <div class="controls">
+      <button id="apply">Apply JSON</button>
+      <button id="update">Update defaults</button>
+      <button id="reorder">Reorder blocks</button>
+      <button id="stale">Stage remote change</button>
+      <label
+        >Action outcome
+        <select id="outcome">
+          <option value="success">Success</option>
+          <option value="failure">Execution error</option>
+          <option value="transport">Connection error</option>
+          <option value="fields">Field error</option>
+          <option value="fields-message">Field error and toast</option>
+        </select>
+      </label>
+    </div>
+    <p id="diagnostic" role="alert"></p>
+    <div class="workspace">
+      <section class="source">
+        <label for="mode">Input format</label>
+        <select id="mode">
+          <option value="document">WidgetResult options</option>
+          <option value="value">Ordinary return value</option>
+          <option value="snapshot">Result state</option>
+        </select>
+        <label for="json">Editable JSON</label><textarea id="json" spellcheck="false"></textarea>
+      </section>
+      <section>
+        <h2>Narrow · 320px</h2>
+        <div class="preview-stage"><iframe id="widget" title="Narrow widget preview"></iframe></div>
+      </section>
+      <section>
+        <h2>Wide · 480px</h2>
+        <div class="preview-stage"><iframe id="editor" title="Wide widget preview"></iframe></div>
+      </section>
+    </div>
+    <section class="events">
+      <h2>Submitted events</h2>
+      <pre id="events" aria-live="polite">No actions yet.</pre>
+    </section>
+    <script src="/assets/widget-result.js"></script>
+    <script src="PlaygroundExamples.js"></script>
+    <script src="playground.js"></script>
+  </body>
+</html>

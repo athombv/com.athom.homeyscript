@@ -13,6 +13,10 @@ const { HomeyAPI: HomeyAPILegacy } = require('athom-api');
 const { HomeyAPIV2, HomeyAPIV3Local } = require('homey-api');
 const fetch = require('node-fetch');
 const _ = require('lodash');
+const { ScriptWidgets } = require('./lib/ScriptWidgets');
+const { WidgetResult } = require('./lib/WidgetResult');
+const { WidgetValidationError } = require('./lib/WidgetValidationError');
+const { ScriptExecution } = require('./lib/ScriptExecution');
 
 const { RunCondition } = require('./lib/flow/conditions/RunCondition');
 const { RunWithArgCondition } = require('./lib/flow/conditions/RunWithArgCondition');
@@ -26,12 +30,17 @@ const { RunCodeReturnsStringAction } = require('./lib/flow/actions/RunCodeReturn
 const { RunCodeReturnsNumberAction } = require('./lib/flow/actions/RunCodeReturnsNumberAction');
 const { RunCodeReturnsBooleanAction } = require('./lib/flow/actions/RunCodeReturnsBooleanAction');
 const { RunCodeWithArgAction } = require('./lib/flow/actions/RunCodeWithArgAction');
-const { RunCodeWithArgReturnsStringAction } = require('./lib/flow/actions/RunCodeWithArgReturnsStringAction');
-const { RunCodeWithArgReturnsNumberAction } = require('./lib/flow/actions/RunCodeWithArgReturnsNumberAction');
-const { RunCodeWithArgReturnsBooleanAction } = require('./lib/flow/actions/RunCodeWithArgReturnsBooleanAction');
+const {
+  RunCodeWithArgReturnsStringAction,
+} = require('./lib/flow/actions/RunCodeWithArgReturnsStringAction');
+const {
+  RunCodeWithArgReturnsNumberAction,
+} = require('./lib/flow/actions/RunCodeWithArgReturnsNumberAction');
+const {
+  RunCodeWithArgReturnsBooleanAction,
+} = require('./lib/flow/actions/RunCodeWithArgReturnsBooleanAction');
 
 module.exports = class HomeyScriptApp extends Homey.App {
-
   static RUN_TIMEOUT = 1000 * 30; // 30s
 
   async onInit() {
@@ -72,21 +81,22 @@ module.exports = class HomeyScriptApp extends Homey.App {
       // Copy example scripts
       try {
         const files = await fs.readdir(path.join(__dirname, exampleFolder));
-        await Promise.all(files.map(async filename => {
-          if (!filename.endsWith('.js')) return;
+        await Promise.all(
+          files.map(async (filename) => {
+            if (!filename.endsWith('.js')) return;
 
-          const id = `example-${filename.substring(0, filename.length - '.js'.length)}`;
-          const filepath = path.join(__dirname, exampleFolder, filename);
-          const code = await fs.readFile(filepath, 'utf8');
+            const id = `example-${filename.substring(0, filename.length - '.js'.length)}`;
+            const filepath = path.join(__dirname, exampleFolder, filename);
+            const code = await fs.readFile(filepath, 'utf8');
 
-          scripts[id] = {
-            code,
-            lastExecuted: null,
-            version: 2,
-          };
+            scripts[id] = {
+              code,
+              version: 2,
+            };
 
-          this.log(`Found Example: ${id}`);
-        }));
+            this.log(`Found Example: ${id}`);
+          }),
+        );
       } catch (err) {
         this.error('Examples Error:', err);
       }
@@ -94,20 +104,22 @@ module.exports = class HomeyScriptApp extends Homey.App {
       // Check for existing (SDK2) scripts in /userdata
       try {
         const files = await fs.readdir(path.join(__dirname, 'userdata', 'scripts'));
-        await Promise.all(files.map(async filename => {
-          if (!filename.endsWith('.js')) return;
+        await Promise.all(
+          files.map(async (filename) => {
+            if (!filename.endsWith('.js')) return;
 
-          const id = filename.substring(0, filename.length - '.js'.length);
-          const filepath = path.join(__dirname, 'userdata', 'scripts', filename);
-          const code = await fs.readFile(filepath, 'utf8');
+            const id = filename.substring(0, filename.length - '.js'.length);
+            const filepath = path.join(__dirname, 'userdata', 'scripts', filename);
+            const code = await fs.readFile(filepath, 'utf8');
 
-          scripts[id] = {
-            code,
-            lastExecuted: new Date(this.homey.settings.get(`last-execution-${id}`)),
-          };
+            scripts[id] = {
+              code,
+              lastExecuted: new Date(this.homey.settings.get(`last-execution-${id}`)),
+            };
 
-          this.log(`Found Migration: ${id}`);
-        }));
+            this.log(`Found Migration: ${id}`);
+          }),
+        );
       } catch (err) {
         this.error('Migration Error:', err);
       }
@@ -139,6 +151,28 @@ module.exports = class HomeyScriptApp extends Homey.App {
       }
     }
 
+    this.scriptExecution = new ScriptExecution(this);
+    this.scriptExecution.initialize();
+    this.homey.once('unload', () => {
+      this.scriptExecution.stop();
+    });
+    this.scriptWidgets = new ScriptWidgets(this);
+
+    const widgetIds = [
+      'script-result',
+      'script-button',
+      'script-result-transparent',
+      'script-button-transparent',
+    ];
+
+    for (const widgetId of widgetIds) {
+      this.homey.dashboards
+        .getWidget(widgetId)
+        .registerSettingAutocompleteListener('script', async (query) => {
+          return await this.onFlowGetScriptAutocomplete(query);
+        });
+    }
+
     // Register Flow Cards
     this.runCondition = new RunCondition({ homey: this.homey });
     this.runWithArgCondition = new RunWithArgCondition({ homey: this.homey });
@@ -152,21 +186,29 @@ module.exports = class HomeyScriptApp extends Homey.App {
     this.runCodeReturnsNumberAction = new RunCodeReturnsNumberAction({ homey: this.homey });
     this.runCodeReturnsBooleanAction = new RunCodeReturnsBooleanAction({ homey: this.homey });
     this.runCodeWithArgAction = new RunCodeWithArgAction({ homey: this.homey });
-    this.runCodeWithArgReturnsStringAction = new RunCodeWithArgReturnsStringAction({ homey: this.homey });
-    this.runCodeWithArgReturnsNumberAction = new RunCodeWithArgReturnsNumberAction({ homey: this.homey });
-    this.runCodeWithArgReturnsBooleanAction = new RunCodeWithArgReturnsBooleanAction({ homey: this.homey });
+    this.runCodeWithArgReturnsStringAction = new RunCodeWithArgReturnsStringAction({
+      homey: this.homey,
+    });
+    this.runCodeWithArgReturnsNumberAction = new RunCodeWithArgReturnsNumberAction({
+      homey: this.homey,
+    });
+    this.runCodeWithArgReturnsBooleanAction = new RunCodeWithArgReturnsBooleanAction({
+      homey: this.homey,
+    });
 
     // Register Flow Tokens
     this.tokens = this.homey.settings.get('tokens') || {};
     this.tokensInstances = {};
 
-    await Promise.all(Object.keys(this.tokens).map(async id => {
-      this.tokensInstances[id] = await this.homey.flow.createToken(id, {
-        title: id,
-        type: this.tokens[id].type,
-        value: this.tokens[id].value,
-      });
-    })).catch(this.error);
+    await Promise.all(
+      Object.keys(this.tokens).map(async (id) => {
+        this.tokensInstances[id] = await this.homey.flow.createToken(id, {
+          title: id,
+          type: this.tokens[id].type,
+          value: this.tokens[id].value,
+        });
+      }),
+    ).catch(this.error);
   }
 
   createAppApi() {
@@ -187,16 +229,19 @@ module.exports = class HomeyScriptApp extends Homey.App {
       return api;
     }
 
-    const api = new HomeyAPILegacy({
-      localUrl: this.localUrl,
-      baseUrl: this.localUrl,
-      token: this.sessionToken,
-      apiVersion: 2,
-      online: true,
-    }, () => {
-      // called by HomeyAPI on 401 requests
-      api.setToken(this.sessionToken);
-    });
+    const api = new HomeyAPILegacy(
+      {
+        localUrl: this.localUrl,
+        baseUrl: this.localUrl,
+        token: this.sessionToken,
+        apiVersion: 2,
+        online: true,
+      },
+      () => {
+        // called by HomeyAPI on 401 requests
+        api.setToken(this.sessionToken);
+      },
+    );
 
     return api;
   }
@@ -205,8 +250,8 @@ module.exports = class HomeyScriptApp extends Homey.App {
     const scripts = await this.getScripts();
 
     return Object.values(scripts)
-      .filter(script => script.name.toLowerCase().includes(query.toLowerCase()))
-      .map(script => ({
+      .filter((script) => script.name.toLowerCase().includes(query.toLowerCase()))
+      .map((script) => ({
         id: script.id,
         name: script.name,
       }));
@@ -252,19 +297,25 @@ module.exports = class HomeyScriptApp extends Homey.App {
   }
 
   async getScripts() {
-    return this.scripts;
+    const scripts = {};
+
+    for (const [id, script] of Object.entries(this.scripts)) {
+      scripts[id] = { ...script, lastExecuted: this.scriptExecution.getLastExecuted(id) };
+    }
+
+    return scripts;
   }
 
   async getScript({ id }) {
     const script = this.scripts[id];
 
-    if (!script) {
+    if (!Object.hasOwn(this.scripts, id)) {
       throw new Error('Script Not Found');
     }
 
     return {
       ...script,
-      lastExecuted: new Date(script.lastExecuted),
+      lastExecuted: new Date(this.scriptExecution.getLastExecuted(id)),
     };
   }
 
@@ -276,8 +327,13 @@ module.exports = class HomeyScriptApp extends Homey.App {
     args = [],
     version,
     realtime = true,
+    onWidgetResult,
+    widgetEvent = null,
   }) {
-    if (lastExecuted == null) lastExecuted = new Date();
+    if (lastExecuted == null) {
+      const previousExecution = this.scriptExecution.getLastExecuted(id);
+      lastExecuted = previousExecution === null ? new Date() : new Date(previousExecution);
+    }
 
     const homeyAPI = this.getHomeyAPI({ version });
 
@@ -296,6 +352,7 @@ module.exports = class HomeyScriptApp extends Homey.App {
     // Create the Context
     const context = vm.createContext({
       args,
+      widgetEvent: widgetEvent === null ? null : JSON.parse(JSON.stringify(widgetEvent)),
 
       // 3rd party modules
       _,
@@ -313,6 +370,8 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
       // Homey API
       Homey: homeyAPI,
+      WidgetResult,
+      WidgetValidationError,
 
       // Logging
       log,
@@ -323,17 +382,36 @@ module.exports = class HomeyScriptApp extends Homey.App {
       },
 
       // Shortcuts
-      say: async text => homeyAPI.speechOutput.say({ text }),
-      tag: async (id, value) => this.setToken({ id, value }),
-      wait: async delay => new Promise(resolve => setTimeout(resolve, delay)),
+      say: async (text) => {
+        return await homeyAPI.speechOutput.say({ text });
+      },
+      tag: async (id, value) => {
+        return await this.setToken({ id, value });
+      },
+      wait: async (delay) => {
+        return await new Promise((resolve) => {
+          setTimeout(resolve, delay);
+        });
+      },
 
       // Cross-Script Settings
       global: {
-        get: key => this.homey.settings.get(`homeyscript-${key}`),
-        set: (key, value) => this.homey.settings.set(`homeyscript-${key}`, value),
-        keys: () => this.homey.settings.getKeys()
-          .filter(key => key.startsWith('homeyscript-'))
-          .map(key => key.substring('homeyscript-'.length)),
+        get: (key) => {
+          return this.homey.settings.get(`homeyscript-${key}`);
+        },
+        set: (key, value) => {
+          return this.homey.settings.set(`homeyscript-${key}`, value);
+        },
+        keys: () => {
+          return this.homey.settings
+            .getKeys()
+            .filter((key) => {
+              return key.startsWith('homeyscript-');
+            })
+            .map((key) => {
+              return key.substring('homeyscript-'.length);
+            });
+        },
       },
 
       // Deprecated
@@ -364,15 +442,25 @@ module.exports = class HomeyScriptApp extends Homey.App {
       const result = await runPromise;
       log('\n———————————————————\n✅ Script Success\n');
       log('↩️ Returned:', JSON.stringify(result, false, 2));
+      const widgetResult = this.scriptWidgets.record(id, { success: true, value: result });
+      onWidgetResult?.(widgetResult);
       return result;
     } catch (err) {
+      const widgetResult = this.scriptWidgets.record(id, {
+        success: false,
+        error: err.message,
+        validationError: WidgetValidationError.getDetails(err),
+      });
+      onWidgetResult?.(widgetResult);
       log('\n———————————————————\n❌ Script Error\n');
       log('⚠️', err.stack);
       // Create a new Error because an Error from the sandbox behaves differently
-      const error = new Error(err.message);
+      const error = new Error(err.message, { cause: err });
       error.stack = err.stack;
       throw error;
     } finally {
+      this.scriptExecution.record(id);
+
       if (homeyAPI) {
         homeyAPI.destroy();
       }
@@ -385,46 +473,51 @@ module.exports = class HomeyScriptApp extends Homey.App {
       name,
       code,
       version: 2,
-      lastExecuted: null,
     };
 
     this.scripts[newScript.id] = newScript;
     this.homey.settings.set('scripts', this.scripts);
 
-    return newScript;
+    return { ...newScript, lastExecuted: null };
   }
 
-  async updateScript({
-    id, name, code, lastExecuted, version,
-  }) {
-    this.scripts[id] = {
-      ...this.scripts[id],
-    };
-
-    if (name != null) {
-      this.scripts[id].name = name;
+  async updateScript({ id, name, code, lastExecuted, version }) {
+    if (!Object.hasOwn(this.scripts, id)) {
+      throw new Error('Script Not Found');
     }
 
-    if (code != null) {
-      this.scripts[id].code = code;
+    const definitionChanged = name != null || code != null || version != null;
+
+    if (definitionChanged) {
+      const script = { ...this.scripts[id] };
+
+      if (name != null) {
+        script.name = name;
+      }
+
+      if (code != null) {
+        script.code = code;
+      }
+
+      if (version != null) {
+        script.version = version;
+      }
+
+      this.scripts[id] = script;
+      this.homey.settings.set('scripts', this.scripts);
     }
 
     if (lastExecuted != null) {
-      this.scripts[id].lastExecuted = lastExecuted;
+      this.scriptExecution.record(id, lastExecuted);
     }
 
-    if (version != null) {
-      this.scripts[id].version = version;
-    }
-
-    this.homey.settings.set('scripts', this.scripts);
-
-    return this.scripts[id];
+    return { ...this.scripts[id], lastExecuted: this.scriptExecution.getLastExecuted(id) };
   }
 
   async deleteScript({ id }) {
     delete this.scripts[id];
+    this.scriptWidgets.results.delete(id);
+    this.scriptExecution.delete(id);
     this.homey.settings.set('scripts', this.scripts);
   }
-
 };
