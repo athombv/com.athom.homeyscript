@@ -18,22 +18,6 @@ p {
   overflow-wrap: anywhere;
   white-space: pre-wrap;
 }
-#result.metric {
-  font-size: var(--homey-font-size-xxlarge, 32px);
-  line-height: 40px;
-  font-weight: 700;
-}
-#result.boolean {
-  font-size: var(--homey-font-size-xlarge, 24px);
-  font-weight: 700;
-}
-#result ul {
-  margin: 0;
-  padding-left: 20px;
-}
-#result li + li {
-  margin-top: 8px;
-}
 #status,
 #script-name {
   color: var(--homey-color-mono-600, #626265);

@@ -1,0 +1,112 @@
+body {
+  margin: 24px;
+  font-size: var(--homey-font-size-default);
+  line-height: var(--homey-line-height-default);
+  background: var(--homey-color-mono-025);
+}
+header,
+.controls,
+.events {
+  margin-bottom: 20px;
+}
+h1 {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+label {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+button,
+select {
+  font: inherit;
+  padding: 8px 12px;
+  border: var(--homey-line);
+  border-radius: var(--homey-border-radius-default);
+  background: var(--homey-background-color);
+  color: var(--homey-text-color);
+  max-width: 100%;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+button:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--homey-color-highlight);
+  outline-offset: 2px;
+}
+.workspace {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px;
+}
+.source {
+  display: grid;
+  gap: 8px;
+  width: 340px;
+  max-width: 100%;
+}
+textarea {
+  display: block;
+  width: 100%;
+  height: 600px;
+  box-sizing: border-box;
+  padding: 12px;
+  border: var(--homey-line);
+  border-radius: var(--homey-border-radius-small);
+  background: var(--homey-background-color);
+  color: var(--homey-text-color);
+  font: 13px/1.5 monospace;
+}
+.preview-stage {
+  background: var(--homey-background-color);
+  border-radius: var(--homey-border-radius-default);
+  overflow: hidden;
+}
+.transparent-preview .preview-stage {
+  background: repeating-linear-gradient(
+    135deg,
+    var(--homey-color-mono-025) 0 24px,
+    var(--homey-color-mono-050) 24px 48px
+  );
+}
+iframe {
+  display: block;
+  width: 320px;
+  max-width: calc(100vw - 48px);
+  height: 640px;
+  border: 0;
+  background: transparent;
+}
+#editor {
+  width: 480px;
+}
+#diagnostic {
+  color: var(--homey-text-color-danger);
+  margin-bottom: 16px;
+}
+.events {
+  margin-top: 24px;
+}
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

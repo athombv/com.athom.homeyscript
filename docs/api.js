@@ -185,3 +185,42 @@
  * @function global.keys
  * @returns {Array}
  */
+
+/**
+ * Describe widget content and controls with a validated, JSON-compatible document.
+ * The ordered blocks array supports table, list, metric, status, markdown, actions, and form.
+ * Action buttons run exact saved-script names without displaying their returns.
+ * See docs/widgets.md for the versioned block contract and form submissions.
+ * @name WidgetResult
+ * @class
+ * @memberof global
+ * @param {Object} options The widget document.
+ * @param {Object[]} options.blocks Blocks in display order.
+ * @example
+ * return new WidgetResult({
+ *   blocks: [{ type: 'metric', label: 'Power', value: 460, unit: 'W' }],
+ * });
+ */
+
+/**
+ * The current widget interaction, or null for ordinary editor, Flow and Script Button runs.
+ * Form submissions provide { type: 'submit', actionId, formId, values }.
+ * Ordinary action buttons provide { type: 'action', actionId }.
+ * Values are validated against the cached form; args[0] keeps its existing meaning.
+ * @name widgetEvent
+ * @type {Object|null}
+ * @global
+ */
+
+/**
+ * Stop script execution with errors beside submitted form fields.
+ * Values are retained; successful-submit behavior is not applied.
+ * @name WidgetValidationError
+ * @class
+ * @memberof global
+ * @param {Object} options The validation failure.
+ * @param {Object.<string, string>} options.fields Messages keyed by form field name.
+ * @param {String} [options.message] Optional brief error toast.
+ * @example
+ * throw new WidgetValidationError({ fields: { until: 'Choose a later date.' } });
+ */

@@ -100,6 +100,14 @@
     "runScript": {
       "method": "POST",
       "path": "/run"
+    },
+    "runAction": {
+      "method": "POST",
+      "path": "/action"
+    },
+    "getResult": {
+      "method": "GET",
+      "path": "/result"
     }
   }
 }

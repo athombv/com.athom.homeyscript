@@ -2102,6 +2102,14 @@
         "runScript": {
           "method": "POST",
           "path": "/run"
+        },
+        "runAction": {
+          "method": "POST",
+          "path": "/action"
+        },
+        "getResult": {
+          "method": "GET",
+          "path": "/result"
         }
       },
       "id": "script-button"
@@ -2208,6 +2216,14 @@
         "runScript": {
           "method": "POST",
           "path": "/run"
+        },
+        "runAction": {
+          "method": "POST",
+          "path": "/action"
+        },
+        "getResult": {
+          "method": "GET",
+          "path": "/result"
         }
       },
       "transparent": true,
@@ -2257,23 +2273,16 @@
           "hint": {
             "en": "Show the hint and last execution time below the result. Errors remain visible."
           }
-        },
-        {
-          "id": "unit",
-          "type": "text",
-          "title": {
-            "en": "Unit (optional)"
-          },
-          "value": "",
-          "hint": {
-            "en": "Shown beside numeric results, for example W or °C."
-          }
         }
       ],
       "api": {
         "getResult": {
           "method": "GET",
           "path": "/result"
+        },
+        "runAction": {
+          "method": "POST",
+          "path": "/action"
         }
       },
       "id": "script-result"
@@ -2322,23 +2331,16 @@
           "hint": {
             "en": "Show the hint and last execution time below the result. Errors remain visible."
           }
-        },
-        {
-          "id": "unit",
-          "type": "text",
-          "title": {
-            "en": "Unit (optional)"
-          },
-          "value": "",
-          "hint": {
-            "en": "Shown beside numeric results, for example W or °C."
-          }
         }
       ],
       "api": {
         "getResult": {
           "method": "GET",
           "path": "/result"
+        },
+        "runAction": {
+          "method": "POST",
+          "path": "/action"
         }
       },
       "transparent": true,

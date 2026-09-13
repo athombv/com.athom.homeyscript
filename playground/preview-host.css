@@ -1,0 +1,4 @@
+/* Constrain only the preview viewport; widget styles and typography are unchanged. */
+html {
+  overflow-y: auto;
+}

@@ -42,23 +42,16 @@
       "hint": {
         "en": "Show the hint and last execution time below the result. Errors remain visible."
       }
-    },
-    {
-      "id": "unit",
-      "type": "text",
-      "title": {
-        "en": "Unit (optional)"
-      },
-      "value": "",
-      "hint": {
-        "en": "Shown beside numeric results, for example W or \u00b0C."
-      }
     }
   ],
   "api": {
     "getResult": {
       "method": "GET",
       "path": "/result"
+    },
+    "runAction": {
+      "method": "POST",
+      "path": "/action"
     }
   },
   "transparent": true

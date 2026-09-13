@@ -12,6 +12,10 @@ window.onHomeyReady = function onHomeyReady(Homey) {
   let loading = false;
   let refreshPending = false;
   let hasResult = false;
+  const renderer = new window.WidgetResultRenderer({
+    output,
+    controller: globalThis.WidgetHost.controller(Homey, scriptId, requestRefresh),
+  });
 
   status.hidden = !showStatus;
   name.textContent = customTitle || settings.script?.name || 'Script Result';
@@ -45,55 +49,6 @@ window.onHomeyReady = function onHomeyReady(Homey) {
     return;
   }
 
-  function render(result) {
-    output.replaceChildren();
-    output.className = 'homey-text-regular';
-
-    if (!result.hasValue) {
-      output.textContent = result.displayError || 'Script finished without a return value.';
-      return;
-    }
-
-    const { value } = result;
-
-    if (typeof value === 'number') {
-      output.classList.add('metric');
-      output.textContent = `${value.toLocaleString()}${settings.unit ? ` ${settings.unit}` : ''}`;
-      return;
-    }
-
-    if (typeof value === 'boolean') {
-      output.classList.add('boolean');
-      output.textContent = String(value);
-      return;
-    }
-
-    if (Array.isArray(value)) {
-      if (value.length === 0) {
-        output.textContent = 'Empty list';
-        return;
-      }
-
-      const list = document.createElement('ul');
-
-      for (const item of value) {
-        const row = document.createElement('li');
-        row.textContent = typeof item === 'string' ? item : JSON.stringify(item);
-        list.append(row);
-      }
-
-      output.append(list);
-      return;
-    }
-
-    if (value === '') {
-      output.textContent = 'Empty text';
-      return;
-    }
-
-    output.textContent = typeof value === 'string' ? value : JSON.stringify(value, null, 2);
-  }
-
   async function refresh() {
     if (document.hidden) {
       return;
@@ -115,7 +70,7 @@ window.onHomeyReady = function onHomeyReady(Homey) {
       status.hidden = !showStatus;
 
       if (!result) {
-        output.className = 'homey-text-regular';
+        renderer.clear();
         output.textContent = 'No result yet';
         status.textContent = 'Run this script from a Flow, the editor, or a Script Button.';
         hasResult = false;
@@ -126,7 +81,7 @@ window.onHomeyReady = function onHomeyReady(Homey) {
 
       if (!result.success) {
         output.textContent = 'Script failed';
-        output.className = 'homey-text-regular';
+        renderer.clear();
         status.hidden = false;
         status.textContent = showStatus ? `${result.error} · ${timestamp}` : result.error;
         status.classList.add('error');
@@ -134,7 +89,7 @@ window.onHomeyReady = function onHomeyReady(Homey) {
         return;
       }
 
-      render(result);
+      renderer.render(result);
       hasResult = true;
 
       status.textContent = `Updated ${timestamp}${result.truncated ? ' · Result shortened' : ''}`;
@@ -144,6 +99,7 @@ window.onHomeyReady = function onHomeyReady(Homey) {
       status.classList.add('error');
 
       if (!hasResult) {
+        renderer.clear();
         output.textContent = 'Result unavailable';
       }
     } finally {

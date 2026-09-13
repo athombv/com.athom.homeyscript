@@ -17,6 +17,21 @@ window.onHomeyReady = function onHomeyReady(Homey) {
   const clearAfterRun = settings.clearAfterRun === true;
   const content = document.querySelector('main');
   let composing = false;
+  const renderer = new window.WidgetResultRenderer({
+    output,
+    controller: globalThis.WidgetHost.controller(Homey, scriptId, refreshResult),
+  });
+
+  async function refreshResult() {
+    const { result } = await Homey.api('GET', `/result?scriptId=${encodeURIComponent(scriptId)}`);
+    output.hidden = false;
+    if (!result || !result.success) {
+      renderer.clear();
+      output.textContent = result?.error || 'No result yet';
+      return;
+    }
+    renderer.render(result);
+  }
 
   status.hidden = !showStatus;
   input.hidden = !enableArgument;
@@ -120,9 +135,8 @@ window.onHomeyReady = function onHomeyReady(Homey) {
       }
 
       if (showResult && result.hasValue) {
-        output.textContent =
-          typeof result.value === 'string' ? result.value : JSON.stringify(result.value, null, 2);
         output.hidden = false;
+        renderer.render(result);
       }
     } catch (err) {
       output.hidden = true;
@@ -130,6 +144,9 @@ window.onHomeyReady = function onHomeyReady(Homey) {
       completionText = err.message || 'Could not run the script.';
       completionClass = 'error';
     } finally {
+      if (output.hidden) {
+        renderer.clear();
+      }
       await finishSpinnerRotation();
 
       status.hidden = !completionVisible;

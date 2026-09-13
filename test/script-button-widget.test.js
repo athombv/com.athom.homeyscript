@@ -2,9 +2,7 @@
 
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
-const fs = require('node:fs');
-const path = require('node:path');
-const vm = require('node:vm');
+const { WidgetElement, loadWidget } = require('./helpers/widget-dom');
 
 function createWidget(widgetId, settings, api, { reducedMotion = true } = {}) {
   const elements = {};
@@ -17,7 +15,7 @@ function createWidget(widgetId, settings, api, { reducedMotion = true } = {}) {
   let timerId = 0;
 
   for (const id of ['script-name', 'run-form', 'run', 'argument', 'label', 'status', 'result']) {
-    const element = new EventTarget();
+    const element = new WidgetElement();
     element.value = '';
     element.disabled = false;
     element.classList = { add() {}, toggle() {} };
@@ -39,34 +37,37 @@ function createWidget(widgetId, settings, api, { reducedMotion = true } = {}) {
       },
     };
   };
-  const window = {};
-  const code = fs.readFileSync(
-    path.resolve(__dirname, `../widgets/${widgetId}/public/widget.js`),
-    'utf8',
+  const window = new EventTarget();
+  document.createElement = (tag) => {
+    return new WidgetElement(tag);
+  };
+  loadWidget(
+    {
+      window,
+      document,
+      console,
+      matchMedia() {
+        return motion;
+      },
+      setInterval,
+      clearInterval,
+      setTimeout(callback) {
+        timerId += 1;
+        timers.set(timerId, callback);
+        return timerId;
+      },
+      clearTimeout(id) {
+        timers.delete(id);
+      },
+      getComputedStyle() {
+        return { paddingTop: '16px', paddingBottom: '16px' };
+      },
+      ResizeObserver: class {
+        observe() {}
+      },
+    },
+    widgetId,
   );
-
-  vm.runInNewContext(code, {
-    window,
-    document,
-    console,
-    matchMedia() {
-      return motion;
-    },
-    setTimeout(callback) {
-      timerId += 1;
-      timers.set(timerId, callback);
-      return timerId;
-    },
-    clearTimeout(id) {
-      timers.delete(id);
-    },
-    getComputedStyle() {
-      return { paddingTop: '16px', paddingBottom: '16px' };
-    },
-    ResizeObserver: class {
-      observe() {}
-    },
-  });
   window.onHomeyReady({
     getSettings() {
       return { script: { id: 'example', name: 'Example' }, ...settings };

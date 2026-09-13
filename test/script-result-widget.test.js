@@ -3,14 +3,7 @@
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
 const { EventEmitter } = require('node:events');
-const fs = require('node:fs');
-const path = require('node:path');
-const vm = require('node:vm');
-
-const widgetCode = fs.readFileSync(
-  path.resolve(__dirname, '../widgets/script-result/public/widget.js'),
-  'utf8',
-);
+const { WidgetElement, loadWidget } = require('./helpers/widget-dom');
 
 function createWidget(api) {
   const document = new EventTarget();
@@ -21,17 +14,13 @@ function createWidget(api) {
   const elements = {};
 
   for (const id of ['script-name', 'result', 'status']) {
-    elements[id] = {
-      textContent: '',
-      className: '',
-      classList: { add() {}, remove() {} },
-      replaceChildren() {
-        this.textContent = '';
-      },
-    };
+    elements[id] = new WidgetElement();
   }
 
   document.hidden = false;
+  document.createElement = (tag) => {
+    return new WidgetElement(tag);
+  };
   document.getElementById = (id) => {
     return elements[id];
   };
@@ -43,24 +32,29 @@ function createWidget(api) {
     };
   };
 
-  vm.runInNewContext(widgetCode, {
-    window,
-    document,
-    getComputedStyle() {
-      return { paddingTop: '16px', paddingBottom: '16px' };
+  loadWidget(
+    {
+      window,
+      document,
+      getComputedStyle() {
+        return { paddingTop: '16px', paddingBottom: '16px' };
+      },
+      ResizeObserver: class {
+        observe() {}
+      },
+      setTimeout,
+      clearTimeout,
+      setInterval(callback) {
+        timerId += 1;
+        timers.set(timerId, callback);
+        return timerId;
+      },
+      clearInterval(id) {
+        timers.delete(id);
+      },
     },
-    ResizeObserver: class {
-      observe() {}
-    },
-    setInterval(callback) {
-      timerId += 1;
-      timers.set(timerId, callback);
-      return timerId;
-    },
-    clearInterval(id) {
-      timers.delete(id);
-    },
-  });
+    'script-result',
+  );
   window.onHomeyReady({
     getSettings() {
       return { script: { id: 'example', name: 'Example' } };

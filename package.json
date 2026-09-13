@@ -11,7 +11,10 @@
     "build": "npm run jsdoc:clean; npm run jsdoc;",
     "jsdoc": "jsdoc --configure ./docs/jsdoc.json;",
     "jsdoc:clean": "rm -rf ./build",
-    "jsdoc:watch": "watch \"npm run jsdoc:clean && npm run jsdoc\" ./docs docs"
+    "jsdoc:watch": "watch \"npm run jsdoc:clean && npm run jsdoc\" ./docs docs",
+    "build:widgets": "node scripts/build-widget-assets.mjs",
+    "check:types": "node node_modules/typescript-contract/bin/tsc -p tsconfig.widget-contract.json",
+    "playground": "node scripts/serve-widget-playground.mjs"
   },
   "nodemonConfig": {
     "ignore": [
@@ -42,12 +45,16 @@
   "devDependencies": {
     "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.5",
     "concurrently": "^8.2.2",
+    "esbuild": "^0.28.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "homey-jsdoc-template": "github:athombv/homey-jsdoc-template#1.5.2",
     "jsdoc": "^3.6.11",
     "prettier": "^3.2.5",
+    "remark-parse": "^11.0.0",
     "serve": "^14.2.3",
+    "typescript-contract": "npm:typescript@^7.0.2",
+    "unified": "^11.0.5",
     "watch": "^1.0.2"
   }
 }
