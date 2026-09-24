@@ -5,6 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const { EventEmitter } = require('node:events');
 const { createRequire } = require('node:module');
+const { ScriptWidgets } = require('../../lib/ScriptWidgets');
 const { ScriptExecution } = require('../../lib/ScriptExecution');
 
 // Exercise the real runner with only the Homey host and device API replaced.
@@ -72,6 +73,7 @@ function createScriptApp({ code = 'return args[0];', storedSettings } = {}) {
   homey.once('unload', () => {
     app.scriptExecution.stop();
   });
+  app.scriptWidgets = new ScriptWidgets(app);
 
   return {
     app,

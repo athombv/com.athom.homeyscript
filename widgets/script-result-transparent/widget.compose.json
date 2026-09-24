@@ -1,0 +1,58 @@
+{
+  "name": {
+    "en": "Script Result (Transparent)"
+  },
+  "settings": [
+    {
+      "id": "script",
+      "type": "autocomplete",
+      "title": {
+        "en": "Script"
+      },
+      "hint": {
+        "en": "Shows the latest return value. Run the script from a Flow, the editor, or a Script Button to update it. Results reset when HomeyScript restarts."
+      }
+    },
+    {
+      "id": "showTitle",
+      "type": "checkbox",
+      "title": {
+        "en": "Show script title"
+      },
+      "value": true
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "title": {
+        "en": "Custom script title (optional)"
+      },
+      "value": "",
+      "hint": {
+        "en": "Shown inside the widget. Leave empty to use the script name."
+      }
+    },
+    {
+      "id": "showStatus",
+      "type": "checkbox",
+      "title": {
+        "en": "Show hint / last execution"
+      },
+      "value": true,
+      "hint": {
+        "en": "Show the hint and last execution time below the result. Errors remain visible."
+      }
+    }
+  ],
+  "api": {
+    "getResult": {
+      "method": "GET",
+      "path": "/result"
+    },
+    "runAction": {
+      "method": "POST",
+      "path": "/action"
+    }
+  },
+  "transparent": true
+}

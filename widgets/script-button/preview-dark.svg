@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>Script Button — dark preview</title>
+  <defs>
+    <linearGradient id="play" x1="0.329" y1="0.030" x2="0.671" y2="0.970">
+      <stop stop-color="#66b4fc" />
+      <stop offset="0.6" stop-color="#0082fa" />
+      <stop offset="1" stop-color="#0068c8" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6" />
+      <feOffset dy="4" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.12" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" fill="#191a21" />
+  <g transform="translate(64 316) scale(2.8)">
+    <rect width="320" height="140" rx="14" fill="#1f2029" filter="url(#shadow)" />
+    <rect x="16" y="20" width="96" height="12" rx="6" fill="#2b2c36" />
+    <circle cx="38" cy="70" r="22" fill="url(#play)" />
+    <svg x="28" y="60" width="20" height="20" viewBox="0 0 24 24" fill="#ffffff">
+      <path d="M7 4.5a1.5 1.5 0 0 1 2.3-1.27l12 7.5a1.5 1.5 0 0 1 0 2.54l-12 7.5A1.5 1.5 0 0 1 7 19.5z" />
+    </svg>
+    <rect x="72" y="62" width="116" height="16" rx="8" fill="#2b2c36" />
+    <rect x="16" y="108" width="124" height="12" rx="6" fill="#2b2c36" />
+  </g>
+</svg>

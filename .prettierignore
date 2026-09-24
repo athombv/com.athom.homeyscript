@@ -1,0 +1,5 @@
+# Homey Compose owns the generated manifest and its formatting.
+/app.json
+
+widgets/*/public/widget-markdown.js
+widgets/*/public/widget-markdown.LICENSE.txt
