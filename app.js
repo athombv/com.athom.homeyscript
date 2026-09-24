@@ -13,6 +13,7 @@ const { HomeyAPI: HomeyAPILegacy } = require('athom-api');
 const { HomeyAPIV2, HomeyAPIV3Local } = require('homey-api');
 const fetch = require('node-fetch');
 const _ = require('lodash');
+const { ScriptExecution } = require('./lib/ScriptExecution');
 
 const { RunCondition } = require('./lib/flow/conditions/RunCondition');
 const { RunWithArgCondition } = require('./lib/flow/conditions/RunWithArgCondition');
@@ -81,7 +82,6 @@ module.exports = class HomeyScriptApp extends Homey.App {
 
           scripts[id] = {
             code,
-            lastExecuted: null,
             version: 2,
           };
 
@@ -138,6 +138,12 @@ module.exports = class HomeyScriptApp extends Homey.App {
         this.homey.settings.set('scripts', this.scripts);
       }
     }
+
+    this.scriptExecution = new ScriptExecution(this);
+    this.scriptExecution.initialize();
+    this.homey.once('unload', () => {
+      this.scriptExecution.stop();
+    });
 
     // Register Flow Cards
     this.runCondition = new RunCondition({ homey: this.homey });
@@ -252,19 +258,25 @@ module.exports = class HomeyScriptApp extends Homey.App {
   }
 
   async getScripts() {
-    return this.scripts;
+    const scripts = {};
+
+    for (const [id, script] of Object.entries(this.scripts)) {
+      scripts[id] = { ...script, lastExecuted: this.scriptExecution.getLastExecuted(id) };
+    }
+
+    return scripts;
   }
 
   async getScript({ id }) {
     const script = this.scripts[id];
 
-    if (!script) {
+    if (!Object.hasOwn(this.scripts, id)) {
       throw new Error('Script Not Found');
     }
 
     return {
       ...script,
-      lastExecuted: new Date(script.lastExecuted),
+      lastExecuted: new Date(this.scriptExecution.getLastExecuted(id)),
     };
   }
 
@@ -277,7 +289,10 @@ module.exports = class HomeyScriptApp extends Homey.App {
     version,
     realtime = true,
   }) {
-    if (lastExecuted == null) lastExecuted = new Date();
+    if (lastExecuted == null) {
+      const previousExecution = this.scriptExecution.getLastExecuted(id);
+      lastExecuted = previousExecution === null ? new Date() : new Date(previousExecution);
+    }
 
     const homeyAPI = this.getHomeyAPI({ version });
 
@@ -373,6 +388,8 @@ module.exports = class HomeyScriptApp extends Homey.App {
       error.stack = err.stack;
       throw error;
     } finally {
+      this.scriptExecution.record(id);
+
       if (homeyAPI) {
         homeyAPI.destroy();
       }
@@ -385,46 +402,50 @@ module.exports = class HomeyScriptApp extends Homey.App {
       name,
       code,
       version: 2,
-      lastExecuted: null,
     };
 
     this.scripts[newScript.id] = newScript;
     this.homey.settings.set('scripts', this.scripts);
 
-    return newScript;
+    return { ...newScript, lastExecuted: null };
   }
 
-  async updateScript({
-    id, name, code, lastExecuted, version,
-  }) {
-    this.scripts[id] = {
-      ...this.scripts[id],
-    };
-
-    if (name != null) {
-      this.scripts[id].name = name;
+  async updateScript({ id, name, code, lastExecuted, version }) {
+    if (!Object.hasOwn(this.scripts, id)) {
+      throw new Error('Script Not Found');
     }
 
-    if (code != null) {
-      this.scripts[id].code = code;
+    const definitionChanged = name != null || code != null || version != null;
+
+    if (definitionChanged) {
+      const script = { ...this.scripts[id] };
+
+      if (name != null) {
+        script.name = name;
+      }
+
+      if (code != null) {
+        script.code = code;
+      }
+
+      if (version != null) {
+        script.version = version;
+      }
+
+      this.scripts[id] = script;
+      this.homey.settings.set('scripts', this.scripts);
     }
 
     if (lastExecuted != null) {
-      this.scripts[id].lastExecuted = lastExecuted;
+      this.scriptExecution.record(id, lastExecuted);
     }
 
-    if (version != null) {
-      this.scripts[id].version = version;
-    }
-
-    this.homey.settings.set('scripts', this.scripts);
-
-    return this.scripts[id];
+    return { ...this.scripts[id], lastExecuted: this.scriptExecution.getLastExecuted(id) };
   }
 
   async deleteScript({ id }) {
     delete this.scripts[id];
+    this.scriptExecution.delete(id);
     this.homey.settings.set('scripts', this.scripts);
   }
-
 };

@@ -34,8 +34,6 @@ module.exports = {
         lastExecuted: script.lastExecuted,
         version: script.version,
         args,
-      }).finally(() => {
-        homey.app.updateScript({ id: script.id, lastExecuted: new Date() }).catch(() => {});
       });
 
       return {
