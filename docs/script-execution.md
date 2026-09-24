@@ -7,7 +7,7 @@ Script definitions and execution timestamps use separate app settings:
 
 Creating, editing, or deleting a script still saves its definition immediately.
 The shared runner records timestamps in memory after successful and failed saved-script
-runs, including runs from the editor, Flows, and widgets. Inline Flow code does not
+runs, including runs from the editor and Flows. Inline Flow code does not
 create execution metadata. A deleted script cannot be recreated by a finishing run.
 
 The first changed timestamp schedules one save for 10 minutes later. Further runs
@@ -40,4 +40,3 @@ can still cause other settings writes.
 The public settings API is synchronous and does not acknowledge disk persistence.
 Synchronous save failures retain pending metadata and retry on the next interval;
 asynchronous transport failures are handled by the SDK. The unload save is best-effort.
-Widget result values remain memory-only; this change persists timestamps only.

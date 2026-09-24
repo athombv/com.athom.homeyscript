@@ -165,3 +165,22 @@ test('realtime delivery failures do not change script success or its cached resu
   assert.equal(errors.length, 1);
   assert.equal(errors[0].message, 'Disconnected');
 });
+
+test('widget runs record success and failure without per-run settings saves', async () => {
+  const { app, writes } = createScriptApp();
+  const homey = { app };
+  await buttonApi.runScript({ homey, body: { scriptId: 'example', argument: 'Widget' } });
+  assert.ok((await app.getScripts()).example.lastExecuted);
+  app.scripts.example.code = 'throw new Error("Failed");';
+  const result = await buttonApi.runScript({ homey, body: { scriptId: 'example', argument: '' } });
+  assert.equal(result.success, false);
+  assert.ok((await app.getScripts()).example.lastExecuted);
+  assert.equal(writes.length, 0);
+  app.scriptExecution.flush();
+  assert.deepEqual(
+    writes.map((write) => {
+      return write.key;
+    }),
+    ['scriptExecution'],
+  );
+});

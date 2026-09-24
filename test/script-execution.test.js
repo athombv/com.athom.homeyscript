@@ -5,7 +5,6 @@ const { test } = require('node:test');
 const { createScriptApp } = require('./helpers/create-script-app');
 const { ScriptExecution } = require('../lib/ScriptExecution');
 const editorApi = require('../api');
-const buttonApi = require('../widgets/script-button/api');
 const { RunAction } = require('../lib/flow/actions/RunAction');
 const { RunWithArgAction } = require('../lib/flow/actions/RunWithArgAction');
 const { RunCondition } = require('../lib/flow/conditions/RunCondition');
@@ -114,13 +113,13 @@ test('script edits and creation save immediately without mixing in execution met
   assert.equal(Object.hasOwn(settings.scripts[created.id], 'lastExecuted'), false);
 });
 
-test('editor and widget runs record success and failure without per-run settings saves', async () => {
+test('editor runs record success and failure without per-run settings saves', async () => {
   const { app, writes } = createScriptApp();
   const homey = { app };
   await editorApi.runScript({ homey, params: { id: 'example' }, body: { args: ['Editor'] } });
   assert.ok((await app.getScripts()).example.lastExecuted);
   app.scripts.example.code = 'throw new Error("Failed");';
-  const result = await buttonApi.runScript({ homey, body: { scriptId: 'example', argument: '' } });
+  const result = await editorApi.runScript({ homey, params: { id: 'example' } });
   assert.equal(result.success, false);
   assert.ok((await app.getScripts()).example.lastExecuted);
   assert.equal(writes.length, 0);
