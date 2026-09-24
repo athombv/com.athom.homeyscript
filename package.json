@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "test": "node --test test/*.test.js",
     "lint": "eslint .",
     "start": "nodemon --watch . --exec \"homey app run\"",
     "serve": "concurrently \"serve -l 5000 build/\" \"npm run jsdoc:watch\"",
